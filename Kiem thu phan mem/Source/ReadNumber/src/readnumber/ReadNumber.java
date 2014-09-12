@@ -20,8 +20,8 @@ public class ReadNumber {
     public String tienxuly(String str){
         int vtri = 0, len = str.length();
         str = str.trim();
-        while( vtri<len && str.charAt(vtri) == '0') vtri++;
-        if(vtri == len)
+        while( vtri<len && str.charAt(vtri) == '0') vtri++; // tìm vị trí có chữ số khác '0'
+        if(vtri == len) //"000" -> "0"
             return "0";
         if(vtri>0)
             str = str.substring(vtri, str.length());
@@ -42,38 +42,43 @@ public class ReadNumber {
         String space = "";
         for(int i = 0 ; i < a.length ; i ++){
             int num = a[i] - '0'; // chuyển ký tự a[i] sang số và lưu vào num
+            //----------------------------n=0-----------------------------------
             if(num == 0){ 
                 // kiểm tra các ký tự còn lại có toàn là số 0 không, lưu kết quả vào isZero
                 // để tránh trường hợp: 100 đọc là: một trăm linh không
                 boolean isZero = true;
                 for(int j = i+1 ; j < a.length && isZero; j ++) if(a[j] != '0') isZero = false;
                 // nếu còn chử số khác 0 phía sau thì đọc bình thường.
-                // 
+                // vd: 101: một trăm linh một, 100: một trăm
                 if(!isZero){  
                     if(i%3 == 0)
                         str += space + strNum[num] + " " +strHang[a.length -1 - i % 3];
-                    else if(i%3 == 1)
+                    else if(i%3 == 1)// nếu là số '0' ở vị trí 2 thì đọc là "linh", vd: 101, '0' -> "linh"
                         str += space + strNum[12];
                 }
             }
+            //----------------------------n=1-----------------------------------
             else if(num == 1){
-                if((a.length - i )%3 == 0) // neu la hang tram
+                if((a.length - i )%3 == 0) // nếu là hàng trăm
                     str += space +  strNum[num] + " " + strHang[a.length -1 - i % 3];
-                else if((a.length - i)%3 == 2) // neu la hang chuc
+                else if((a.length - i)%3 == 2) // nếu là hàng chục -> "mười", vd: 210 (hai trăm mười), '1' -> "nười"
                     str += space + strHang[6];
-                else if(i >= 1 && a[i-1] >= '2') // neu la hang don vi va hon 2 chu so va chu so thu 2 >= 2
+                else if(i >= 1 && a[i-1] >= '2') // nếu là hàng đơn vị và hơn 2 chữ số và chữ số thứ hai >= 2 đọc là "mốt", vd: 21(hai mươi mốt), '1' -> "mốt"
                         str += space + strNum[10];
                 else 
-                    str += space + strNum[num];
+                    str += space + strNum[num]; //11(mười một), 201(hai trăm linh một) => '1' -> "một"
             }
+            //----------------------------n=5-----------------------------------
             else if(num == 5){
-                if((a.length - i )%3 == 1 && i>0 && a[i-1] >= '1') //neu la hang don vi va so hàng chuc >= 1
-                    str+= space + strNum[11];
-                else
+                if((a.length - i )%3 == 1 && i>0 && a[i-1] >= '1') //neu la hang don vi va so hàng chuc >= 1 -> "lăm", vd:15(mười lăm)
+                    str+= space + strNum[11]; 
+                else // vd: 5(năm), 105(một trăm linh năm) => '5' -> "năm"
                     str += space + strNum[num]+ " " + strHang[a.length -1 - i % 3];
             }
-            else
+            //----------------------------n!={0,1,5}-----------------------------------
+            else // các trường hợp khác thì đọc theo quy tắc bình thường
                 str += space + strNum[num] + " " + strHang[a.length -1 - i % 3];
+            
             space = " ";
         }
         
