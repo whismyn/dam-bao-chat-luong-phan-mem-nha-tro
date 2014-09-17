@@ -37,7 +37,7 @@ public class ReadNumber {
     }
     
     // hàm đọc 3 số (vẫn đọc ký tự 0 thừa).vd: 001 -> không trăm linh một.
-    private String doc3So(char[] a){
+    public String doc3So(char[] a){
         String str=""; //chuổi kết quả
         String space = "";
         for(int i = 0 ; i < a.length ; i ++){
@@ -130,5 +130,7 @@ public class ReadNumber {
         System.out.println(r.docDaySo(s));
         
     }
+
+    
     
 }
