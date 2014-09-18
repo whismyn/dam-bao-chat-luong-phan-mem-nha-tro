@@ -39,15 +39,27 @@ public class ReadNumber {
     
     // hàm đọc 3 số (vẫn đọc ký tự 0 thừa).vd: 001 -> không trăm linh một.
     public String doc3So(char[] a){
+    	
+    	if(!check(new String(a)) || a.length > 3 || a.length == 0)
+    		return "";
+    	
         String str=""; //chuổi kết quả
         String space = "";
+        
+        boolean isZero = true;
+        for(int i = 0 ; i < a.length && isZero ; i ++ ){
+        	if(a[i]!='0') isZero = false;
+        }
+        if(isZero)
+        	return "không";
+        
         for(int i = 0 ; i < a.length ; i ++){
             int num = a[i] - '0'; // chuyển ký tự a[i] sang số và lưu vào num
             //----------------------------n=0-----------------------------------
             if(num == 0){ 
                 // kiểm tra các ký tự còn lại có toàn là số 0 không, lưu kết quả vào isZero
                 // để tránh trường hợp: 100 đọc là: một trăm linh không
-                boolean isZero = true;
+                isZero = true;
                 for(int j = i+1 ; j < a.length && isZero; j ++) if(a[j] != '0') isZero = false;
                 // nếu còn chử số khác 0 phía sau thì đọc bình thường.
                 // vd: 101: một trăm linh một, 100: một trăm
@@ -126,9 +138,9 @@ public class ReadNumber {
 //    public static void main(String[] args) {
 //        // TODO code application logic here
 //        ReadNumber r = new ReadNumber();
-//        String s = "10";
-//       // System.out.println(r.doc3So(s.toCharArray()));
-//        System.out.println(r.docDaySo(s));
+//        String s = "030";
+//        System.out.println("doc la: " + r.doc3So(s.toCharArray()));
+//        //System.out.println(r.docDaySo(s));
 //        
 //    }
 
