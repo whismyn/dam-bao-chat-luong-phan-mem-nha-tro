@@ -13,7 +13,10 @@ import java.io.PrintWriter;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+
 import readnumber.*;
 /**
  *
@@ -154,10 +157,12 @@ public class Readfile extends javax.swing.JFrame {
     }                                        
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        try {
+    	try {
             // TODO add your handling code here:
             Write2File(jTextField2.getText());
-        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, "Thành công!");
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Thất bại!");
             Logger.getLogger(Readfile.class.getName()).log(Level.SEVERE, null, ex);
         }
         //System.exit(0);
