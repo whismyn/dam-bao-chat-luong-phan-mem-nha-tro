@@ -63,9 +63,9 @@ public class ReadNumberTest extends TestCase {
 		assertEquals(
 				"một tỷ hai trăm ba mươi bốn triệu năm trăm sáu mươi bảy nghìn tám trăm chín mươi",
 				instance.docDaySo("1234567890"));
-		assertEquals("", instance.docDaySo("123.456789"));
-		assertEquals("", instance.docDaySo("1 234 567 809"));
-		assertEquals("", instance.docDaySo("abc1234567890"));
+		assertEquals("Input Invalid!", instance.docDaySo("123.456789"));
+		assertEquals("Input Invalid!", instance.docDaySo("1 234 567 809"));
+		assertEquals("Input Invalid!", instance.docDaySo("abc1234567890"));
 		// TODO review the generated test code and remove the default call to
 		// fail.
 	}
@@ -95,6 +95,6 @@ public class ReadNumberTest extends TestCase {
 		assertEquals("mười một", instance.doc3So(h));
 		assertEquals("không trăm năm mươi", instance.doc3So(i));
 		assertEquals("chín trăm năm mươi mốt", instance.doc3So(k));
-		assertEquals("", instance.doc3So(j));
+		assertEquals("Input Invalid!", instance.doc3So(j));
 	}
 }
