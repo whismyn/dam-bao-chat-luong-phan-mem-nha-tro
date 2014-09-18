@@ -149,12 +149,7 @@ public class MainReadNumber extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String str = tfInput.getText();
-        if (str.isEmpty() || !rn.check(str)) {
-            tfOutput.setText("");
-            JOptionPane.showMessageDialog(this, "Enter a number, please!");
-        } else {
-            tfOutput.setText(rn.docDaySo(str));
-        }
+        tfOutput.setText(rn.docDaySo(str));
 
     }//GEN-LAST:event_jButton1ActionPerformed
 

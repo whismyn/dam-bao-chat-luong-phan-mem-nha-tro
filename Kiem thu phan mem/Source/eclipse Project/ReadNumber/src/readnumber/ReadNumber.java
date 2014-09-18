@@ -15,12 +15,17 @@ public class ReadNumber {
     private static final String[] strNum = {"không","một","hai","ba","bốn","năm","sáu","bảy","tám","chín","mốt","lăm","linh"}; 
     private static final String[] strHang = {"","mươi","trăm","nghìn","triệu","tỷ","mười"};
     private static final String[] strGroup={"","nghìn","triệu","tỷ"};
+    private static final String messageInputValid = "Input Invalid!";
     
     // xóa các ký tự space và ký tự '0' thừa.   vd: 00010 -> 10
     public String tienxuly(String str){
-        int vtri = 0, len = str.length();
+        int vtri = 0;
         str = str.trim();
+        if(str.isEmpty())
+        	return str;
+        int len = str.length();
         while( vtri<len && str.charAt(vtri) == '0') vtri++; // tìm vị trí có chữ số khác '0'
+        
         if(vtri == len) //"000" -> "0"
             return "0";
         if(vtri>0)
@@ -31,8 +36,10 @@ public class ReadNumber {
     // kt chuổi str có chứa các ký tự khác 0->9 không. TRUE: hợp lệ, FALSE: không hợp lệ
     public boolean check(String str){
         int len = str.length();
+        if(len > 18 || str.isEmpty())
+        	return false;
         for(int i = 0 ; i < len ; i ++)
-            if(str.charAt(i)>'9' || str.charAt(i)<'0') 
+            if(str.charAt(i) > '9' || str.charAt(i) < '0') 
                 return false;
         return true;
     }
@@ -41,7 +48,7 @@ public class ReadNumber {
     public String doc3So(char[] a){
     	
     	if(!check(new String(a)) || a.length > 3 || a.length == 0)
-    		return "";
+    		return messageInputValid;
     	
         String str=""; //chuổi kết quả
         String space = "";
@@ -101,10 +108,10 @@ public class ReadNumber {
     // hàm đọc một dãy số bất kỳ, nếu không đọc được thì trả về chuổi rổng.
     public String docDaySo(String n){
         
-        n= tienxuly(n);             //xóa các ký tự space và '0' thừa
+        n = tienxuly(n);             //xóa các ký tự space và '0' thừa
         
         if(!check(n))               //nếu không hợp lệ thì return chuổi rổng
-            return "";
+            return messageInputValid;
         if(n.equals("0"))           //nếu n == 0 thì return "Không"
             return strNum[0];
         

@@ -8,45 +8,65 @@ package readnumber;
 
 /**
  *
- * @author Admin
+ * @author Nguyen Qui Nghia
  */
 public class ReadNumber {
 
     private static final String[] strNum = {"không","một","hai","ba","bốn","năm","sáu","bảy","tám","chín","mốt","lăm","linh"}; 
     private static final String[] strHang = {"","mươi","trăm","nghìn","triệu","tỷ","mười"};
     private static final String[] strGroup={"","nghìn","triệu","tỷ"};
+    private static final String messageInputValid = "Input Invalid!";
     
     // xóa các ký tự space và ký tự '0' thừa.   vd: 00010 -> 10
     public String tienxuly(String str){
-        int vtri = 0, len = str.length();
+        int vtri = 0;
         str = str.trim();
+        if(str.isEmpty())
+        	return str;
+        int len = str.length();
         while( vtri<len && str.charAt(vtri) == '0') vtri++; // tìm vị trí có chữ số khác '0'
+        
         if(vtri == len) //"000" -> "0"
             return "0";
         if(vtri>0)
             str = str.substring(vtri, str.length());
         return str;
     }
+    
     // kt chuổi str có chứa các ký tự khác 0->9 không. TRUE: hợp lệ, FALSE: không hợp lệ
     public boolean check(String str){
         int len = str.length();
+        if(len > 18 || str.isEmpty())
+        	return false;
         for(int i = 0 ; i < len ; i ++)
-            if(str.charAt(i)>'9' || str.charAt(i)<'0') 
+            if(str.charAt(i) > '9' || str.charAt(i) < '0') 
                 return false;
         return true;
     }
     
     // hàm đọc 3 số (vẫn đọc ký tự 0 thừa).vd: 001 -> không trăm linh một.
     public String doc3So(char[] a){
+    	
+    	if(!check(new String(a)) || a.length > 3 || a.length == 0)
+    		return messageInputValid;
+    	
         String str=""; //chuổi kết quả
         String space = "";
+        
+        boolean isZero = true;
+        for(int i = 0 ; i < a.length && isZero ; i ++ ){
+        	if(a[i]!='0') isZero = false;
+        }
+        if(isZero)
+        	return "không";
+        
         for(int i = 0 ; i < a.length ; i ++){
             int num = a[i] - '0'; // chuyển ký tự a[i] sang số và lưu vào num
             //----------------------------n=0-----------------------------------
             if(num == 0){ 
                 // kiểm tra các ký tự còn lại có toàn là số 0 không, lưu kết quả vào isZero
                 // để tránh trường hợp: 100 đọc là: một trăm linh không
-                boolean isZero = true;
+                isZero = true;
                 for(int j = i+1 ; j < a.length && isZero; j ++) if(a[j] != '0') isZero = false;
                 // nếu còn chử số khác 0 phía sau thì đọc bình thường.
                 // vd: 101: một trăm linh một, 100: một trăm
@@ -88,10 +108,10 @@ public class ReadNumber {
     // hàm đọc một dãy số bất kỳ, nếu không đọc được thì trả về chuổi rổng.
     public String docDaySo(String n){
         
-        n= tienxuly(n);             //xóa các ký tự space và '0' thừa
+        n = tienxuly(n);             //xóa các ký tự space và '0' thừa
         
         if(!check(n))               //nếu không hợp lệ thì return chuổi rổng
-            return "";
+            return messageInputValid;
         if(n.equals("0"))           //nếu n == 0 thì return "Không"
             return strNum[0];
         
@@ -122,14 +142,14 @@ public class ReadNumber {
         return str.replaceAll("  ", " ").trim();//return chuổi kêt quả sau khi xóa ký tự space thừa.
     }
     
-    public static void main(String[] args) {
-        // TODO code application logic here
-        ReadNumber r = new ReadNumber();
-        String s = "10";
-       // System.out.println(r.doc3So(s.toCharArray()));
-        System.out.println(r.docDaySo(s));
-        
-    }
+//    public static void main(String[] args) {
+//        // TODO code application logic here
+//        ReadNumber r = new ReadNumber();
+//        String s = "030";
+//        System.out.println("doc la: " + r.doc3So(s.toCharArray()));
+//        //System.out.println(r.docDaySo(s));
+//        
+//    }
 
     
     

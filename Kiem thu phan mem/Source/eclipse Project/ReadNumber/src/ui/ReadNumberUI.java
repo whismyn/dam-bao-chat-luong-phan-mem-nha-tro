@@ -148,12 +148,8 @@ public class ReadNumberUI extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         String str = tfInput.getText();
-        if (str.isEmpty() || !rn.check(str)) {
-            tfOutput.setText("");
-            JOptionPane.showMessageDialog(this, "Enter a number, please!");
-        } else {
+        
             tfOutput.setText(rn.docDaySo(str));
-        }
 
     }                                        
 
