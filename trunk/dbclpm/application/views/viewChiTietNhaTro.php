@@ -35,11 +35,14 @@
         echo $this->table->generate();
         ?>
         
-        <h1>Để lại bình luận của bạn</h1>
+        <h1>Để lại bình luận của bạn!!!</h1><i>(Bạn phải đăng nhập để có thể bình luận)</i>
+        <?php $maTaiKhoan = $this->session->userdata('maTaiKhoan');
+                  if($maTaiKhoan==null) echo "null";?> 
         <?php echo form_open("nhaTro/xulythemBinhLuan") ?>
         Nội dung <input type="text" name="noiDung"><br>
-        <input type="submit" value="Save">
+        <input type="submit" value="Save" <?php if($maTaiKhoan==NULL) echo 'disabled'; ?>>
         <input type="hidden" name="maNhaTro" value="<?php echo $nhaTro->MA_NT; ?>">
         <?php echo form_close() ?>
+        <br><a href="<?php echo base_url();?>">Quay lại</a>
     </body>
 </html>
