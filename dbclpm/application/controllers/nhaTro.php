@@ -49,6 +49,9 @@ class nhaTro extends CI_Controller{
     }
 
     public function capnhat($maNhaTro) {
+        $data['tinhThanhs'] = $this->modelTinhThanh->findAll();
+        $data['quanHuyens'] = $this->modelQuanHuyen->findAll();
+        $data['phuongXas'] = $this->modelPhuongXa->findAll();
         $data['nhaTro'] = $this->modelNhaTro->find($maNhaTro);
         $this->load->view('updateNhaTro', $data);
     }
@@ -137,6 +140,41 @@ class nhaTro extends CI_Controller{
         );
         $this->modelBinhLuanNhaTro->insert($binhLuanNhaTro);
         redirect('nhaTro/xemNhaTro/'.$maNhaTro);
+    }
+    
+    public function timNhaTro(){
+        $tuKhoa = $this->input->post('tuKhoa');
+        $data['nhaTros'] = $this->modelNhaTro->search($tuKhoa);
+        $this->load->view('ketquatimkiem',$data);
+    }
+    
+    public function timKiemNangCao(){
+        $data['tinhThanhs'] = $this->modelTinhThanh->findAll();
+        $data['quanHuyens'] = $this->modelQuanHuyen->findAll();
+        $data['phuongXas'] = $this->modelPhuongXa->findAll();
+        $this->load->view('timkiemnangcao', $data);
+    }
+    
+    public function xulytimkiem(){
+        $maHuyen = $this->input->post('maHuyen');
+        $this->db->select("*");
+        $this->db->from('nha_tro');
+        $maXas = array(maHuyenToMaXa($maHuyen));
+        foreach ($maXas as $maXa) {
+            $this->db->where('MA_XA', $maXa);
+        }
+        $query = $this->db->get();
+        $data['nhaTros'] = $query->result();
+        $this->load->view('ketquatimkiem', $data);
+    }
+    
+    public function maHuyenToMaXa($maHuyen){
+        $this->db->select("MA_XA");
+        $this->db->from('phuong_xa');
+        $this->db->where('MA_HUYEN', $maHuyen);
+        $query = $this->db->get();
+        $maXas = $query->result();
+        return $maXas;
     }
 }
 

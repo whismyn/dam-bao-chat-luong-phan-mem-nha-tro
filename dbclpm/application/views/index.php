@@ -5,9 +5,12 @@
         <title></title>
     </head>
     <body>
-
+        <?php echo form_open("nhaTro/timNhaTro") ?>
+        Từ khóa <input type="text" name="tuKhoa"><br>
+        <input type="submit" value="Tìm">
+        <?php echo form_close() ?>
+        <a href="<?php echo base_url();?>index.php/nhaTro/timKiemNangCao">Tìm kiếm nâng cao</a><Br>
         
-        <h1>Các nhà trọ trong hệ thống</h1><br>
         <?php 
             $maTaiKhoan = $this->session->userdata('maTaiKhoan');
             $tenTaiKhoan = $this->session->userdata('tenTaiKhoan');
@@ -18,8 +21,6 @@
                 echo "<a href='".$url."index.php/taiKhoan/dangNhap'>Đăng nhập</a><br><br>";
             } else{
                 echo "<h3>Xin chào ".$tenTaiKhoan."</h3>";
-                echo "<h4>Mã tài khoản của bạn là ".$maTaiKhoan."</h4>";
-                echo "<h4>Mã loại tài khoản của bạn là ".$maLoaiTaiKhoan."</h4>";
                 echo "<a href='".$url."index.php/taiKhoan/dangXuat'>Đăng xuất</a><br><br>";
                 echo "<a href='".$url."index.php/taiKhoan/thayDoi/".$maTaiKhoan."'>Thay đổi thông tin tài khoản</a><br><br>";
             }
@@ -29,6 +30,7 @@
                 echo "<a href='".$url."index.php/taiKhoan/trangquanlynhatro/".$maTaiKhoan."'>Đến trang quản trị nhà trọ</a><br><br>";
             }
         ?>
+        <h1>Các nhà trọ trong hệ thống</h1><br>
         <?php
         $this->table->set_heading(
                 'Số nhà', 'Diện tích', 'Còn phòng', 'Giá', 'Người liên hệ', 

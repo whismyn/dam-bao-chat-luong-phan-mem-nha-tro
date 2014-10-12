@@ -2,7 +2,6 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title></title>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script type="text/javascript" src="../../media/js/jquery.chained.min.js"></script>
         <script>
@@ -12,11 +11,12 @@
             });
 
         </script>
+        <title></title>
     </head>
     <body>
-        <?php echo form_open("nhaTro/xulycapnhat") ?>
+        <?php echo form_open("nhaTro/xulytimkiem") ?>
         Tỉnh/Thành phố<br>
-        <select id="mark"> 
+        <select id="mark" name="matinh"> 
             <option value="">----</option>
             <?php
             foreach ($tinhThanhs as $tinhThanh) {
@@ -27,7 +27,7 @@
             ?>
         </select><br>
         Quận/Huyện<br>
-        <select id="series">
+        <select id="series" name="maHuyen">
             <option value="">--</option>
             <?php
             foreach ($quanHuyens as $quanHuyen) {
@@ -48,28 +48,26 @@
             }
             ?>
         </select><br>
-        Số nhà<br>
-        <input type="text" name="soNha" value="<?php echo $nhaTro->SO_NHA; ?>"><br>
+        Mức giá <br>
+        <select name="mucGia">
+            <option value="500000">500 000 VNĐ</option>
+            <option value="700000">700 000 VND</option>    
+            <option value="900000">900 000 VND</option>    
+            <option value="1000000">1 000 000 VND</option>
+            <option value="1200000">1 200 000 VND</option>
+            <option value="1400000">1 400 000 VND</option>
+            <option value="10 000 000">trên 1 500 000 VND</option>
+        </select><Br>
         Diện tích<br>
-        <input type="text" name="dienTich" value="<?php echo $nhaTro->DIEN_TICH; ?>"><br>
-        Còn phòng<br>
-        <input type="text" name="conPhong" value="<?php echo $nhaTro->CON_PHONG; ?>"><br>
-        Giá<br>
-        <input type="number" name="gia" value="<?php echo $nhaTro->GIA; ?>"><br>
-        Người liên hệ<br>
-        <input type="text" name="nguoiLienHe" value="<?php echo $nhaTro->NGUOI_LH; ?>"><br>
-        Số điện thoại liên hệ<br>
-        <input type="text" name="sdtLienHe" value="<?php echo $nhaTro->SDT_LH; ?>"><br>
-        Email liên hệ<br>
-        <input type="text" name="emailLienHe" value="<?php echo $nhaTro->EMAIL_LH; ?>"><br>
-        Địa chỉ liên hệ<br>
-        <input type="text" name="diaChiLienHe" value="<?php echo $nhaTro->DIA_CHI_LH; ?>"><br>
-        Tiêu đề<br>
-        <input type="text" name="tieuDe" value="<?php echo $nhaTro->TIEU_DE; ?>"><br>
-        Giới thiệu<br>
-        <input type="text" name="gioiThieu" value="<?php echo $nhaTro->GIOI_THIEU; ?>"><br>
-        <input type="submit" value="Save">
-        <input type="hidden" name="maNhaTro" value="<?php echo $nhaTro->MA_NT; ?>">
+        <select name="dienTich">
+            <option value="15">15 m²</option>
+            <option value="20">20 m²</option>
+            <option value="25">25 m²</option>
+            <option value="30">30 m²</option>
+            <option value="100">trên 30 m²</option>
+        </select>
+        <br>
+        <input type="submit" value="Tìm">
         <?php echo form_close() ?>
     </body>
 </html>
