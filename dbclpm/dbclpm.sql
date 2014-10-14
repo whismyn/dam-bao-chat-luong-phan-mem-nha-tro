@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 12, 2014 at 09:03 AM
+-- Generation Time: Oct 14, 2014 at 09:00 AM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.9
 
@@ -47,14 +47,17 @@ CREATE TABLE IF NOT EXISTS `binh_luan` (
   `TG_BL` datetime DEFAULT NULL,
   PRIMARY KEY (`MA_BL`),
   KEY `FK_BINH_LUAN_CUA_TK` (`MA_TK`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci AUTO_INCREMENT=21 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci AUTO_INCREMENT=24 ;
 
 --
 -- Dumping data for table `binh_luan`
 --
 
 INSERT INTO `binh_luan` (`MA_BL`, `MA_TK`, `NOI_DUNG`, `BAO_VP`, `TG_BL`) VALUES
-(20, 1, 'ola ola', 0, '2014-10-10 07:17:15');
+(20, 1, 'ola ola', 0, '2014-10-10 07:17:15'),
+(21, 1, 'gì vậy trời', 1, '2014-10-13 11:57:45'),
+(22, 1, 'đâu có gì đâu', 1, '2014-10-13 11:57:57'),
+(23, 1, 'hả hả', 0, '2014-10-13 11:58:02');
 
 -- --------------------------------------------------------
 
@@ -87,7 +90,10 @@ CREATE TABLE IF NOT EXISTS `bl_nt` (
 --
 
 INSERT INTO `bl_nt` (`MA_BL`, `MA_NT`) VALUES
-(20, 4);
+(20, 4),
+(21, 6),
+(22, 6),
+(23, 6);
 
 -- --------------------------------------------------------
 
@@ -122,9 +128,9 @@ CREATE TABLE IF NOT EXISTS `loai_tk` (
 --
 
 INSERT INTO `loai_tk` (`MA_LTK`, `TEN_LTK`, `GHI_CHU_LTK`) VALUES
-(1, 'Quan tri he thong', 'Nguoi quan tri he thong'),
-(2, 'Chu nha tro', 'Chu nha tro'),
-(3, 'Thanh vien', 'Thanh vien');
+(1, 'Quản trị hệ thống', 'Người quản trị hệ thống'),
+(2, 'Chủ nhà trọ', 'Chủ nhà trọ'),
+(3, 'Thành viên', 'Là người đăng ký thành viên');
 
 -- --------------------------------------------------------
 
@@ -152,7 +158,7 @@ CREATE TABLE IF NOT EXISTS `nha_tro` (
   PRIMARY KEY (`MA_NT`),
   KEY `FK_NHA_TRO_TAO_BOI` (`MA_TK`),
   KEY `FK_NT_CO_DIA_CHI` (`MA_XA`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `nha_tro`
@@ -160,7 +166,10 @@ CREATE TABLE IF NOT EXISTS `nha_tro` (
 
 INSERT INTO `nha_tro` (`MA_NT`, `MA_TK`, `MA_XA`, `SO_NHA`, `DIEN_TICH`, `CON_PHONG`, `GIA`, `NGUOI_LH`, `SDT_LH`, `EMAIL_LH`, `DIA_CHI_LH`, `TIEU_DE`, `GIOI_THIEU`, `CN_CUOI`, `TG_TAO_NT`, `DUYET`) VALUES
 (4, 20, 1, '123', 123, 123, 123, '123', '123', '123', '123', '123', '123', '2014-10-10 04:09:31', '2014-10-10 00:00:00', 1),
-(5, 1, 1, '37', 123, 10, 1000000, 'Nguyen Chi Tam', '123456789', 'nguyenchitam1993@gmail.com', 'Cần Thơ', 'tieu de', '123123123', '2014-10-11 12:54:37', '2014-10-11 12:54:37', 0);
+(5, 1, 1, '37', 123, 10, 1000000, 'Nguyen Chi Tam', '123456789', 'nguyenchitam1993@gmail.com', 'Cần Thơ', 'tieu de', '123123123', '2014-10-11 12:54:37', '2014-10-11 12:54:37', 1),
+(6, 1, 2, '113', 100, 100, 500000, 'Nguyễn Chí Tâm', '01658000057', 'nguyenchitam1993@gmail.com', '113 Khóm 2, Phường 1, Thị xã Ngã Năm, Sóc Trăng', 'Nhà trọ', 'Giới thiệu nhà trọ', '2014-10-13 11:51:12', '2014-10-13 11:51:12', 1),
+(7, 1, 3, '69', 40, 7, 1000000, 'Nguyễn Văn ABC', '12367890', 'abc@gmail.com', '6 Khóm 9 Phương 2', 'Tiêu đề', 'Giới thiệu', '2014-10-13 11:53:08', '2014-10-13 11:53:08', 1),
+(8, 1, 5, '37 Quản Trọng Hoàng', 15, 100, 500000, 'Bà Chín', '1234', 'bachin@gmail.com', '37 Quản Trọng Hoàng', 'gì cũng được', 'gì cũng được', '2014-10-14 01:02:56', '2014-10-14 01:02:56', 0);
 
 -- --------------------------------------------------------
 
@@ -174,14 +183,18 @@ CREATE TABLE IF NOT EXISTS `phuong_xa` (
   `TEN_XA` text COLLATE utf8_vietnamese_ci,
   PRIMARY KEY (`MA_XA`),
   KEY `FK_RELATIONSHIP_8` (`MA_HUYEN`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `phuong_xa`
 --
 
 INSERT INTO `phuong_xa` (`MA_XA`, `MA_HUYEN`, `TEN_XA`) VALUES
-(1, 1, 'Thới Lai 2');
+(1, 1, 'Thới Lai 2'),
+(2, 29, 'Phường 1'),
+(3, 29, 'Phường 2'),
+(4, 29, 'Phường 3'),
+(5, 10, 'Hưng Lợi');
 
 -- --------------------------------------------------------
 
@@ -195,7 +208,7 @@ CREATE TABLE IF NOT EXISTS `quan_huyen` (
   `TEN_HUYEN` text COLLATE utf8_vietnamese_ci,
   PRIMARY KEY (`MA_HUYEN`),
   KEY `FK_RELATIONSHIP_3` (`MA_TINH`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci AUTO_INCREMENT=35 ;
 
 --
 -- Dumping data for table `quan_huyen`
@@ -203,7 +216,39 @@ CREATE TABLE IF NOT EXISTS `quan_huyen` (
 
 INSERT INTO `quan_huyen` (`MA_HUYEN`, `MA_TINH`, `TEN_HUYEN`) VALUES
 (1, 2, 'Cờ Đỏ'),
-(2, 2, 'Cái Răng 1');
+(2, 2, 'Cái Răng 1'),
+(3, 3, 'Mang Thít'),
+(4, 3, 'Long Hồ'),
+(5, 3, 'Tam Bình'),
+(6, 3, 'Trà Ôn'),
+(7, 3, 'Vũng Liêm'),
+(8, 3, 'Bình Minh'),
+(9, 3, 'Bình Tân'),
+(10, 2, 'Ninh Kiều'),
+(11, 2, 'Ô Môn'),
+(12, 2, 'Thốt Nốt'),
+(13, 2, 'Bình Thủy'),
+(14, 2, 'Thới Lai'),
+(15, 2, 'Phong Điền'),
+(16, 4, 'Thành Phố Long Xuyên'),
+(17, 3, 'Thành Phố Vĩnh Long'),
+(18, 4, 'Châu Thành'),
+(19, 4, 'Châu Phú'),
+(20, 4, 'Thành Phố Châu Đốc'),
+(21, 4, 'Tịnh Biên'),
+(22, 4, 'An Phú'),
+(23, 4, 'Tân Châu'),
+(24, 2, 'Phú Tân'),
+(25, 4, 'Chợ Mới'),
+(26, 4, 'Thoại Sơn'),
+(27, 4, 'Tri Tôn'),
+(28, 2, 'Vĩnh Thạnh'),
+(29, 52, 'Ngã Năm'),
+(30, 52, 'Vĩnh Châu'),
+(31, 52, 'Châu Thành'),
+(32, 52, 'Thạnh Trị'),
+(33, 52, 'Mỹ Tú'),
+(34, 52, 'Mỹ Xuyên');
 
 -- --------------------------------------------------------
 
@@ -254,7 +299,7 @@ CREATE TABLE IF NOT EXISTS `tinh_thanh` (
   `MA_TINH` int(11) NOT NULL AUTO_INCREMENT,
   `TEN_TINH` text COLLATE utf8_vietnamese_ci,
   PRIMARY KEY (`MA_TINH`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci AUTO_INCREMENT=64 ;
 
 --
 -- Dumping data for table `tinh_thanh`
@@ -262,7 +307,67 @@ CREATE TABLE IF NOT EXISTS `tinh_thanh` (
 
 INSERT INTO `tinh_thanh` (`MA_TINH`, `TEN_TINH`) VALUES
 (2, 'Cần Thơ'),
-(3, 'Vĩnh Long');
+(3, 'Vĩnh Long'),
+(4, 'An Giang'),
+(5, 'Bà Rịa - Vũng Tàu'),
+(6, 'Bắc Giang'),
+(7, 'Bắc Kạn'),
+(8, 'Bắc Ninh'),
+(9, 'Bến Tre'),
+(10, 'Bình Dương'),
+(11, 'Bình Định'),
+(12, 'Bình Phước'),
+(13, 'Bình Thuận'),
+(14, 'Cà Mau'),
+(15, 'Cao Bằng'),
+(16, 'Đà Nẵng'),
+(17, 'Đắk Lắk'),
+(18, 'ĐắK Nông'),
+(19, 'Đồng Nai'),
+(20, 'Đồng Tháp'),
+(21, 'Điện Biên'),
+(22, 'Gia Lai'),
+(23, 'Hà Giang'),
+(24, 'Hà Nam'),
+(25, 'Hà Nội'),
+(26, 'Hà Tĩnh'),
+(27, 'Hải Dương'),
+(28, 'Hải Phòng'),
+(29, 'Hòa Bình'),
+(30, 'Hậu Giang'),
+(31, 'Hưng Yên'),
+(32, 'TP. Hồ Chí Minh'),
+(33, 'Khánh Hòa'),
+(34, 'Kiên Giang'),
+(35, 'Kon Tum'),
+(36, 'Lai Châu'),
+(37, 'Lào Cai'),
+(38, 'Lạng Sơn'),
+(39, 'Lâm Đồng'),
+(40, 'Long An'),
+(41, 'Nam Định'),
+(42, 'Nghệ An'),
+(43, 'Ninh Bình'),
+(44, 'Ninh Thuận'),
+(45, 'Phú Thọ'),
+(46, 'Phú Yên'),
+(47, 'Quảng Bình'),
+(48, 'Quảng Nam'),
+(49, 'Quảng Ngãi'),
+(50, 'Quảng Ninh'),
+(51, 'Quảng Trị'),
+(52, 'Sóc Trăng'),
+(53, 'Sơn La'),
+(54, 'Tây Ninh'),
+(55, 'Thái Bình'),
+(56, 'Thái Nguyên'),
+(57, 'Thanh Hóa'),
+(58, 'Thừa Thiên - Huế'),
+(59, 'Tiền Giang'),
+(60, 'Trà Vinh'),
+(61, 'Tuyên Quang'),
+(62, 'Vĩnh Phúc'),
+(63, 'Yên Bái');
 
 --
 -- Constraints for dumped tables

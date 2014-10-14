@@ -199,6 +199,16 @@ class taiKhoan extends CI_Controller {
         redirect("Email");
         //$this->load->view("viewMatKhau", $data);
     }
+    
+    public function xemtaikhoantheoloaitaikhoan($maLoaiTk){
+        $this->db->select("*");
+        $this->db->from('tai_khoan');
+        $this->db->where('MA_LTK', $maLoaiTk);
+        $query = $this->db->get();
+        $data['taiKhoans'] = $query->result();
+       $this->load->view('viewTaiKhoan', $data);
+    }
+    
 }
 
 ?>

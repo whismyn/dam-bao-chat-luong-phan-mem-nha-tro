@@ -18,6 +18,9 @@
                     $nhaTro->GIOI_THIEU, anchor("nhaTro/xemNhaTro/".$nhaTro->MA_NT,"Xem chi tiết"));
         }
         echo $this->table->generate();
+        
+       
         ?>
+        <a href="<?php echo base_url();?>">Đến trang chủ</a><br>
     </body>
 </html>

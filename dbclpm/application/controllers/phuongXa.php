@@ -2,6 +2,11 @@
 
 class phuongXa extends CI_Controller {
 
+    public function __construct() {
+        parent::__construct();
+        $this->load->library("session");
+    }
+    
     public function index() {
         $data['phuongXas'] = $this->modelPhuongXa->findAll();
         $this->load->view('viewPhuongXa', $data);
@@ -23,7 +28,7 @@ class phuongXa extends CI_Controller {
             "TEN_XA" => $this->input->post("tenXa")
         );
         $this->modelPhuongXa->insert($phuongXa);
-        redirect('phuongXa/index');
+        redirect('phuongXa/them');
     }
 
     public function capnhat($maXa) {
@@ -42,6 +47,17 @@ class phuongXa extends CI_Controller {
         redirect('phuongXa/index');
     }
 
+    public function xemphuongxatheoquanhuyen($maHuyen){
+        
+        $this->session->set_userdata('maHuyen', $maHuyen);
+        
+        $this->db->select("*");
+        $this->db->from('phuong_xa');
+        $this->db->where('MA_HUYEN', $maHuyen);
+        $query = $this->db->get();
+        $data['phuongXas'] = $query->result();
+       $this->load->view('viewPhuongXa', $data);
+    }
 }
 
 ?>

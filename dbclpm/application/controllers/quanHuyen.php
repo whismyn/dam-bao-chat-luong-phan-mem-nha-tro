@@ -1,8 +1,12 @@
 <?php
 
-class quanHuyen extends CI_Controller
-{
+class quanHuyen extends CI_Controller {
 
+    public function __construct() {
+        parent::__construct();
+        $this->load->library("session");
+    }
+    
     public function index() {
         $data['quanHuyens'] = $this->modelQuanHuyen->findAll();
         $this->load->view('viewQuanHuyen', $data);
@@ -24,7 +28,7 @@ class quanHuyen extends CI_Controller
             "TEN_HUYEN" => $this->input->post("tenHuyen")
         );
         $this->modelQuanHuyen->insert($quanHuyen);
-        redirect('quanHuyen/index');
+        redirect('quanHuyen/them');
     }
 
     public function capnhat($maHuyen) {
@@ -43,6 +47,25 @@ class quanHuyen extends CI_Controller
         redirect('quanHuyen/index');
     }
 
+    public function xemquanhuyentheotinh($maTinh) {
+     
+        $this->session->set_userdata('maTinh', $maTinh);
+    
+        $this->db->select("*");
+        $this->db->from('quan_huyen');
+        $this->db->where('MA_TINH', $maTinh);
+        $query = $this->db->get();
+        $data['quanHuyens'] = $query->result();
+        $this->load->view('viewQuanHuyen', $data);
+    }
+    
+    public function getTenTinh($maTinh){
+        $this->db->select("TEN_TINH");
+        $this->db->from('tinh_thanh');
+        $this->db->where('MA_TINH', $maTinh);
+        $query = $this->db->get();
+        return $query->result();
+    }
 }
 
 ?>

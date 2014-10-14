@@ -58,6 +58,16 @@ class binhLuan extends CI_Controller {
         $data['binhLuans'] = $this->modelBinhLuan->findAll();
         $this->load->view('confirmBinhLuan', $data);
     }
+    
+    public function baoViPham($maBinhLuan){
+        $maNhaTro = $this->session->userdata('maNhaTro');
+        $binhLuan = $this->modelBinhLuan->find($maBinhLuan);
+        $soLanVP = $binhLuan->BAO_VP;
+        $soLanVP = $soLanVP + 1;
+        $binhLuan->BAO_VP = $soLanVP;
+        $this->modelBinhLuan->update($maBinhLuan, $binhLuan);
+        redirect('nhaTro/xemNhaTro/'.$maNhaTro);
+    }
 }
 
 ?>

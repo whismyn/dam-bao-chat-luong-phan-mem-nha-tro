@@ -43,6 +43,6 @@
         <input type="submit" value="Save" <?php if($maTaiKhoan==NULL) echo 'disabled'; ?>>
         <input type="hidden" name="maNhaTro" value="<?php echo $nhaTro->MA_NT; ?>">
         <?php echo form_close() ?>
-        <br><a href="<?php echo base_url();?>">Quay lại</a>
+        <a href="<?php echo base_url();?>">Đến trang chủ</a><br>       
     </body>
 </html>

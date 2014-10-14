@@ -1,6 +1,11 @@
 <?php
 class tinhThanh extends CI_Controller {
     
+    public function __construct() {
+        parent::__construct();
+        $this->load->library("session");
+    }
+
     public function index() {
         $data['tinhThanhs'] = $this->modelTinhThanh->findAll();
         $this->load->view('viewTinhThanh', $data);
@@ -20,7 +25,7 @@ class tinhThanh extends CI_Controller {
             "TEN_TINH" => $this->input->post("tenTinh")
         );
         $this->modelTinhThanh->insert($tinhThanh);
-        redirect('tinhThanh/index');
+        redirect('tinhThanh/them');
     }
 
     public function capnhat($maTinh) {
