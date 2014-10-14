@@ -31,5 +31,8 @@
         <input type="number" name="namSinh"><br>
         <input type="submit" value="Save">
         <?php echo form_close() ?>
+        <a href="<?php echo base_url();?>">Đến trang chủ</a><br>
+        <a href="<?php echo base_url();?>index.php/taiKhoan/trangquantri">Đến trang admin</a><br>
+        <a href="<?php echo base_url();?>index.php/taiKhoan">Đến trang quản lý tài khoản</a>
     </body>
 </html>

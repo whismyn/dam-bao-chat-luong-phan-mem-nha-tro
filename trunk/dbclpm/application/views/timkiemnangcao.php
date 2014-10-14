@@ -16,7 +16,7 @@
     <body>
         <?php echo form_open("nhaTro/xulytimkiem") ?>
         Tỉnh/Thành phố<br>
-        <select id="mark" name="matinh"> 
+        <select id="mark" name="maTinh"> 
             <option value="">----</option>
             <?php
             foreach ($tinhThanhs as $tinhThanh) {
@@ -69,5 +69,6 @@
         <br>
         <input type="submit" value="Tìm">
         <?php echo form_close() ?>
+        <a href="<?php echo base_url();?>">Đến trang chủ</a><br>
     </body>
 </html>

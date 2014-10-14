@@ -13,6 +13,9 @@
         }
         echo $this->table->generate();
         ?>
-        <a href="<?php echo base_url();?>">Quay lại</a>
+        <a href="<?php echo base_url();?>">Đến trang chủ</a><br>
+        <a href="<?php echo base_url();?>index.php/taiKhoan/trangquantri">Đến trang admin</a><br>
+        <a href="<?php echo base_url();?>index.php/quanHuyen">Đến trang quản lý quận huyện</a><br>
+        <a href="<?php echo base_url();?>index.php/tinhThanh">Đến trang quản lý tỉnh thành</a>
     </body>
 </html>

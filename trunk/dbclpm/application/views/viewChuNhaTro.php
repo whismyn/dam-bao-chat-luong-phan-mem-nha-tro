@@ -12,7 +12,7 @@
                 'Mã Nhà Trọ', 'Mã tài khoản', 'Mã xã', 'Số nhà', 'Diện tích', 
                 'Còn phòng', 'Giá', 'Người liên hệ', 'Số điện thoại liên hệ', 
                 'Email liên hệ', 'Địa chỉ liên hệ', 'Tiêu đề', 'Giới thiệu',
-                'Thời gian tạo', 'Duyệt', 'TUY CHON');
+                'Thời gian tạo', 'Duyệt', 'Tùy chọn');
         foreach ($nhaTros as $nhaTro) {
             $this->table->add_row(
                     $nhaTro->MA_NT, $nhaTro->MA_TK, $nhaTro->MA_XA,
@@ -25,6 +25,6 @@
         }
         echo $this->table->generate();
         ?>
-        <a href="<?php echo base_url(); ?>">Quay lại</a>>
+        <a href="<?php echo base_url(); ?>">Quay lại trang chủ</a>>
     </body>
 </html>

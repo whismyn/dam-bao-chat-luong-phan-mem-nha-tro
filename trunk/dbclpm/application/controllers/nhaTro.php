@@ -1,12 +1,12 @@
 <?php
 
-class nhaTro extends CI_Controller{
-    
+class nhaTro extends CI_Controller {
+
     public function __construct() {
         parent::__construct();
         $this->load->library("session");
     }
-    
+
     public function index() {
         $data['nhaTros'] = $this->modelNhaTro->findAll();
         $this->load->view('viewNhaTro', $data);
@@ -34,10 +34,10 @@ class nhaTro extends CI_Controller{
             "DIEN_TICH" => $this->input->post("dienTich"),
             "CON_PHONG" => $this->input->post("conPhong"),
             "GIA" => $this->input->post("gia"),
-            "NGUOI_LH"  => $this->input->post("nguoiLienHe"),
+            "NGUOI_LH" => $this->input->post("nguoiLienHe"),
             "SDT_LH" => $this->input->post("sdtLienHe"),
             "EMAIL_LH" => $this->input->post("emailLienHe"),
-            "DIA_CHI_LH"  => $this->input->post("diaChiLienHe"),
+            "DIA_CHI_LH" => $this->input->post("diaChiLienHe"),
             "TIEU_DE" => $this->input->post("tieuDe"),
             "GIOI_THIEU" => $this->input->post("gioiThieu"),
             "TG_TAO_NT" => $date,
@@ -45,7 +45,7 @@ class nhaTro extends CI_Controller{
             "DUYET" => false
         );
         $this->modelNhaTro->insert($nhaTro);
-        redirect('nhaTro/index');
+        redirect('nhaTro/them');
     }
 
     public function capnhat($maNhaTro) {
@@ -55,7 +55,7 @@ class nhaTro extends CI_Controller{
         $data['nhaTro'] = $this->modelNhaTro->find($maNhaTro);
         $this->load->view('updateNhaTro', $data);
     }
-    
+
     public function xulycapnhat() {
         $maTaiKhoan = $this->session->userdata("maTaiKhoan");
         $maNhaTro = $this->input->post('maNhaTro');
@@ -67,10 +67,10 @@ class nhaTro extends CI_Controller{
             "DIEN_TICH" => $this->input->post("dienTich"),
             "CON_PHONG" => $this->input->post("conPhong"),
             "GIA" => $this->input->post("gia"),
-            "NGUOI_LH"  => $this->input->post("nguoiLienHe"),
+            "NGUOI_LH" => $this->input->post("nguoiLienHe"),
             "SDT_LH" => $this->input->post("sdtLienHe"),
             "EMAIL_LH" => $this->input->post("emailLienHe"),
-            "DIA_CHI_LH"  => $this->input->post("diaChiLienHe"),
+            "DIA_CHI_LH" => $this->input->post("diaChiLienHe"),
             "TIEU_DE" => $this->input->post("tieuDe"),
             "GIOI_THIEU" => $this->input->post("gioiThieu"),
             "CN_CUOI" => $date,
@@ -79,8 +79,8 @@ class nhaTro extends CI_Controller{
         $this->modelNhaTro->update($maNhaTro, $nhaTro);
         redirect('nhaTro/index');
     }
-    
-    public function xemNhaTro($maNhaTro){
+
+    public function xemNhaTro($maNhaTro) {
         $this->session->set_userdata('maNhaTro', $maNhaTro);
         $this->db->select("*");
         $this->db->from('binh_luan');
@@ -88,18 +88,22 @@ class nhaTro extends CI_Controller{
         $this->db->join('nha_tro', 'bl_nt.MA_NT = nha_tro.MA_NT');
         $this->db->where('nha_tro.MA_NT', $maNhaTro);
         $query = $this->db->get();
-        $data['nhaTro'] = $this->modelNhaTro->find($maNhaTro);   
+        $data['nhaTro'] = $this->modelNhaTro->find($maNhaTro);
         $data['binhLuans'] = $query->result();
         //$data['maBinhLuan'] = $this->db->count_all('binh_luan');
         $this->load->view("viewChiTietNhaTro", $data);
     }
-    
-    public function dangTin(){
-        $data['nhaTros'] = $this->modelNhaTro->findAll();    
+
+    public function dangTin() {
+        $this->db->select("*");
+        $this->db->from('nha_tro');
+        $this->db->where('DUYET', '0');
+        $query = $this->db->get();
+        $data['nhaTros'] = $query->result();
         $this->load->view("confirmTinDang", $data);
     }
-    
-    public function xacNhan($maNhaTro){
+
+    public function xacNhan($maNhaTro) {
         $nhaTroOld = $this->modelNhaTro->find($maNhaTro);
         $nhaTroNew = array(
             "MA_TK" => $nhaTroOld->MA_TK,
@@ -108,10 +112,10 @@ class nhaTro extends CI_Controller{
             "DIEN_TICH" => $nhaTroOld->DIEN_TICH,
             "CON_PHONG" => $nhaTroOld->CON_PHONG,
             "GIA" => $nhaTroOld->GIA,
-            "NGUOI_LH"  => $nhaTroOld->NGUOI_LH,
+            "NGUOI_LH" => $nhaTroOld->NGUOI_LH,
             "SDT_LH" => $nhaTroOld->SDT_LH,
             "EMAIL_LH" => $nhaTroOld->EMAIL_LH,
-            "DIA_CHI_LH"  => $nhaTroOld->DIA_CHI_LH,
+            "DIA_CHI_LH" => $nhaTroOld->DIA_CHI_LH,
             "TIEU_DE" => $nhaTroOld->TIEU_DE,
             "GIOI_THIEU" => $nhaTroOld->GIOI_THIEU,
             "TG_TAO_NT" => $nhaTroOld->TG_TAO_NT,
@@ -121,8 +125,8 @@ class nhaTro extends CI_Controller{
         $this->modelNhaTro->update($maNhaTro, $nhaTroNew);
         redirect("/nhaTro/dangTin");
     }
-    
-    public function xulythemBinhLuan(){
+
+    public function xulythemBinhLuan() {
         $maNhaTro = $this->input->post('maNhaTro');
         log_message('error', $maNhaTro);
         $date = date('Y/m/d h:i:s', time());
@@ -139,36 +143,67 @@ class nhaTro extends CI_Controller{
             "MA_NT" => $maNhaTro
         );
         $this->modelBinhLuanNhaTro->insert($binhLuanNhaTro);
-        redirect('nhaTro/xemNhaTro/'.$maNhaTro);
+        redirect('nhaTro/xemNhaTro/' . $maNhaTro);
     }
-    
-    public function timNhaTro(){
+
+    public function timNhaTro() {
         $tuKhoa = $this->input->post('tuKhoa');
         $data['nhaTros'] = $this->modelNhaTro->search($tuKhoa);
-        $this->load->view('ketquatimkiem',$data);
+        $this->load->view('ketquatimkiem', $data);
     }
-    
-    public function timKiemNangCao(){
+
+    public function timKiemNangCao() {
         $data['tinhThanhs'] = $this->modelTinhThanh->findAll();
         $data['quanHuyens'] = $this->modelQuanHuyen->findAll();
         $data['phuongXas'] = $this->modelPhuongXa->findAll();
         $this->load->view('timkiemnangcao', $data);
     }
-    
-    public function xulytimkiem(){
+
+    public function xulytimkiem() {
+        $maTinh = $this->input->post('maTinh');
         $maHuyen = $this->input->post('maHuyen');
-        $this->db->select("*");
-        $this->db->from('nha_tro');
-        $maXas = array(maHuyenToMaXa($maHuyen));
-        foreach ($maXas as $maXa) {
+        $maXa = $this->input->post('maXa');
+        $gia = $this->input->post('mucGia');
+        $dienTich = $this->input->post('dienTich');
+        if ($maXa != null) {
+            $this->db->select("*");
+            $this->db->from('nha_tro');
             $this->db->where('MA_XA', $maXa);
+            $this->db->where('GIA <=', $gia);
+            $this->db->where('DIEN_TICH <=', $dienTich);
+            $query = $this->db->get();
+            $data['nhaTros'] = $query->result();
+            
+            $this->load->view('ketquatimkiem', $data);
+        } else if ($maXa == NULL && $maHuyen != NULL) {
+            $this->db->select("*");
+            $this->db->from('nha_tro');
+            $this->db->join('phuong_xa', 'phuong_xa.MA_XA = nha_tro.MA_XA');
+            $this->db->join('quan_huyen', 'quan_huyen.MA_HUYEN = phuong_xa.MA_HUYEN');
+            $this->db->where('quan_huyen.MA_HUYEN', $maHuyen);
+            $this->db->where('GIA <=', $gia);
+            $this->db->where('DIEN_TICH <=', $dienTich);
+            $query = $this->db->get();    
+            $data['nhaTros'] = $query->result();
+            
+            $this->load->view('ketquatimkiem', $data);
+        } else if ($maXa == NULL && $maHuyen == NULL && $maTinh != NULL) {
+            $this->db->select("*");
+            $this->db->from('nha_tro');
+            $this->db->join('phuong_xa', 'phuong_xa.MA_XA = nha_tro.MA_XA');
+            $this->db->join('quan_huyen', 'quan_huyen.MA_HUYEN = phuong_xa.MA_HUYEN');
+            $this->db->join('tinh_thanh', 'tinh_thanh.MA_TINH = quan_huyen.MA_TINH');
+            $this->db->where('tinh_thanh.MA_TINH', $maTinh);
+            $this->db->where('GIA <=', $gia);
+            $this->db->where('DIEN_TICH <=', $dienTich);
+            $query = $this->db->get();    
+            $data['nhaTros'] = $query->result();
+            
+            $this->load->view('ketquatimkiem', $data);
         }
-        $query = $this->db->get();
-        $data['nhaTros'] = $query->result();
-        $this->load->view('ketquatimkiem', $data);
     }
-    
-    public function maHuyenToMaXa($maHuyen){
+
+    public function maHuyenToMaXa($maHuyen) {
         $this->db->select("MA_XA");
         $this->db->from('phuong_xa');
         $this->db->where('MA_HUYEN', $maHuyen);
@@ -176,6 +211,7 @@ class nhaTro extends CI_Controller{
         $maXas = $query->result();
         return $maXas;
     }
+
 }
 
 ?>
