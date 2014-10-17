@@ -6,6 +6,11 @@ body{
 	color: blue;
 	font-weight: bold;
 }
+.font-a{
+	color: white;
+	display: block;
+	text-decoration: none;
+}
 .fontlabel{
 	font-size: 13px;
 	font-weight: bold;
