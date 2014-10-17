@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 12, 2014 at 06:03 PM
+-- Generation Time: Oct 17, 2014 at 08:38 AM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.9
 
@@ -47,14 +47,17 @@ CREATE TABLE IF NOT EXISTS `binh_luan` (
   `TG_BL` datetime DEFAULT NULL,
   PRIMARY KEY (`MA_BL`),
   KEY `FK_BINH_LUAN_CUA_TK` (`MA_TK`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci AUTO_INCREMENT=21 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci AUTO_INCREMENT=24 ;
 
 --
 -- Dumping data for table `binh_luan`
 --
 
 INSERT INTO `binh_luan` (`MA_BL`, `MA_TK`, `NOI_DUNG`, `BAO_VP`, `TG_BL`) VALUES
-(20, 1, 'ola ola', 0, '2014-10-10 07:17:15');
+(20, 1, 'ola ola', 0, '2014-10-10 07:17:15'),
+(21, 1, 'gì vậy trời', 1, '2014-10-13 11:57:45'),
+(22, 1, 'đâu có gì đâu', 1, '2014-10-13 11:57:57'),
+(23, 1, 'hả hả', 0, '2014-10-13 11:58:02');
 
 -- --------------------------------------------------------
 
@@ -87,7 +90,10 @@ CREATE TABLE IF NOT EXISTS `bl_nt` (
 --
 
 INSERT INTO `bl_nt` (`MA_BL`, `MA_NT`) VALUES
-(20, 4);
+(20, 4),
+(21, 6),
+(22, 6),
+(23, 6);
 
 -- --------------------------------------------------------
 
@@ -122,9 +128,9 @@ CREATE TABLE IF NOT EXISTS `loai_tk` (
 --
 
 INSERT INTO `loai_tk` (`MA_LTK`, `TEN_LTK`, `GHI_CHU_LTK`) VALUES
-(1, 'Quan tri he thong', 'Nguoi quan tri he thong'),
-(2, 'Chu nha tro', 'Chu nha tro'),
-(3, 'Thanh vien', 'Thanh vien');
+(1, 'Quản trị hệ thống', 'Người quản trị hệ thống'),
+(2, 'Chủ nhà trọ', 'Chủ nhà trọ'),
+(3, 'Thành viên', 'Là người đăng ký thành viên');
 
 -- --------------------------------------------------------
 
@@ -152,7 +158,7 @@ CREATE TABLE IF NOT EXISTS `nha_tro` (
   PRIMARY KEY (`MA_NT`),
   KEY `FK_NHA_TRO_TAO_BOI` (`MA_TK`),
   KEY `FK_NT_CO_DIA_CHI` (`MA_XA`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci AUTO_INCREMENT=39 ;
 
 --
 -- Dumping data for table `nha_tro`
@@ -160,7 +166,34 @@ CREATE TABLE IF NOT EXISTS `nha_tro` (
 
 INSERT INTO `nha_tro` (`MA_NT`, `MA_TK`, `MA_XA`, `SO_NHA`, `DIEN_TICH`, `CON_PHONG`, `GIA`, `NGUOI_LH`, `SDT_LH`, `EMAIL_LH`, `DIA_CHI_LH`, `TIEU_DE`, `GIOI_THIEU`, `CN_CUOI`, `TG_TAO_NT`, `DUYET`) VALUES
 (4, 20, 1, '123', 123, 123, 123, '123', '123', '123', '123', '123', '123', '2014-10-10 04:09:31', '2014-10-10 00:00:00', 1),
-(5, 1, 1, '37', 123, 10, 1000000, 'Nguyen Chi Tam', '123456789', 'nguyenchitam1993@gmail.com', 'Cần Thơ', 'tieu de', '123123123', '2014-10-11 12:54:37', '2014-10-11 12:54:37', 0);
+(5, 1, 1, '37', 123, 10, 1000000, 'Nguyen Chi Tam', '123456789', 'nguyenchitam1993@gmail.com', 'Cần Thơ', 'tieu de', '123123123', '2014-10-11 12:54:37', '2014-10-11 12:54:37', 1),
+(6, 1, 2, '113', 100, 100, 500000, 'Nguyễn Chí Tâm', '01658000057', 'nguyenchitam1993@gmail.com', '113 Khóm 2, Phường 1, Thị xã Ngã Năm, Sóc Trăng', 'Nhà trọ', 'Giới thiệu nhà trọ', '2014-10-13 11:51:12', '2014-10-13 11:51:12', 1),
+(7, 1, 3, '69', 40, 7, 1000000, 'Nguyễn Văn ABC', '12367890', 'abc@gmail.com', '6 Khóm 9 Phương 2', 'Tiêu đề', 'Giới thiệu', '2014-10-13 11:53:08', '2014-10-13 11:53:08', 1),
+(8, 1, 5, '37 Quản Trọng Hoàng', 15, 100, 500000, 'Bà Chín', '1234', 'bachin@gmail.com', '37 Quản Trọng Hoàng', 'gì cũng được', 'gì cũng được', '2014-10-14 01:02:56', '2014-10-14 01:02:56', 0),
+(13, 1, 27, '40B', 14, 5, 1100000, 'Cô Sáu', '0701.123456', 'co6@gmail.com', ' 40B-Nguyễn Văn Linh-An Khánh-Ninh Kiều', 'Nhà trọ Nguyễn Văn Linh-An Khánh-Ninh Kiều-Cần Thơ', 'Phòng mới có gác rộng, bếp nấu ăn... đặc biệt khu vực yên tĩnh và an ninh', '2014-10-14 09:58:41', '2014-10-14 09:57:00', 0),
+(15, 1, 6, '40B', 15, 2, 1200000, 'Chú 7', '123456789', 'chu9@gmail.com', 'Hẻm 125, đường 30/4, Xuân Khánh', 'Nhà trọ giá rẻ - Chú 9', 'Tiện nghi, thoáng mát, wc trong,...', '2014-10-14 10:04:28', '2014-10-14 10:04:28', 0),
+(17, 1, 5, '37', 24, 1, 1600000, 'Chị Mai', '0126459786', 'mai@mail.com', 'Nguyễn Văn Linh, ninh kiều', 'Nhà trọ Nguyễn Văn Linh, ninh kiều', 'HIỆN T VÀ 1NG NỮA ĐANG Ở GHÉP PHÒNG 8OOK, GẦN CẦU SỐ 2, NGUYỄN VĂN LINH. VÌ PHÒNG RỘNG, SẠCH SẼ, CHÚNG TÔI VỪA HỌC VỪA LÀM NÊN THỜI GIAN Ở NHÀ ÍT, ĐỒ ĐẠC KO NHIỀU NÊN CẦN 1 BẠN NAM Ở GHÉP.', '2014-10-14 10:25:06', '2014-10-14 10:25:06', 0),
+(18, 1, 6, '27', 14, 4, 1500000, 'Kim Ngọc', '01678122521', 'ngoc@yahoo.com', 'hẻm 2, đường 30/4, Xuân Khánh', 'Nhà trọ Kim Ngọc', 'Sạch sẽ, tiện nghi, thoáng mát, có bếp, wc trong...', '2014-10-14 10:27:26', '2014-10-14 10:27:26', 0),
+(19, 1, 5, '44', 15, 2, 1600000, 'Tuấn Anh', '0913456987', 'anh@zing.vn', 'hẻm 233,  Nguyễn Văn Linh', 'nam hẽm 233,nguyễn văn cừ,ninh kiều,cần thơ', 'Tiện nghi, thoáng mát, wc trong,...', '2014-10-14 10:30:05', '2014-10-14 10:30:05', 0),
+(20, 1, 19, '35', 12, 1, 1000000, 'Nghĩa', '0901213542', 'nghia@gmail.com', '135/35, Trần Hưng Đạo', 'Nhà trọ sinh viên', 'Tiện nghi, thoáng mát, wc trong,...', '2014-10-14 10:33:53', '2014-10-14 10:33:53', 0),
+(21, 1, 5, '3', 14, 3, 1400000, 'Nam', '01678114111', 'nam@gmail.com', 'hẻm 2, đường 3/2, Hưng Lợi, Cần Thơ', 'Nhà trọ Sinh Viên', 'Tiện nghi, sạch sẽ, máy lạnh, an ninh,...', '2014-10-14 10:36:44', '2014-10-14 10:36:44', 0),
+(22, 1, 27, '14B', 15, 2, 1500000, 'Phúc', '01665456521', 'phuc@gmail.com', '383H1/14B Nguyễn văn cừ nối dài, p. An Khánh, Ninh Kiều CT (đối diện Happy 3 - Hẻm liên tổ 2-3)', 'Phòng trọ 383H1-14B Nguyễn Văn cừ, P. An Khánh, NK', 'Có hàng rào chắn an toàn Yên tĩnh, thoáng mát tiện lợi cho việc học tập Phòng trọ rộng rãi, sạch đẹp có gác  Giá tiền 1,2 tr/tháng/phòng (vào xem phòng tận nơi tuỳ theo tình hình có thể thương lượng) Có wifi cáp quang miễn phí', '2014-10-14 10:40:47', '2014-10-14 10:40:47', 0),
+(23, 1, 6, '43', 11, 1, 900000, 'Cô Dung', '0701253684', 'dung@gmail.com', 'hẻm liên tổ 4-5, nguyễn văn linh, gần dhct', 'hẻm liên tổ 4-5, nguyễn văn linh, gần dhct', 'An toàn, mát mẻ,...', '2014-10-14 10:43:41', '2014-10-14 10:43:41', 0),
+(24, 1, 1, '51', 14, 1, 800000, 'Chú 2', '01666222444', '', 'gần khách sạn Mỹ Kim', 'Nhà trọ giá rẻ', 'Tiện nghi, thoáng mát, wc trong,...', '2014-10-14 10:45:27', '2014-10-14 10:45:27', 0),
+(25, 1, 1, '32', 12, 1, 1000000, 'Anh Tài', '0972535698', 'tai@gmail.com', 'Gần cây xăng 33', 'Nhà trọ giá rẻ', 'Tiện nghi, sạch sẽ, máy lạnh, an ninh,...', '2014-10-14 10:47:26', '2014-10-14 10:47:26', 0),
+(26, 1, 2, '43', 12, 1, 1200000, 'Cô 4', '01234556798', 'nhatro9999@gmail.com', 'Gần nhà hàng Trung Tâm', 'Nhà Trọ', 'Tiện nghi, thoáng mát, wc trong,...', '2014-10-14 10:50:10', '2014-10-14 10:50:10', 0),
+(27, 1, 2, '23', 12, 2, 1200000, 'Anh Ba', '01232221122', '234@gmail.com', 'trên quốc lộ 901', 'Nhà trọ 234', 'An toàn, mát mẻ, sạch sẽ,...', '2014-10-14 10:58:38', '2014-10-14 10:51:39', 0),
+(28, 1, 4, '21', 12, 1, 900000, 'Minh Tân', '0978222333', 'tan@yahoo.com', 'Đối diện quan nước happy city', 'Nhà trọ Tân Tân', 'Tiện nghi, sạch sẽ, máy lạnh, an ninh,...', '2014-10-14 10:53:05', '2014-10-14 10:53:05', 0),
+(29, 1, 29, '44', 12, 3, 1200000, 'Minh', '01264947111', 'minh@gmail.com', 'Hẻm 11, gần cầu Quang Trung', 'Nhà trọ giá rẻ', 'An toàn, mát mẻ, sạch sẽ,...', '2014-10-14 10:54:58', '2014-10-14 10:54:58', 0),
+(30, 1, 34, '55', 13, 3, 1000000, 'Quang', '0968792662', 'quang@gmail.com', 'Quốc lộ 1a', 'Nhà trọ Quang', 'An toàn, mát mẻ,...', '2014-10-14 10:57:36', '2014-10-14 10:57:36', 0),
+(31, 1, 34, '33', 10, 5, 900000, 'Cô Bình', '0913223222', 'binh@gmail.com', 'gần quán nước 9999', 'Nhà trọ Cô Bình', 'An toàn, mát mẻ, sạch sẽ,...', '2014-10-14 11:00:26', '2014-10-14 11:00:26', 0),
+(32, 1, 35, '55', 14, 3, 800000, 'Mác', '0901927485', 'trongmac@gmail.com', 'Gần cây xăng 56', 'Nhà trọ giá rẻ', 'Tiện nghi, sạch sẽ, máy lạnh, an ninh,...', '2014-10-14 11:01:55', '2014-10-14 11:01:55', 0),
+(33, 1, 37, '33', 12, 3, 1200000, 'Tấn Tài', '0977777777', 'tantai@gmail.com', 'Gần tiệm vàng Tấn Tài', 'Nhà trọ Tấn Tài', 'An toàn, đầy đủ tiện nghi, sạch sẽ,...', '2014-10-14 11:03:55', '2014-10-14 11:03:55', 0),
+(34, 1, 38, '65', 10, 11, 1200000, 'Chị Ánh', '01271112223', 'anh123@gmail.com', 'Đối diện quán cơm Tài Có', 'Nhà trọ 333', 'An toàn, mát mẻ,...', '2014-10-14 11:05:44', '2014-10-14 11:05:44', 0),
+(35, 1, 13, '12', 13, 2, 1100000, 'Trí', '01676665251', 'tri@gmail.com', 'Gần cây xăng số 2', 'Nhà trọ giá rẻ', 'Tiện nghi, sạch sẽ, máy lạnh, an ninh,...', '2014-10-14 11:06:58', '2014-10-14 11:06:58', 0),
+(36, 1, 30, '32', 12, 2, 1200000, 'Phát', '0988222333', 'phat@gmail.com', 'Đối diện tiệm bánh Hoài Nam', 'Nhà trọ Phát Tài', 'An toàn, đầy đủ tiện nghi, sạch sẽ,...', '2014-10-14 11:08:36', '2014-10-14 11:08:36', 0),
+(37, 1, 27, '22', 13, 3, 1200000, 'Hải', '0918111552', 'hai@gmail.com', 'Phòng hẻm 12,đường 3/2,phường an khánh,tp CẦN THƠ', 'Nhà trọ sinh viên', 'Cổng rào riêng giờ giấc tu do 24/24.....sân đậu xe rộng rãi. Cáp quang tivi-wjfi miễn phí....', '2014-10-14 11:12:53', '2014-10-14 11:12:53', 0),
+(38, 1, 30, '11', 10, 1, 800000, 'Chú 6', '0971222345', 'ntro22@gmail.com', 'Hẻm 33, gần cầu Số 1', 'Nhà trọ 22', 'An toàn, đầy đủ tiện nghi, sạch sẽ,...', '2014-10-14 11:15:15', '2014-10-14 11:15:15', 0);
 
 -- --------------------------------------------------------
 
@@ -174,14 +207,100 @@ CREATE TABLE IF NOT EXISTS `phuong_xa` (
   `TEN_XA` text COLLATE utf8_vietnamese_ci,
   PRIMARY KEY (`MA_XA`),
   KEY `FK_RELATIONSHIP_8` (`MA_HUYEN`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci AUTO_INCREMENT=88 ;
 
 --
 -- Dumping data for table `phuong_xa`
 --
 
 INSERT INTO `phuong_xa` (`MA_XA`, `MA_HUYEN`, `TEN_XA`) VALUES
-(1, 1, 'Thới Lai 2');
+(1, 1, 'Thới Hưng'),
+(2, 1, 'Đông Hiệp'),
+(3, 1, 'Đông Thắng'),
+(4, 1, 'Thới Đông'),
+(5, 10, 'Hưng Lợi'),
+(6, 10, 'Xuân Khánh'),
+(7, 3, 'An Phước'),
+(8, 3, 'Mỹ Phước'),
+(9, 3, 'Chánh Hội'),
+(10, 3, 'Mỹ An'),
+(11, 3, 'Long Mỹ'),
+(12, 3, 'Chánh An'),
+(13, 2, 'Tân Phú'),
+(14, 14, 'Trường Xuân A'),
+(15, 14, 'Trường Thắng'),
+(16, 12, 'Thới Thuận'),
+(17, 10, 'Cái Khế'),
+(18, 10, 'An Hội'),
+(19, 10, 'An Cư'),
+(20, 10, 'Thới Bình'),
+(21, 10, 'An Hòa'),
+(22, 10, 'An Nghiệp'),
+(23, 10, 'An Phú'),
+(24, 10, 'Tân An'),
+(25, 10, 'An Lạc'),
+(26, 10, 'An Bình'),
+(27, 10, 'An Khánh'),
+(28, 2, 'Lê Bình'),
+(29, 1, 'Thường Thạnh'),
+(30, 2, 'Phú Thứ'),
+(31, 2, 'Ba Láng'),
+(32, 2, 'Hưng Phú'),
+(33, 2, 'Hưng Thạnh'),
+(34, 1, 'Thới Xuân'),
+(35, 1, 'Trung Hưng'),
+(36, 1, 'Thạnh Phú'),
+(37, 1, 'Trung An'),
+(38, 1, 'Trung Thạnh'),
+(39, 11, 'Thới Long'),
+(40, 11, 'Long Hưng'),
+(41, 11, 'Thới Hòa'),
+(42, 11, 'Thới An'),
+(43, 11, 'Châu Văn Liêm'),
+(44, 11, 'Phước Thới'),
+(45, 11, 'Trường Lạc'),
+(46, 12, 'Thốt Nốt'),
+(47, 12, 'Thới Thuận'),
+(48, 12, 'Thuận An'),
+(49, 12, 'Trung Nhứt'),
+(50, 12, 'Thạnh Hòa'),
+(51, 12, 'Trung Kiên'),
+(52, 12, 'Thuận Hưng'),
+(53, 12, 'Tân Hưng'),
+(54, 12, 'Tân Lộc'),
+(55, 13, 'Trà Nóc'),
+(56, 13, 'Trà An'),
+(57, 13, 'An Phú'),
+(58, 13, 'Bùi Hữu Nghĩa'),
+(59, 13, 'Thới An Đông'),
+(60, 13, 'Bình Thủy'),
+(61, 13, 'Long Tuyên'),
+(62, 13, 'Long Hòa'),
+(63, 14, 'Thới Thạnh'),
+(64, 14, 'Tân Thạnh'),
+(65, 14, 'Định Môn'),
+(66, 14, 'Trường Thành'),
+(67, 14, 'Trường Xuân'),
+(68, 14, 'Trường Xuân B'),
+(69, 14, 'Xuân Thắng'),
+(70, 14, 'Thới Tân'),
+(71, 14, 'Đông Bình'),
+(72, 14, 'Đông Thuận'),
+(73, 15, 'Nhơn Ái'),
+(74, 15, 'Nhơn Nghĩa'),
+(75, 15, 'Tân Thới'),
+(76, 14, 'Giai Xuân'),
+(77, 15, 'Mỹ Khánh'),
+(78, 15, 'Trường Long'),
+(79, 28, 'Vĩnh Trinh'),
+(80, 28, 'Vĩnh Bình'),
+(81, 28, 'Thạnh Mỹ'),
+(82, 28, 'Thạnh Quới'),
+(83, 28, 'Thạnh An'),
+(84, 28, 'Thạnh Tiến'),
+(85, 28, 'Thạnh Thắng'),
+(86, 28, 'Thạnh Lợi'),
+(87, 28, 'Thạnh Lộc');
 
 -- --------------------------------------------------------
 
@@ -195,7 +314,7 @@ CREATE TABLE IF NOT EXISTS `quan_huyen` (
   `TEN_HUYEN` text COLLATE utf8_vietnamese_ci,
   PRIMARY KEY (`MA_HUYEN`),
   KEY `FK_RELATIONSHIP_3` (`MA_TINH`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci AUTO_INCREMENT=29 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci AUTO_INCREMENT=35 ;
 
 --
 -- Dumping data for table `quan_huyen`
@@ -203,7 +322,7 @@ CREATE TABLE IF NOT EXISTS `quan_huyen` (
 
 INSERT INTO `quan_huyen` (`MA_HUYEN`, `MA_TINH`, `TEN_HUYEN`) VALUES
 (1, 2, 'Cờ Đỏ'),
-(2, 2, 'Cái Răng 1'),
+(2, 2, 'Cái Răng'),
 (3, 3, 'Mang Thít'),
 (4, 3, 'Long Hồ'),
 (5, 3, 'Tam Bình'),
@@ -229,7 +348,13 @@ INSERT INTO `quan_huyen` (`MA_HUYEN`, `MA_TINH`, `TEN_HUYEN`) VALUES
 (25, 4, 'Chợ Mới'),
 (26, 4, 'Thoại Sơn'),
 (27, 4, 'Tri Tôn'),
-(28, 2, 'Vĩnh Thạnh');
+(28, 2, 'Vĩnh Thạnh'),
+(29, 52, 'Ngã Năm'),
+(30, 52, 'Vĩnh Châu'),
+(31, 52, 'Châu Thành'),
+(32, 52, 'Thạnh Trị'),
+(33, 52, 'Mỹ Tú'),
+(34, 52, 'Mỹ Xuyên');
 
 -- --------------------------------------------------------
 
