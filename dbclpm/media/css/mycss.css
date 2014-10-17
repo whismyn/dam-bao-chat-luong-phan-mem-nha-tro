@@ -1,0 +1,220 @@
+body{
+	padding-bottom: 0px;
+}
+.font{
+	font-size: 15px;
+	color: blue;
+	font-weight: bold;
+}
+.fontlabel{
+	font-size: 13px;
+	font-weight: bold;
+	color: blue;
+}
+.border{
+	height: auto;
+	width: auto;
+	border-style: double;
+	border-width: 5px;
+	padding: 7px;
+	padding-top: 0px;
+	border-color: red;
+}
+.border-center{
+	height:800px;
+	width: auto;
+	border-width: 0px;
+	border-style: none;
+	border-radius: 5px;
+	background-color: #E0D4FB;
+	padding: 7px;
+	margin-right: 7px;
+}
+.final{
+	height: 100px;
+	width: 100%;
+	border-width: 0px;
+	border-style: none;
+	background-color: #7268F8;
+	padding: 7px;
+	color: white;
+}
+.final a{
+	color: white;
+}
+.border-center2{
+	height: 400px;
+	width: auto;
+	border-width: 0px;
+	border-radius: 5px;
+	border-style: none;
+	background-color: white;
+	padding: 7px;
+	margin-right: 7px;
+	margin-left: 7px;
+	margin-top: 30px
+}
+.fontcenter{
+	font-weight: bold;
+	font-size: 25px;
+	padding-top: 50px;
+	color: blue;
+	text-align: center;
+	font-family: Book Antiqua;
+}
+.lifted_content_box {
+ display: block;
+ width: 320px;
+ margin: 0 auto;
+ position: relative;
+ margin-left: 5px;
+}
+.lifted_content_box h1 {
+ font-size: 14px;
+ font-weight: bold;
+ line-height: 2em;
+ color: #fff;
+ padding: 0 10px;
+ margin: 0; /* for the triangular shape/cut */
+ height: 0;
+ border-bottom: 25px solid #505050; /* kinda acts as the height */
+ border-right: 15px solid transparent; /* adjust to change the angle */
+ display: inline-block
+ 
+}
+.content {
+ 
+padding: 10px;
+ background: #fff;
+ border-top: 5px solid #505050; /* was just experimenting. gives a nice look and feel: D */;
+ -webkit-box-shadow: inset 0px 0px 10px rgba(0,0,0,0.20);
+ -moz-box-shadow: inset 0px 0px 10px rgba(0,0,0,0.20);
+ box-shadow: inset 0px 0px 10px rgba(0,0,0,0.20);
+ width: auto;
+}
+ 
+.content p {
+ margin: 0 0 10px;
+ color: #555;
+ line-height: 1.5em;
+ width: auto;
+}
+
+
+.login{
+	border-width: 0px;
+	width: 100%;
+	height: 100%;
+	padding: 15px;
+	color: white;
+	margin-bottom: 7px;
+}
+.logindiv1{
+	border-width: 1px;
+	border-style: solid;
+	width: 500px;
+	height: auto;
+	margin: 0 auto;
+	background-color: white;
+	color: black;
+}
+.logindiv2{
+	width: auto;
+	height: auto;
+	border-width: 0px;
+	padding: 15px;
+	background-color: #F4F3F3;
+	color: black;
+}
+.logindiv3{
+	text-align: center;
+	padding-top: 30px;
+}
+
+.font-changepass{
+	text-align: right;
+}
+.button-changepass{
+	background-color: blue;
+	color: #FFFF00;
+}
+.table{
+	padding: 15px;
+	border-width: 0px;
+}
+.border-form{
+	height: auto;
+	width: auto;
+	border-width: 0px;
+	border-style: none;
+	border-radius: 5px;
+	background-color: #E0D4FB;
+	padding: 7px;
+	margin: 7px;
+}
+.border-enew{
+	height:800px;
+	width: auto;
+	border-width: 0px;
+	border-style: none;
+	border-radius: 5px;
+	background-color: #E0D4FB;
+	padding-top: 15px;
+	padding-left:7px;
+	padding-right: 7px;
+	margin-bottom: 7px;
+}
+.border-faq{
+	height:800px;
+	width: auto;
+	border-width: 0px;
+	border-style: none;
+	border-radius: 5px;
+	padding-top: 15px;
+	padding-left:7px;
+	padding-right: 7px;
+	margin-bottom: 7px;
+}
+.font-tieude{
+	color: white;
+}
+.border-faq1{
+	height: 750px;
+	width: auto;
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 5px;
+	background-color: white;
+}
+.border-faq1 div{
+	height: 25px;
+	background-color: #0099CC;
+	color: black;
+	font-size: 15px;
+	text-align: center;
+	font-weight: bold;
+}
+.border-faq2{
+	height: 750px;
+	width: auto;
+}
+.faq-search{
+	width: auto;
+	height: 50px;
+	background-color: #0099CC;
+	margin-bottom: 5px;
+	padding-right: 5px;
+	border-radius: 5px;
+}
+.faqdiv2{
+	width: auto;
+	height: 690px;
+	background-color: white;
+	border-radius: 5px;
+}
+.faqdiv21{
+	padding: 15px;
+}
+.faqdiv21 h3{
+	color: #0099CC;
+}
