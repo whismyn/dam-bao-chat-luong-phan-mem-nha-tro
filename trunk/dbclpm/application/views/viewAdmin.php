@@ -92,6 +92,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
+                            <img src="http://localhost/dbclpm/media/img/loaitk.png" width="100" height="100">
                             Quản lý loại tài khoản
                         </h1>
                     
@@ -118,7 +119,7 @@
                                                 echo "<th>".$loaiTk->MA_LTK."</th>";
                                                 echo "<th>".$loaiTk->TEN_LTK."</th>";
                                                 echo "<th>".$loaiTk->GHI_CHU_LTK."</th>";
-                                                echo "<th><a class='btn btn-default' href='index.php/loaiTk/capnhat/".$loaiTk->MA_LTK."' role='button'>Cập nhập</a></th>";
+                                                echo "<th><a class='btn btn-info' href='index.php/loaiTk/capnhat/".$loaiTk->MA_LTK."' role='button'>Cập nhập</a></th>";
                                                 echo "</tr>";
                                             }
                                             ?>
