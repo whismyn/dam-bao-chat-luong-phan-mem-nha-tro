@@ -135,7 +135,8 @@ class taiKhoan extends CI_Controller {
     }
 
     public function trangquantri(){
-        $this->load->view('viewAdmin');
+        $data['loaiTks'] = $this->modelLoaiTk->findAll();
+        $this->load->view('viewAdmin',$data);
     }
     
     public function trangquanlynhatro($maTaiKhoan){

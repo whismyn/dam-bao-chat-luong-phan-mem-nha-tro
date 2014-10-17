@@ -22,7 +22,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#"><img src="http://localhost/dbclpm/media/img/Home-icon.png" width="20" height="20">Trang chủ</a>
+          <a class="navbar-brand" href="<?php echo base_url();?>"><img src="http://localhost/dbclpm/media/img/Home-icon.png" width="20" height="20">Trang chủ</a>
         </div>
         <div class="navbar-collapse collapse">
           <div class="navbar-form navbar-right" role="form">
@@ -32,7 +32,7 @@
             $maLoaiTaiKhoan = $this->session->userdata('maLoaiTaiKhoan');
             $url = base_url();
             if($tenTaiKhoan == null){
-                echo "<button class='btn btn-success'><a href='".$url."index.php/taiKhoan/dangNhap'>Đăng nhập</a></button>";
+                echo "<button class='btn btn-success'><a href='".$url."index.php/taiKhoan/dangNhap' class='font-a'>Đăng nhập</a></button>";
             } else{
                 echo "<span class='font'>Xin chào <a href='".$url."index.php/taiKhoan/thayDoi/".$maTaiKhoan."'>".$tenTaiKhoan.",</a></span>";
                 echo "<a href='".$url."index.php/taiKhoan/dangXuat'>Đăng xuất</a>";
@@ -57,7 +57,7 @@
         <div class="col-xs-4">
         <input type="text" name="tuKhoa" class="form-control" placeholder="Từ khóa cần tìm..."></div>
         <button type="submit" class="btn btn-info">Tìm kiếm</button>
-        <button type="button" class="btn btn-info"><a href="<?php echo base_url();?>index.php/nhaTro/timKiemNangCao">Tìm kiếm nâng cao</a></button>
+        <button type="button" class="btn btn-info"><a href="<?php echo base_url();?>index.php/nhaTro/timKiemNangCao" class="font-a">Tìm kiếm nâng cao</a></button>
         <?php echo form_close() ?>
 
       </div>

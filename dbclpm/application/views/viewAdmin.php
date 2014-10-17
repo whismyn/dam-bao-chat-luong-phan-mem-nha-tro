@@ -102,7 +102,7 @@
                                         <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> Các loại tài khoản</h3>
                                     </div>
                                     <div class="panel-body">
-                                        <div class="table table-bordered table-hover table-striped">
+                                        <table class="table table-bordered table-hover table-striped">
                                         <thead>
                                             <tr>
                                                 <th>Mã loại tài khoản</th>
@@ -113,7 +113,7 @@
                                         </thead>
                                         <tbody>
                                             <?php
-                                            foreach ($loaiTK as $loaiTk) {
+                                            foreach ($loaiTks as $loaiTk) {
                                                 echo "<tr>";
                                                 echo "<th>".$loaiTk->MA_LTK."</th>";
                                                 echo "<th>".$loaiTk->TEN_LTK."</th>";
@@ -123,7 +123,7 @@
                                             }
                                             ?>
                                         </tbody>
-                                        </div>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
