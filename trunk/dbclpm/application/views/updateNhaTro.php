@@ -10,17 +10,26 @@
                 $("#series").chained("#mark");
                 $("#model").chained("#series");
             });
-
         </script>
     </head>
     <body>
         <?php echo form_open("nhaTro/xulycapnhat") ?>
+        <?php
+            //print_r($diachi);
+            foreach ($diachi as $diachi) {
+                $maTinh = $diachi->MA_TINH;
+                $maHuyen = $diachi->MA_HUYEN;
+                $maXa = $diachi->MA_XA;
+            }
+        ?>
         Tỉnh/Thành phố<br>
         <select id="mark"> 
             <option value="">----</option>
             <?php
             foreach ($tinhThanhs as $tinhThanh) {
-                echo "<option value=" . $tinhThanh->MA_TINH . " class=".$tinhThanh->MA_TINH.">";
+                echo "<option value=" . $tinhThanh->MA_TINH . " class=".$tinhThanh->MA_TINH." ";
+                if($tinhThanh->MA_TINH == $maTinh) echo "selected";
+                echo ">";
                 echo $tinhThanh->TEN_TINH;
                 echo "</option>";
             }
@@ -31,7 +40,9 @@
             <option value="">--</option>
             <?php
             foreach ($quanHuyens as $quanHuyen) {
-                echo "<option value=" . $quanHuyen->MA_HUYEN . " class=".$quanHuyen->MA_TINH.">";
+                echo "<option value=" . $quanHuyen->MA_HUYEN . " class=".$quanHuyen->MA_TINH." ";
+                if($quanHuyen->MA_HUYEN == $maHuyen) echo "selected";
+                echo ">";
                 echo $quanHuyen->TEN_HUYEN;
                 echo "</option>";
             }
@@ -42,7 +53,9 @@
             <option value="">--</option>
             <?php
             foreach ($phuongXas as $phuongXa) {
-                echo "<option value=" . $phuongXa->MA_XA . " class=".$phuongXa->MA_HUYEN.">";
+                echo "<option value=" . $phuongXa->MA_XA . " class=".$phuongXa->MA_HUYEN." ";
+                if($phuongXa->MA_XA == $maXa) echo "selected";
+                echo ">";
                 echo $phuongXa->TEN_XA;
                 echo "</option>";
             }

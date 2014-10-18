@@ -5,9 +5,18 @@
         <title></title>
     </head>
     <body>
+        <?php  //print_r($nhaTro) ;?>
+        <?php  
+            foreach ($nhaTro as $nhaTro) {
+                
+            }
+        ?>
+        
         <h3>Mã nhà trọ <?php echo "<i>".$nhaTro->MA_NT."</i>"; ?></h3>
-        <h3>Mã tài khoản <?php echo "<i>".$nhaTro->MA_TK."</i>"; ?></h3>
-        <h3>Mã xã <?php echo "<i>".$nhaTro->MA_XA."</i>"; ?></h3>
+        <h3>Tên tài khoản <?php echo "<i>".$nhaTro->TEN_TK."</i>"; ?></h3>
+        <h3>Tên tỉnh<?php echo "<i>".$nhaTro->TEN_TINH."</i>"; ?></h3>
+        <h3>Tên quận huyện<?php echo "<i>".$nhaTro->TEN_HUYEN."</i>"; ?></h3>
+        <h3>Tên phường xã<?php echo "<i>".$nhaTro->TEN_XA."</i>"; ?></h3>
         <h3>Số nhà <?php echo "<i>".$nhaTro->SO_NHA."</i>"; ?></h3>
         <h3>Diện tích <?php echo "<i>".$nhaTro->DIEN_TICH."</i>"; ?></h3>
         <h3>Còn phòng <?php echo "<i>".$nhaTro->CON_PHONG."</i>"; ?></h3>

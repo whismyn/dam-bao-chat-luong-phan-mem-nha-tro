@@ -69,13 +69,16 @@
       <div class="row">
         <h1>Các nhà trọ trong hệ thống</h1>
         <?php
+        $url = base_url();
         foreach ($nhaTros as $nhaTro) {
         echo "<div class='col-6 col-sm-6 col-lg-4'>";
         echo "<h3>".$nhaTro->TIEU_DE."</h3>";
         echo "<p>Địa chỉ LH: ".$nhaTro->DIA_CHI_LH."</p>";
         echo "<p>Giá: ".$nhaTro->GIA."</p>";
         echo "<p>Diện tích: ".$nhaTro->DIEN_TICH."</p>";
-        echo "<p><a class='btn btn-default' href='index.php/nhaTro/xemNhaTro/".$nhaTro->MA_NT."' role='button'>Xem chi tiết &raquo;</a></p>";
+        echo "<p><a class='btn btn-default' href='";
+        echo $url."index.php/nhaTro/xemNhaTro/".$nhaTro->MA_NT."'";
+        echo "role='button'>Xem chi tiết &raquo;</a></p>";
         echo "</div>";   
         }
         ?>
