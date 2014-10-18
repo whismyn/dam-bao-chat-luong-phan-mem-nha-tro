@@ -100,7 +100,7 @@
                             <div class="col-lg-12">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> Các loại tài khoản</h3>
+                                        <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> Danh sách tài khoản của hệ thống</h3>
                                     </div>
                                     <div class="panel-body">
                                         <table class="table table-bordered table-hover table-striped">
