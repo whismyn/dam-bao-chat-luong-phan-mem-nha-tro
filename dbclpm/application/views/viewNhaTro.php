@@ -107,16 +107,14 @@
                                         <thead>
                                             <tr>
                                                 <th>Mã NT</th>
-                                                <th>Mã TK</th>
-                                                <th>Mã xã</th>
+                                                <th>Tên tài khoản</th>
+                                                <th>Tên tỉnh</th>
+                                                <th>Tên huyện</th>
+                                                <th>Tên xã</th>
                                                 <th>Số nhà</th>
                                                 <th>Diện tích</th>
                                                 <th>Còn phòng</th>
                                                 <th>Giá</th>
-                                                <th>Người liên hệ</th>
-                                                <th>SĐT liên hệ</th>
-                                                
-                                                <th>Địa chỉ liên hệ</th>
                                                 <th>Tiêu đề</th>
                                                 <th>Giới thiệu</th>
                                                 <th>Thời gian tạo</th>
@@ -130,16 +128,18 @@
                                             foreach ($nhaTros as $nhaTro) {
                                                 echo "<tr>";
                                                 echo "<th>".$nhaTro->MA_NT."</th>";
-                                                echo "<th>".$nhaTro->MA_TK."</th>";
-                                                echo "<th>".$nhaTro->MA_XA."</th>";
+                                                echo "<th>".$nhaTro->TEN_TK."</th>";
+                                                echo "<th>".$nhaTro->TEN_TINH."</th>";
+                                                echo "<th>".$nhaTro->TEN_HUYEN."</th>";
+                                                echo "<th>".$nhaTro->TEN_XA."</th>";
                                                 echo "<th>".$nhaTro->SO_NHA."</th>";
                                                 echo "<th>".$nhaTro->DIEN_TICH."</th>";
                                                 echo "<th>".$nhaTro->CON_PHONG."</th>";
                                                 echo "<th>".$nhaTro->GIA."</th>";
-                                                echo "<th>".$nhaTro->NGUOI_LH."</th>";
-                                                echo "<th>".$nhaTro->SDT_LH."</th>";
+                                                //echo "<th>".$nhaTro->NGUOI_LH."</th>";
+                                                //echo "<th>".$nhaTro->SDT_LH."</th>";
                                                 //echo "<th>".$nhaTro->EMAIL_LH."</th>";
-                                                echo "<th>".$nhaTro->DIA_CHI_LH."</th>";
+                                                //echo "<th>".$nhaTro->DIA_CHI_LH."</th>";
                                                 echo "<th>".$nhaTro->TIEU_DE."</th>";
                                                 echo "<th>".$nhaTro->GIOI_THIEU."</th>";
                                                 echo "<th>".$nhaTro->TG_TAO_NT."</th>";

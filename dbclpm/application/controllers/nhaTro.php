@@ -8,7 +8,19 @@ class nhaTro extends CI_Controller {
     }
 
     public function index() {
-        $data['nhaTros'] = $this->modelNhaTro->findAll();
+        $this->db->select("nha_tro.*, tai_khoan.TEN_TK as TEN_TK,
+            tinh_thanh.TEN_TINH as TEN_TINH, quan_huyen.TEN_HUYEN as TEN_HUYEN,
+            phuong_xa.TEN_XA as TEN_XA");
+        $this->db->from('nha_tro');
+        $this->db->join('phuong_xa', 'nha_tro.MA_XA = phuong_xa.MA_XA');
+        $this->db->join('quan_huyen', 'phuong_xa.MA_HUYEN = quan_huyen.MA_HUYEN');
+        $this->db->join('tinh_thanh', 'quan_huyen.MA_TINH = tinh_thanh.MA_TINH');
+        $this->db->join('tai_khoan', 'nha_tro.MA_TK = tai_khoan.MA_TK');
+        
+        $query1 = $this->db->get();
+        
+        $data['nhaTros'] = $query1->result();
+        //$data['nhaTros'] = $this->modelNhaTro->findAll();
         $this->load->view('viewNhaTro', $data);
     }
 
@@ -53,6 +65,17 @@ class nhaTro extends CI_Controller {
         $data['quanHuyens'] = $this->modelQuanHuyen->findAll();
         $data['phuongXas'] = $this->modelPhuongXa->findAll();
         $data['nhaTro'] = $this->modelNhaTro->find($maNhaTro);
+        
+        $this->db->select("tinh_thanh.MA_TINH as MA_TINH, 
+            quan_huyen.MA_HUYEN as MA_HUYEN,
+            phuong_xa.MA_XA as MA_XA");
+        $this->db->from('nha_tro');
+        $this->db->join('phuong_xa', 'nha_tro.MA_XA = phuong_xa.MA_XA');
+        $this->db->join('quan_huyen', 'phuong_xa.MA_HUYEN = quan_huyen.MA_HUYEN');
+        $this->db->join('tinh_thanh', 'quan_huyen.MA_TINH = tinh_thanh.MA_TINH');
+        $this->db->where('MA_NT', $maNhaTro);
+        $query1 = $this->db->get();
+        $data['diachi'] = $query1->result();
         $this->load->view('updateNhaTro', $data);
     }
 
@@ -88,9 +111,21 @@ class nhaTro extends CI_Controller {
         $this->db->join('nha_tro', 'bl_nt.MA_NT = nha_tro.MA_NT');
         $this->db->where('nha_tro.MA_NT', $maNhaTro);
         $query = $this->db->get();
-        $data['nhaTro'] = $this->modelNhaTro->find($maNhaTro);
         $data['binhLuans'] = $query->result();
-        //$data['maBinhLuan'] = $this->db->count_all('binh_luan');
+        $this->db->select("nha_tro.*, tai_khoan.TEN_TK as TEN_TK,
+            tinh_thanh.TEN_TINH as TEN_TINH, quan_huyen.TEN_HUYEN as TEN_HUYEN,
+            phuong_xa.TEN_XA as TEN_XA");
+        $this->db->from('nha_tro');
+        $this->db->join('phuong_xa', 'nha_tro.MA_XA = phuong_xa.MA_XA');
+        $this->db->join('quan_huyen', 'phuong_xa.MA_HUYEN = quan_huyen.MA_HUYEN');
+        $this->db->join('tinh_thanh', 'quan_huyen.MA_TINH = tinh_thanh.MA_TINH');
+        $this->db->join('tai_khoan', 'nha_tro.MA_TK = tai_khoan.MA_TK');
+        $this->db->where('nha_tro.MA_NT', $maNhaTro);
+        $query1 = $this->db->get();
+        
+        $data['nhaTro'] = $query1->result();
+        
+        //$data['maBinhLuan'] = $this->db->counha_tro_all('binh_luan');
         $this->load->view("viewChiTietNhaTro", $data);
     }
 
