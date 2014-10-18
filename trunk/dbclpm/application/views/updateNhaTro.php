@@ -112,18 +112,28 @@
                                     <div class="panel-body">
                                     <div class="form-horizontal" role="form">
                                     <?php echo form_open("nhaTro/xulycapnhat") ?>
+									<?php
+							            //print_r($diachi);
+							            foreach ($diachi as $diachi) {
+							                $maTinh = $diachi->MA_TINH;
+							                $maHuyen = $diachi->MA_HUYEN;
+							                $maXa = $diachi->MA_XA;
+							            }
+							        ?>
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label">Tỉnh/Thành phố:</label>
                                         <div class="col-sm-4">
                                           <select id="mark" class="form-control"> 
                                             <option value="">----</option>
                                             <?php
-                                            foreach ($tinhThanhs as $tinhThanh) {
-                                                echo "<option value=" . $tinhThanh->MA_TINH . " class=".$tinhThanh->MA_TINH.">";
-                                                echo $tinhThanh->TEN_TINH;
-                                                echo "</option>";
-                                            }
-                                            ?>
+										            foreach ($tinhThanhs as $tinhThanh) {
+										                echo "<option value=" . $tinhThanh->MA_TINH . " class=".$tinhThanh->MA_TINH." ";
+										                if($tinhThanh->MA_TINH == $maTinh) echo "selected";
+										                echo ">";
+										                echo $tinhThanh->TEN_TINH;
+										                echo "</option>";
+										            }
+										            ?>
                                             </select>
                                         </div>
                                     </div>
@@ -133,12 +143,14 @@
                                           <select id="series" class="form-control">
                                             <option value="">--</option>
                                             <?php
-                                            foreach ($quanHuyens as $quanHuyen) {
-                                                echo "<option value=" . $quanHuyen->MA_HUYEN . " class=".$quanHuyen->MA_TINH.">";
-                                                echo $quanHuyen->TEN_HUYEN;
-                                                echo "</option>";
-                                            }
-                                            ?>
+									            foreach ($quanHuyens as $quanHuyen) {
+									                echo "<option value=" . $quanHuyen->MA_HUYEN . " class=".$quanHuyen->MA_TINH." ";
+									                if($quanHuyen->MA_HUYEN == $maHuyen) echo "selected";
+									                echo ">";
+									                echo $quanHuyen->TEN_HUYEN;
+									                echo "</option>";
+									            }
+									            ?>	
                                         </select>
                                         </div>
                                     </div>
@@ -147,13 +159,15 @@
                                         <div class="col-sm-4">
                                           <select name="maXa"  id="model" class="form-control">
                                             <option value="">--</option>
-                                            <?php
-                                            foreach ($phuongXas as $phuongXa) {
-                                                echo "<option value=" . $phuongXa->MA_XA . " class=".$phuongXa->MA_HUYEN.">";
-                                                echo $phuongXa->TEN_XA;
-                                                echo "</option>";
-                                            }
-                                            ?>
+                                           <?php
+									            foreach ($phuongXas as $phuongXa) {
+									                echo "<option value=" . $phuongXa->MA_XA . " class=".$phuongXa->MA_HUYEN." ";
+									                if($phuongXa->MA_XA == $maXa) echo "selected";
+									                echo ">";
+									                echo $phuongXa->TEN_XA;
+									                echo "</option>";
+									            }
+									            ?>
                                         </select>
                                         </div>
                                     </div>
