@@ -1,95 +1,134 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Trang chủ</title>
-        <link rel="stylesheet" href="http://localhost/dbclpm/media/css/bootstrap.css" type="text/css"/>
-        <link rel="stylesheet" href="http://localhost/dbclpm/media/css/bootstrap.min.css" type="text/css"/>
-        <link rel="stylesheet" href="http://localhost/dbclpm/media/css/bootstrap-theme.css" type="text/css"/>
-        <link rel="stylesheet" href="http://localhost/dbclpm/media/css/bootstrap-theme.min.css" type="text/css"/>
-        <link rel="stylesheet" href="http://localhost/dbclpm/media/css/mycss.css" type="text/css"/>
-        <link type="text/css" rel="stylesheet" href="http://localhost/dbclpm/media/css/simplePagination.css"/>
-        <script src="http://localhost/dbclpm/media/js/bootstrap.js"></script>
-        <script src="http://localhost/dbclpm/media/js/bootstrap.min.js"></script>
-        <script src="http://localhost/dbclpm/media/js/jquery-1.11.1.min.js"></script>
-        <script type="text/javascript" src="http://localhost/dbclpm/media/js/jquery.simplePagination.js"></script>
-    </head>
-    <body>
-        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="<?php echo base_url();?>"><img src="http://localhost/dbclpm/media/img/Home-icon.png" width="20" height="20">Trang chủ</a>
-        </div>
-        <div class="navbar-collapse collapse">
-          <div class="navbar-form navbar-right" role="form">
-            <?php 
-            $maTaiKhoan = $this->session->userdata('maTaiKhoan');
-            $tenTaiKhoan = $this->session->userdata('tenTaiKhoan');
-            $maLoaiTaiKhoan = $this->session->userdata('maLoaiTaiKhoan');
-            $url = base_url();
-            if($tenTaiKhoan == null){
-                echo "<button class='btn btn-success'><a href='".$url."index.php/taiKhoan/dangNhap' class='font-a'>Đăng nhập</a></button>";
-            } else{
-                echo "<span class='font'>Xin chào <a href='".$url."index.php/taiKhoan/thayDoi/".$maTaiKhoan."'>".$tenTaiKhoan.",</a></span>";
-                echo "<a href='".$url."index.php/taiKhoan/dangXuat'> Đăng xuất</a>";
-                echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-            }
-            if($maLoaiTaiKhoan == 1){
-                echo "<a href='".$url."index.php/taiKhoan/trangquantri'><img src='http://localhost/dbclpm/media/img/admin-icon.png' width='20' height='20'/>Quản trị hệ thống</a>";
-            } else if($maLoaiTaiKhoan == 2){
-                echo "<a href='".$url."index.php/taiKhoan/trangquanlynhatro/".$maTaiKhoan."'><img src='http://localhost/dbclpm/media/img/admin-icon.png' width='20' height='20'/>Quản trị nhà trọ</a>";
-            }
-        ?>
-          </div>
-        </div><!--/.navbar-collapse -->
-      </div>
-    </div>
-
-    <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
-      <div class="container">
-        <h1>Tìm kiếm nhà trọ online!</h1>
-        <?php echo form_open("nhaTro/timNhaTro") ?>
-        <div class="col-xs-4">
-        <input type="text" name="tuKhoa" class="form-control" placeholder="Từ khóa cần tìm..."></div>
-        <button type="submit" class="btn btn-info">Tìm kiếm</button>
-        <button type="button" class="btn btn-info"><a href="<?php echo base_url();?>index.php/nhaTro/timKiemNangCao" class="font-a">Tìm kiếm nâng cao</a></button>
-        <?php echo form_close() ?>
-
-      </div>
-    </div>
-
-    <div class="container">
-      <!-- Example row of columns -->
-      
-      <div class="row">
-        <h1>Các nhà trọ trong hệ thống</h1>
-        <?php
-        $url = base_url();
-        foreach ($nhaTros as $nhaTro) {
-        echo "<div class='col-6 col-sm-6 col-lg-4'>";
-        echo "<h3>".$nhaTro->TIEU_DE."</h3>";
-        echo "<p>Địa chỉ LH: ".$nhaTro->DIA_CHI_LH."</p>";
-        echo "<p>Giá: ".$nhaTro->GIA."</p>";
-        echo "<p>Diện tích: ".$nhaTro->DIEN_TICH."</p>";
-        echo "<p><a class='btn btn-default' href='";
-        echo $url."index.php/nhaTro/xemNhaTro/".$nhaTro->MA_NT."'";
-        echo "role='button'>Xem chi tiết &raquo;</a></p>";
-        echo "</div>";   
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Trang chủ</title>
+    <link rel="stylesheet" href="http://localhost/dbclpm/media/css/bootstrap.css" type="text/css"/>
+    <link rel="stylesheet" href="http://localhost/dbclpm/media/css/bootstrap.min.css" type="text/css"/>
+    <link rel="stylesheet" href="http://localhost/dbclpm/media/css/bootstrap-theme.css" type="text/css"/>
+    <link rel="stylesheet" href="http://localhost/dbclpm/media/css/bootstrap-theme.min.css" type="text/css"/>
+    <link rel="stylesheet" href="http://localhost/dbclpm/media/css/mycss.css" type="text/css"/>
+    <script src="http://localhost/dbclpm/media/js/bootstrap.js"></script>
+    <script src="http://localhost/dbclpm/media/js/bootstrap.min.js"></script>
+    <script src="http://localhost/dbclpm/media/js/jquery-1.11.1.min.js"></script>
+    <style type="text/css">
+        .bs-example{
+            margin: 20px;
         }
-        ?>
+        body{
+            background: url(http://localhost/dbclpm/media/img/background.jpg) no-repeat center center fixed; 
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+        h4,h3{
+        color: #0099CC;
+        margin-left: 15px;
+        }
+    </style>
+</head>
+<body>
+    <img src="http://localhost/dbclpm/media/img/header.png" class="img-responsive" alt="Responsive image" style="height:150px;width:100%;">
+<div class="bs-example">
+    <nav id="myNavbar" class="navbar navbar-default" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="container">
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="<?php echo base_url();?>"><img src="http://localhost/dbclpm/media/img/Home-icon.png" width="20" height="20">Trang chủ</a></li>
+                    <li><a href="#">Diễn đàn</a></li>
+                    
+                   
+                </ul>
+                <form class="navbar-form navbar-left" role="search" action="http://localhost/dbclpm/index.php/nhaTro/timNhaTro" method="post" accept-charset="utf-8">
+                    <div class="form-group">
+                        <label>Tìm kiếm</label>
+                        <input type="text" name="tuKhoa" class="form-control" placeholder="Từ khóa cần tìm...">
+                        <button type="submit" class="btn btn-info">Tìm kiếm</button>
+                        <button type="button" class="btn btn-info"><a href="<?php echo base_url();?>index.php/nhaTro/timKiemNangCao" class="font-a">Tìm kiếm nâng cao</a></button>
+                    </div>
+                </form>
+            </div><!-- /.navbar-collapse -->
+        </div>
+    </nav>
+</div>
+                <?php 
+                    $maTaiKhoan = $this->session->userdata('maTaiKhoan');
+                    $tenTaiKhoan = $this->session->userdata('tenTaiKhoan');
+                    $maLoaiTaiKhoan = $this->session->userdata('maLoaiTaiKhoan');
+                    if($tenTaiKhoan != null){
+                        echo "<h3>Xin chào ".$tenTaiKhoan."</h3>";
+                    }
+                ?>
+<div class="row">
+        <div class="col-lg-3">
+            <?php 
+                    $maTaiKhoan = $this->session->userdata('maTaiKhoan');
+                    $tenTaiKhoan = $this->session->userdata('tenTaiKhoan');
+                    $maLoaiTaiKhoan = $this->session->userdata('maLoaiTaiKhoan');
+                    $url = base_url();
+                    if($tenTaiKhoan == null){
+                        echo "<form><article class='lifted_content_box'>";
+                        echo "<h1><img src='http://localhost/dbclpm/media/img/login.png' width='30' height='30'>Đăng nhập</h1>";
+                        echo "<div class='content'>";
+                        echo "<p><span class='glyphicon glyphicon-chevron-right'></span><a href='".$url."index.php/taiKhoan/dangNhap'>Đăng nhập</a></p>";
+                        echo "<p><span class='glyphicon glyphicon-chevron-right'></span><a href='".$url."index.php/taiKhoan/dangKy'>Đăng ký tài khoản mới</a></p>";
+                        echo "</article></form>";
+                        } else{
+                            echo "<form><article class='lifted_content_box'>";
+                            echo "<h1><img src='http://localhost/dbclpm/media/img/login.png' width='20' height='20'>Tài khoản</h1>";
+                            echo "<div class='content'>";
+                            echo "<p><span class='glyphicon glyphicon-chevron-right'></span><a href='".$url."index.php/taiKhoan/thayDoi/".$maTaiKhoan."'>Thông tin cá nhân</a></p>";
+                            if($maLoaiTaiKhoan == 1){
+                                echo "<p><span class='glyphicon glyphicon-chevron-right'></span><a href='".$url."index.php/taiKhoan/trangquantri'>Quản trị hệ thống</a></p>";
+                            } else if($maLoaiTaiKhoan == 2){
+                                echo "<p><span class='glyphicon glyphicon-chevron-right'></span><a href='".$url."index.php/taiKhoan/trangquanlynhatro/".$maTaiKhoan."'>Quản trị nhà trọ</a></p>";
+                            }
+                            echo "<p><span class='glyphicon glyphicon-chevron-right'></span><a href='".$url."index.php/taiKhoan/dangXuat'>Đăng xuất</a></p>";
+                            echo "</article></form>";
+                        }
+                ?>
+            <form>
+                <article class="lifted_content_box">
+                  <h1><img src="http://localhost/dbclpm/media/img/search-icon.png" width="20" height="20">Tìm kiếm nâng cao</h1>
+                  <div class="content">
+                    <p>Khu vực tìm kiếm nâng cao</p>
+                  </div>
+                </article>
+            </form>
+        </div>
+        <div class="col-lg-6">
+          <div class="border-center">
+            <h1 class="fontcenter">Thông tin nhà trọ online</h1><hr>
+            <?php
+                $url = base_url();
+                foreach ($nhaTros as $nhaTro) {
+                echo "<h3><a href='".$url."index.php/nhaTro/xemNhaTro/".$nhaTro->MA_NT."'";
+                echo " style='text-decoration: none'>".$nhaTro->TIEU_DE."</a></h3>";
+                echo "<p><label>Địa chỉ LH:</label> ".$nhaTro->DIA_CHI_LH;
+                echo "<label style='margin-left:50px'>Giá:</label> ".$nhaTro->GIA."&#09;&#09;";
+                echo "<label style='margin-left:50px'>Diện tích:</label> ".$nhaTro->DIEN_TICH."</p>";
+                echo "<hr>";
+                }
+            ?>
+          </div>
+       </div>
+        <div class="col-lg-3">
+          <form>
+            <article class="lifted_content_box">
+              <h1><img src="http://localhost/dbclpm/media/img/location-icon1.png" width="20" height="20">Tìm kiếm theo khu vực</h1>
+              <div class="content">
+                <p>Nội dung</p>
+              </div>
+            </article>
+          </form>
+          
+        </div>
       </div>
-      <hr>
-
       <footer>
         <p>&copy; Đảm bảo chất lượng phần mềm</p>
       </footer>
-    </div> <!-- /container -->
-    </body>
-</html>
+</body>
+</html>                                     
