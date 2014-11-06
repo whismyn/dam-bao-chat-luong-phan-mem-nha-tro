@@ -92,7 +92,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            <img src="http://localhost/dbclpm/media/img/chunhatro-icon.png" width="100" height="100">
+                            <img src="http://localhost/dbclpm/media/img/location-icon.png" width="100" height="100">
                             Quản lý tỉnh thành
                         </h1>
                     
