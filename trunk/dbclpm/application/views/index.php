@@ -8,9 +8,11 @@
         <link rel="stylesheet" href="http://localhost/dbclpm/media/css/bootstrap-theme.css" type="text/css"/>
         <link rel="stylesheet" href="http://localhost/dbclpm/media/css/bootstrap-theme.min.css" type="text/css"/>
         <link rel="stylesheet" href="http://localhost/dbclpm/media/css/mycss.css" type="text/css"/>
+        <link type="text/css" rel="stylesheet" href="http://localhost/dbclpm/media/css/simplePagination.css"/>
         <script src="http://localhost/dbclpm/media/js/bootstrap.js"></script>
         <script src="http://localhost/dbclpm/media/js/bootstrap.min.js"></script>
         <script src="http://localhost/dbclpm/media/js/jquery-1.11.1.min.js"></script>
+        <script type="text/javascript" src="http://localhost/dbclpm/media/js/jquery.simplePagination.js"></script>
     </head>
     <body>
         <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -35,7 +37,7 @@
                 echo "<button class='btn btn-success'><a href='".$url."index.php/taiKhoan/dangNhap' class='font-a'>Đăng nhập</a></button>";
             } else{
                 echo "<span class='font'>Xin chào <a href='".$url."index.php/taiKhoan/thayDoi/".$maTaiKhoan."'>".$tenTaiKhoan.",</a></span>";
-                echo "<a href='".$url."index.php/taiKhoan/dangXuat'>Đăng xuất</a>";
+                echo "<a href='".$url."index.php/taiKhoan/dangXuat'> Đăng xuất</a>";
                 echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
             }
             if($maLoaiTaiKhoan == 1){
