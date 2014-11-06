@@ -150,7 +150,10 @@ class taiKhoan extends CI_Controller {
     }
     
     public function thayDoi($maTaiKhoan){
-        $data['taiKhoan'] = $this->modelTaiKhoan->find($maTaiKhoan);
+        $tk = $this->modelTaiKhoan->find($maTaiKhoan);
+        $data['taiKhoan'] = $tk;
+	$data['loaitk'] = $this->modelLoaiTk->find($tk->MA_LTK)->TEN_LTK;
+        
         $this->load->view('changeTaiKhoan', $data);
     }
     
@@ -178,11 +181,12 @@ class taiKhoan extends CI_Controller {
         $data['taiKhoans'] = $query->result();
         $this->load->view('viewChuNhaTros', $data);
     }
-    
+    //nghia: them data thong bao
     public function layMatKhau() {
-        $this->load->view("getMatKhau");
+        $data['thongbao']="";
+        $this->load->view("getMatKhau",$data);
     }
-    
+    // nghia: them kiem tra email co ton tai trong he thong khong!
     public function xuLyLayMatKhau() {
         
         $diaChiEmail = $this->input->post('email');
@@ -198,6 +202,13 @@ class taiKhoan extends CI_Controller {
         //print_r($content);
         //$data['content'] = $query->result();
         //redirect("Email/gui/".md5($diaChiEmail)."/".$content);
+        
+        if($query->num_rows == 0){
+            $data['thongbao']="Email không tồn tại trong hệ thống!";
+            $this->load->view("getMatKhau",$data);
+            return;
+        }
+        
         redirect("Email");
         //$this->load->view("viewMatKhau", $data);
     }
@@ -208,9 +219,34 @@ class taiKhoan extends CI_Controller {
         $this->db->where('MA_LTK', $maLoaiTk);
         $query = $this->db->get();
         $data['taiKhoans'] = $query->result();
-       $this->load->view('viewTaiKhoan', $data);
+		$this->load->view('viewTaiKhoan', $data);
     }
     
+    public function doimatkhau($matk){
+        $data['taiKhoan'] = $this->modelTaiKhoan->find($matk);
+        $data['thongbao'] = "";
+	$this->load->view('viewdoimatkhau', $data);
+    }
+    
+    public function xulydoimatkhau() {
+        $matk = $this->input->post("maTaiKhoan");
+        $mkcu = $this->input->post("matkhaucu");
+        $mkmoi = $this->input->post("matkhaumoi");
+        
+        $tk = $this->modelTaiKhoan->find($matk);
+        $data['taiKhoan'] = $tk;
+        if($tk->MAT_KHAU != $mkcu){
+            $data['thongbao'] = "Mật khẩu không đúng!";
+            $this->load->view('viewdoimatkhau', $data);
+            return;
+        }
+        
+        $arrTk = array("MAT_KHAU" => $mkmoi);
+        $this->modelTaiKhoan->update($matk,$arrTk);
+        
+        $data['thongbao'] = "<span style='color:green;'>Thay đổi thành công!</span>";
+        $this->load->view('viewdoimatkhau', $data);
+    }
 }
 
 ?>

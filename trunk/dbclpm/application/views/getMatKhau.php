@@ -64,12 +64,13 @@
                 <div class="form-signin">
                 <?php echo form_open("taiKhoan/xuLyLayMatKhau") ?>
                 <h4 align="center">Để lấy lại mật khẩu<br>bạn vui lòng nhập vào địa chỉ email <br>mà bạn dùng đăng ký tài khoản</h4>
-                <input type="password" class="form-control" placeholder="Địa chỉ email" name="email" required>
+                <input type="email" class="form-control" placeholder="Địa chỉ email" name="email" required>
                 <button class="btn btn-lg btn-primary btn-block" type="submit">
                     Gửi</button>
                 </div>
                 <?php echo form_close() ?>
             </div>
+            <h4 style="color:red;"><?php echo $thongbao; ?></h4>
         </div>
     </div>
 </div>

@@ -69,53 +69,31 @@
         <h2><center>Thay đổi thông tin tài khoản</center></h2>
 		<div  style="width:30%; margin-left:auto; margin-right:auto;">
 		<?php 
-			echo form_open("taiKhoan/xulythaydoi") ;
+                    $atrb = array('onSubmit' => 'return check();');
+                    echo form_open("taiKhoan/xulydoimatkhau",$atrb) ;
 		?>
-		
-		<div>
-			<label>Loại tài khoản</label><br>
-			<?php echo $loaitk;?>
-		</div>
-		<br>
-		
-		
-		<div>
-			<label>Tên tài khoản</label> <br>
-			<input class="form-control" type="text" readonly="readonly" name="tenTaiKhoan" value="<?php echo $taiKhoan->TEN_TK ?>">
-		</div>
-		<br>
 
-			
+                    
 		<div>
-			<label>Giới tính</label> <br>
-			<select name="gioiTinh" class="form-control">
-				<option value="1" <?php if ($taiKhoan->GIOI_TINH == '1') echo "selected" ?>>Nam</option>
-				<option value="0" <?php if ($taiKhoan->GIOI_TINH == '0') echo "selected" ?>>Nữ</option>
-			</select><br>
+			<label>Mật khẩu củ</label> <br>
+                        <input class="form-control" type="password" name="matkhaucu" value=" " id="matkhaucu" ><br>
 		</div>
 		<div>
-			<label>Email</label> <br>
-			<input class="form-control" type="email" name="email" value="<?php echo $taiKhoan->EMAIL ?>"><br>
+			<label>Mật khẩu mới</label> <br>
+			<input class="form-control" type="password" name="matkhaumoi" id="matkhaumoi"><br>
 		</div>
 		<div>
-			<label>Số điện thoại</label> <br>
-			<input class="form-control" type="text" name="soDienThoai" value="<?php echo $taiKhoan->SDT ?>"><br>
-		</div>
-		<div>
-			<label>Địa chỉ</label> <br>
-			<input class="form-control" type="text" name="diaChi" value="<?php echo $taiKhoan->DIA_CHI ?>"><br>
-		</div>
-		<div>
-			<label>Năm sinh</label> <br>
-			<input class="form-control" type="number" name="namSinh" value="<?php echo $taiKhoan->NAM_SINH ?>"><br>
+			<label>Nhập lại</label> <br>
+			<input class="form-control" type="password" id="nhaplai"><br>
 		</div>
 		<div >
-			<a href="<?php echo base_url(); ?>/index.php/taiKhoan/doimatkhau/<?php echo $taiKhoan->MA_TK ;?>">Đổi mật khẩu!</a><br><br>
-			<input type="submit" value="Lưu" class="btn btn-success">
 			<input type="hidden" name="maTaiKhoan" value="<?php echo $taiKhoan->MA_TK; ?>">
+			<input type="submit" value="Lưu" class="btn btn-success">
 		</div>
-        <?php echo form_close() ?>
+                <?php echo form_close() ?>
+                    <h3 id="thongbao" style="color:red;"><?php echo $thongbao ;?></h3>
 		</div>
+        
   <!--//////////////////////////////////////////////////////////////////////////////////////////////////////////-->
     </div> <!-- /container -->
 	<hr>
@@ -123,7 +101,37 @@
     <footer>
         <p>&copy; Đảm bảo chất lượng phần mềm</p>
     </footer>
+        
     </body>
+    
+    <script type="text/javascript">
+            $( document ).ready(function() {
+                
+                
+            });
+           function check(){
+               var $nhaplai = document.getElementById("nhaplai").value ;
+               var $matkhaumoi = document.getElementById("matkhaumoi").value;
+               var $matkhaucu = document.getElementById("matkhaucu").value;
+               if($nhaplai != $matkhaumoi){
+                   document.getElementById("thongbao").innerHTML = "Mật khẩu không trùng khớp!";
+                   document.getElementById("nhaplai").focus();
+                   return false;
+               }
+               if($matkhaucu == ""){
+                   document.getElementById("thongbao").innerHTML = "Hãy nhập mật khẩu củ!";
+                   document.getElementById("matkhaucu").focus();
+                   return false;
+               }
+               if($matkhaumoi == ""){
+                   document.getElementById("thongbao").innerHTML = "Hãy nhập mật khẩu mới!";
+                   document.getElementById("matkhaumoi").focus();
+                   return false;
+               }
+                   
+               return true;
+           }
+    </script>
 </html>
 
 
