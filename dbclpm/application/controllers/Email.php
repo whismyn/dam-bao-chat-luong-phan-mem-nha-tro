@@ -1,7 +1,7 @@
 <?php
 class Email extends CI_Controller{
     
-
+//Nghia: them phan thong bao va load view getmatkhau
      function index(){
         $config = array(
                 'protocol' => 'smtp',
@@ -21,13 +21,18 @@ class Email extends CI_Controller{
         $this->email->message('mat khau cua ban la '.$matKhau);    
         $url = base_url();
         if($this->email->send()){
-        echo "Done!!!<br>";
-        echo "<a href='".$url."'>Quay lai</a>";
+            $data['thongbao'] = "Chúng tôi đã gữi thư xác nhận vào Email của bạn.<br>"
+                    . "Hãy kiểm tra Email để lấy lại mật khẩu!";
+            
+        //echo "Done!!!<br>";
+        //echo "<a href='".$url."'>Quay lai</a>";
         }
         else
         {
-            show_error($this->email->print_debugger());
+            //show_error($this->email->print_debugger());
+            $data['thongbao'] = "Xác nhận thất bại. Hãy thử lại!";
         }
+        $this->load->view("getMatKhau",$data);
     }
 }
 ?>
