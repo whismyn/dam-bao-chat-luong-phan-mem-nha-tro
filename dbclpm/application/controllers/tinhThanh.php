@@ -41,6 +41,17 @@ class tinhThanh extends CI_Controller {
         $this->modelTinhThanh->update($maTinh, $tinhThanh);
         redirect('tinhThanh/index');
     }
+    public function xemNhaTroTheoTinhThanh($maTinhThanh){
+        $this->db->select("*");
+        $this->db->from("nha_tro");
+        $this->db->join("phuong_xa", "phuong_xa.MA_XA = nha_tro.MA_XA");
+        $this->db->join("quan_huyen", "quan_huyen.MA_HUYEN = phuong_xa.MA_HUYEN");
+        $this->db->join("tinh_thanh", "tinh_thanh.MA_TINH = quan_huyen.MA_TINH");
+        $this->db->where("tinh_thanh.MA_TINH", $maTinhThanh);
+        $query = $this->db->get();
+        $data["nhaTros"] = $query->result();
+        $this->load->view("ketquatimkiem", $data);
+    }
 }
 
 ?>
