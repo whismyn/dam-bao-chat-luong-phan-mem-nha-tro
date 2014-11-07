@@ -1,79 +1,119 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Đăng nhập</title>
-        <link rel="stylesheet" href="http://localhost/dbclpm/media/css/bootstrap.css" type="text/css"/>
-        <link rel="stylesheet" href="http://localhost/dbclpm/media/css/bootstrap.min.css" type="text/css"/>
-        <link rel="stylesheet" href="http://localhost/dbclpm/media/css/bootstrap-theme.css" type="text/css"/>
-        <link rel="stylesheet" href="http://localhost/dbclpm/media/css/bootstrap-theme.min.css" type="text/css"/>
-        <link rel="stylesheet" href="http://localhost/dbclpm/media/css/mycss.css" type="text/css"/>
-        <link href="http://localhost/dbclpm/media/css/bootstrap-responsive.min.css" rel="stylesheet">
-        <link href="http://localhost/dbclpm/media/css/style.css" rel="stylesheet">
-        <link href="http://localhost/dbclpm/media/css/typica-login.css" rel="stylesheet">
-        <script src="http://localhost/dbclpm/media/js/bootstrap.js"></script>
-        <script src="http://localhost/dbclpm/media/js/bootstrap.min.js"></script>
-        <script src="http://localhost/dbclpm/media/js/jquery-1.11.1.min.js"></script>
-        <script src="http://localhost/dbclpm/media/js/typica-login.js"></script>
-    </head>
-    <body>
-        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="<?php echo base_url();?>"><img src="http://localhost/dbclpm/media/img/Home-icon.png" width="20" height="20">Trang chủ</a>
-        </div>
-        <div class="navbar-collapse collapse">
-          <div class="navbar-form navbar-right" role="form">
-            <?php 
-            $maTaiKhoan = $this->session->userdata('maTaiKhoan');
-            $tenTaiKhoan = $this->session->userdata('tenTaiKhoan');
-            $maLoaiTaiKhoan = $this->session->userdata('maLoaiTaiKhoan');
-            $url = base_url();
-            if($tenTaiKhoan == null){
-                echo "<button class='btn btn-success'><a href='".$url."index.php/taiKhoan/dangNhap' class='font-a'>Đăng nhập</a></button>";
-            } else{
-                echo "<span class='font'>Xin chào <a href='".$url."index.php/taiKhoan/thayDoi/".$maTaiKhoan."'>".$tenTaiKhoan.",</a></span>";
-                echo "<a href='".$url."index.php/taiKhoan/dangXuat'>Đăng xuất</a>";
-                echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-            }
-            if($maLoaiTaiKhoan == 1){
-                echo "<a href='".$url."index.php/taiKhoan/trangquantri'><img src='http://localhost/dbclpm/media/img/admin-icon.png' width='20' height='20'/>Quản trị hệ thống</a>";
-            } else if($maLoaiTaiKhoan == 2){
-                echo "<a href='".$url."index.php/taiKhoan/trangquanlynhatro/".$maTaiKhoan."'><img src='http://localhost/dbclpm/media/img/admin-icon.png' width='20' height='20'/>Quản trị nhà trọ</a>";
-            }
-        ?>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Đăng nhập</title>
+    <link rel="stylesheet" href="http://localhost/dbclpm/media/css/bootstrap.css" type="text/css"/>
+    <link rel="stylesheet" href="http://localhost/dbclpm/media/css/bootstrap.min.css" type="text/css"/>
+    <link rel="stylesheet" href="http://localhost/dbclpm/media/css/bootstrap-theme.css" type="text/css"/>
+    <link rel="stylesheet" href="http://localhost/dbclpm/media/css/bootstrap-theme.min.css" type="text/css"/>
+    <link rel="stylesheet" href="http://localhost/dbclpm/media/css/mycss.css" type="text/css"/>
+    <script src="http://localhost/dbclpm/media/js/bootstrap.js"></script>
+    <script src="http://localhost/dbclpm/media/js/bootstrap.min.js"></script>
+    <script src="http://localhost/dbclpm/media/js/jquery-1.11.1.min.js"></script>
+    <style type="text/css">
+        .bs-example{
+            margin: 20px;
+        }
+        body{
+            background: url(http://localhost/dbclpm/media/img/background.jpg) no-repeat center center fixed; 
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+        h4,h3{
+        color: #0099CC;
+        margin-left: 15px;
+        }
+        h2{
+            color: red;
+        }
+        .thongbao{
+        color: red;
+    }
+        .quenmatkhau{
+            text-align: center;
+            color: red;
+        }
+    </style>
+    <script>
+    function submit11(){
+        var user=document.forms["loginForm"]["userId"].value;
+        var pass=document.forms["loginForm"]["password"].value;
+        document.getElementById("msUser").innerHTML=" ";
+        document.getElementById("msPass").innerHTML=" ";
+
+        //Xet userID
+        if(user==null || user == ""){
+            document.getElementById("msUser").innerHTML="Vui lòng nhập vào tên tài khoản";
+            return false;
+        }
+        //Xet password
+        if(pass==null || pass==""){
+            document.getElementById("msPass").innerHTML="Vui lòng nhập vào mật khẩu";
+            return false;
+        }
+    }
+    </script>
+</head>
+<body>
+    <img src="http://localhost/dbclpm/media/img/header.png" class="img-responsive" alt="Responsive image" style="height:150px;width:100%;">
+    <div class="bs-example">
+        <nav id="myNavbar" class="navbar navbar-default" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="container">
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="<?php echo base_url();?>"><img src="http://localhost/dbclpm/media/img/Home-icon.png" width="20" height="20">Trang chủ</a></li>
+                        <li><a href="#">Diễn đàn</a></li>
+                        
+                       
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div>
+        </nav>
+    </div>
+
+
+
+<div class="login">
+    <h2><img src="http://localhost/dbclpm/media/img/lock-icon.png" width="40" height="40">Đăng nhập vào hệ thống</h2>
+    <hr width="100%">
+    <div class="logindiv1">
+      <img src="http://localhost/dbclpm/media/img/img-login.png" width="497" height="100" margin="5">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="logindiv2">
+            <form role="form" id="loginForm" name="loginForm" onsubmit="return submit11();" action="http://localhost/dbclpm/index.php/taiKhoan/xulydangnhap" method="post" accept-charset="utf-8">
+              <div class="form-group">
+                <label>Tên đăng nhập</label>
+                <input type="text" class="form-control" id="userId" name="tenTaiKhoan" placeholder="Nhập tên đăng nhập"><br>
+                <a class="thongbao" id="msUser"></a>
+              </div>
+              <div class="form-group">
+                <label>Mật khẩu</label>
+                <input type="password" class="form-control" id="password" name="matKhau" placeholder="Nhập mật khẩu"><br>
+                <p class="thongbao" id="msPass"></p>
+              </div>
+              <div align="center">
+              <input type="submit" class="btn btn-default" value="Đăng nhập"/>
+              <button onclick="window.location.href='http://localhost/dbclpm/index.php/taiKhoan/dangKy'" class="btn btn-default">Đăng ký</button>
+              </div>
+            </form>
           </div>
-        </div><!--/.navbar-collapse -->
+        </div>
       </div>
     </div>
+  </div>
+  <div style="text-align:center"><h4><a href="<?php echo base_url();?>index.php/taiKhoan/layMatKhau">Bạn quên mật khẩu?</a></h4></div>
 
 
 
-    <div class="container">
-    <div class="row">
-        <div class="col-sm-6 col-md-4 col-md-offset-4">
-            <h1 class="text-center login-title">Đăng nhập vào hệ thống</h1>
-            <div class="account-wall">
-                <img class="profile-img" src="http://localhost/dbclpm/media/img/login.png"/>
-                <div class="form-signin">
-                <?php echo form_open("taiKhoan/xulydangnhap") ?>
-                <input type="text" class="form-control" placeholder="Tên đăng nhập" name="tenTaiKhoan" required autofocus>
-                <input type="password" class="form-control" placeholder="Mật khẩu" name="matKhau" required>
-                <button class="btn btn-lg btn-primary btn-block" type="submit">
-                    Đăng nhập</button>
-                <a href="<?php echo base_url();?>index.php/taiKhoan/layMatKhau" class="pull-right need-help">Quên mật khẩu? </a><span class="clearfix"></span>
-                </div>
-                <?php echo form_close() ?>
-            </div>
-            <a href="#" class="text-center new-account">Đăng ký tài khoản mới. </a>
-        </div>
-    </div>
-</div>
-    </body>
-</html>
+
+      <footer>
+        <p>&copy; Đảm bảo chất lượng phần mềm</p>
+      </footer>
+</body>
+</html>                                     
