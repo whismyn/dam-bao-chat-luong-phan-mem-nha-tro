@@ -160,7 +160,7 @@ class taiKhoan extends CI_Controller {
     public function xulythaydoi() {
         $maTaiKhoan = $this->input->post('maTaiKhoan');
         $taiKhoan = array(
-            "MA_LTK" => $this->input->post("maLoaiTk"),
+            
             "TEN_TK" => $this->input->post("tenTaiKhoan"),
             "MAT_KHAU" => $this->input->post("matKhau"),
             "GIOI_TINH" => $this->input->post("gioiTinh"),
