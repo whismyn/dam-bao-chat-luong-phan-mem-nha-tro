@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<<<<<<< .mine
+
     <head>
         <meta charset="UTF-8">
         <title>Trang chủ</title>
@@ -72,28 +72,6 @@
         $maLoaiTaiKhoan = $this->session->userdata('maLoaiTaiKhoan');
         if ($tenTaiKhoan != null) {
             echo "<h3>Xin chào " . $tenTaiKhoan . "</h3>";
-=======
-<head>
-    <meta charset="UTF-8">
-    <title>Trang chủ</title>
-    <link rel="stylesheet" href="http://localhost/dbclpm/media/css/bootstrap.css" type="text/css"/>
-    <link rel="stylesheet" href="http://localhost/dbclpm/media/css/bootstrap.min.css" type="text/css"/>
-    <link rel="stylesheet" href="http://localhost/dbclpm/media/css/bootstrap-theme.css" type="text/css"/>
-    <link rel="stylesheet" href="http://localhost/dbclpm/media/css/bootstrap-theme.min.css" type="text/css"/>
-    <link rel="stylesheet" href="http://localhost/dbclpm/media/css/mycss.css" type="text/css"/>
-    <script src="http://localhost/dbclpm/media/js/bootstrap.js"></script>
-    <script src="http://localhost/dbclpm/media/js/bootstrap.min.js"></script>
-    <script src="http://localhost/dbclpm/media/js/jquery-1.11.1.min.js"></script>
-
-
-    <link href="http://localhost/dbclpm/media/css/css.css" media="screen" rel="stylesheet" type="text/css" >
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-    <script type="text/javascript" src="http://localhost/dbclpm/media/js/paging.js"></script>
-
-    <style type="text/css">
-        .bs-example{
-            margin: 20px;
->>>>>>> .r199
         }
         ?>
         <div class="row">
@@ -245,7 +223,7 @@
 
             </div>
         </div>
-<<<<<<< .mine
+        <<<<<<< .mine
         <footer>
             <p>&copy; Đảm bảo chất lượng phần mềm</p>
         </footer>
@@ -255,91 +233,11 @@
     <script src="http://localhost/dbclpm/media/js/dataTables/jquery.dataTables.js"></script>
     <script src="http://localhost/dbclpm/media/js/dataTables/dataTables.bootstrap.js"></script>
     <script>
-        $(document).ready(function () {
-            $('#dataTables-example').dataTable();
-        });
+            $(document).ready(function () {
+                $('#dataTables-example').dataTable();
+            });
     </script>
     <!-- CUSTOM SCRIPTS -->
     <script src="http://localhost/dbclpm/media/js/customPhanTrang.js"></script>
-=======
-    </nav>
-</div>
-                <?php 
-                    $maTaiKhoan = $this->session->userdata('maTaiKhoan');
-                    $tenTaiKhoan = $this->session->userdata('tenTaiKhoan');
-                    $maLoaiTaiKhoan = $this->session->userdata('maLoaiTaiKhoan');
-                    if($tenTaiKhoan != null){
-                        echo "<h3>Xin chào ".$tenTaiKhoan."</h3>";
-                    }
-                ?>
-<div class="row">
-        <div class="col-lg-3">
-            <?php 
-                    $maTaiKhoan = $this->session->userdata('maTaiKhoan');
-                    $tenTaiKhoan = $this->session->userdata('tenTaiKhoan');
-                    $maLoaiTaiKhoan = $this->session->userdata('maLoaiTaiKhoan');
-                    $url = base_url();
-                    if($tenTaiKhoan == null){
-                        echo "<form><article class='lifted_content_box'>";
-                        echo "<h1><img src='http://localhost/dbclpm/media/img/login.png' width='30' height='30'>Đăng nhập</h1>";
-                        echo "<div class='content'>";
-                        echo "<p><span class='glyphicon glyphicon-chevron-right'></span><a href='".$url."index.php/taiKhoan/dangNhap'>Đăng nhập</a></p>";
-                        echo "<p><span class='glyphicon glyphicon-chevron-right'></span><a href='".$url."index.php/taiKhoan/dangKy'>Đăng ký tài khoản mới</a></p>";
-                        echo "</article></form>";
-                        } else{
-                            echo "<form><article class='lifted_content_box'>";
-                            echo "<h1><img src='http://localhost/dbclpm/media/img/login.png' width='20' height='20'>Tài khoản</h1>";
-                            echo "<div class='content'>";
-                            echo "<p><span class='glyphicon glyphicon-chevron-right'></span><a href='".$url."index.php/taiKhoan/thayDoi/".$maTaiKhoan."'>Thông tin cá nhân</a></p>";
-                            if($maLoaiTaiKhoan == 1){
-                                echo "<p><span class='glyphicon glyphicon-chevron-right'></span><a href='".$url."index.php/taiKhoan/trangquantri'>Quản trị hệ thống</a></p>";
-                            } else if($maLoaiTaiKhoan == 2){
-                                echo "<p><span class='glyphicon glyphicon-chevron-right'></span><a href='".$url."index.php/taiKhoan/trangquanlynhatro/".$maTaiKhoan."'>Quản trị nhà trọ</a></p>";
-                            }
-                            echo "<p><span class='glyphicon glyphicon-chevron-right'></span><a href='".$url."index.php/taiKhoan/dangXuat'>Đăng xuất</a></p>";
-                            echo "</article></form>";
-                        }
-                ?>
-            <form>
-                <article class="lifted_content_box">
-                  <h1><img src="http://localhost/dbclpm/media/img/search-icon.png" width="20" height="20">Tìm kiếm nâng cao</h1>
-                  <div class="content">
-                    <p>Khu vực tìm kiếm nâng cao</p>
-                  </div>
-                </article>
-            </form>
-        </div>
-        <div class="col-lg-6">
-          <div class="border-center">
-            <h1 class="fontcenter">Thông tin nhà trọ online</h1><hr>
-            <?php
-                $url = base_url();
-                foreach ($nhaTros as $nhaTro) {
-                echo "<h3><a href='".$url."index.php/nhaTro/xemNhaTro/".$nhaTro->MA_NT."'";
-                echo " style='text-decoration: none'>".$nhaTro->TIEU_DE."</a></h3>";
-                echo "<p><label>Địa chỉ LH:</label> ".$nhaTro->DIA_CHI_LH;
-                echo "<label style='margin-left:50px'>Giá:</label> ".$nhaTro->GIA."&#09;&#09;";
-                echo "<label style='margin-left:50px'>Diện tích:</label> ".$nhaTro->DIEN_TICH."</p>";
-                echo "<hr>";
-                }
-            ?>
-          </div>
-       </div>
-        <div class="col-lg-3">
-          <form>
-            <article class="lifted_content_box">
-              <h1><img src="http://localhost/dbclpm/media/img/location-icon1.png" width="20" height="20">Tìm kiếm theo khu vực</h1>
-              <div class="content">
-                <p>Nội dung</p>
-              </div>
-            </article>
-          </form>
-          
-        </div>
-      </div>
-           <footer>
-        <p>&copy; Đảm bảo chất lượng phần mềm</p>
-      </footer>
-</body>
->>>>>>> .r199
+
 </html>                                     
