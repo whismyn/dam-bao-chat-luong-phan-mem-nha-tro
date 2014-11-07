@@ -136,8 +136,11 @@
                     <input class="form-control bfh-phone" size="35" type="password"  id="nhaplai"><br>
                     <input type="hidden" name="maTaiKhoan" value="<?php echo $taiKhoan->MA_TK; ?>">
                     <input type="submit" value="Lưu" class="btn btn-info">
+                    <br><br>
+                    <h3 id="thongbao" style="color:red;"><?php echo $thongbao ;?></h3>
                 </div>
             </div>
+
             </form>
         </div>
     </div>

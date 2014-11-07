@@ -49,7 +49,6 @@
                                 <label>Tìm kiếm</label>
                                 <input type="text" name="tuKhoa" class="form-control" placeholder="Từ khóa cần tìm...">
                                 <button type="submit" class="btn btn-info">Tìm kiếm</button>
-                                <button type="button" class="btn btn-info"><a href="<?php echo base_url(); ?>index.php/nhaTro/timKiemNangCao" class="font-a">Tìm kiếm nâng cao</a></button>
                             </div>
                         </form>
                     </div><!-- /.navbar-collapse -->
