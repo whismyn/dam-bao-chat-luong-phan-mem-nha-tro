@@ -82,7 +82,7 @@
     <h2><img src="http://localhost/dbclpm/media/img/lock-icon.png" width="40" height="40">Đăng nhập vào hệ thống</h2>
     <hr width="100%">
     <div class="logindiv1">
-      <img src="http://localhost/dbclpm/media/img/img-login.png" width="497" height="100" margin="5">
+      <img src="http://localhost/dbclpm/media/img/img-login.png" width="497" height="150" margin="5">
       <div class="row">
         <div class="col-lg-12">
           <div class="logindiv2">
