@@ -215,7 +215,12 @@
                     <article class="lifted_content_box">
                         <h1><img src="http://localhost/dbclpm/media/img/location-icon1.png" width="20" height="20">Tìm kiếm theo khu vực</h1>
                         <div class="content">
-                            <p>Nội dung</p>
+                            <p>Tìm kiếm nhà trọ theo khu vực tỉnh thành:</p>
+                            <a href="http://localhost/dbclpm/index.php/tinhThanh/xemNhaTroTheoTinhThanh/2">Cần Thơ</a><br>
+                            <a href="http://localhost/dbclpm/index.php/tinhThanh/xemNhaTroTheoTinhThanh/32">TP. Hồ Chí Minh</a><br>
+                            <a href="http://localhost/dbclpm/index.php/tinhThanh/xemNhaTroTheoTinhThanh/16">Đà Nẵng</a><br>
+                            <a href="http://localhost/dbclpm/index.php/tinhThanh/xemNhaTroTheoTinhThanh/28">Hải Phòng</a><br>
+                            <a href="http://localhost/dbclpm/index.php/tinhThanh/xemNhaTroTheoTinhThanh/25">Hà Nội</a><br>
                         </div>
                     </article>
                 </form>
