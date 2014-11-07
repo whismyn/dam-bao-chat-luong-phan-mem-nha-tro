@@ -11,6 +11,12 @@
     <script src="http://localhost/dbclpm/media/js/bootstrap.js"></script>
     <script src="http://localhost/dbclpm/media/js/bootstrap.min.js"></script>
     <script src="http://localhost/dbclpm/media/js/jquery-1.11.1.min.js"></script>
+
+
+    <link href="http://localhost/dbclpm/media/css/css.css" media="screen" rel="stylesheet" type="text/css" >
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <script type="text/javascript" src="http://localhost/dbclpm/media/js/paging.js"></script>
+
     <style type="text/css">
         .bs-example{
             margin: 20px;
@@ -127,7 +133,7 @@
           
         </div>
       </div>
-      <footer>
+           <footer>
         <p>&copy; Đảm bảo chất lượng phần mềm</p>
       </footer>
 </body>
