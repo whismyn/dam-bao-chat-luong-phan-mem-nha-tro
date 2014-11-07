@@ -223,7 +223,6 @@
 
             </div>
         </div>
-        <<<<<<< .mine
         <footer>
             <p>&copy; Đảm bảo chất lượng phần mềm</p>
         </footer>
