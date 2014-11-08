@@ -16,12 +16,44 @@
         <script src="http://localhost/dbclpm/media/js/bootstrap.min.js"></script>
         <script src="http://localhost/dbclpm/media/js/jquery-1.11.1.min.js"></script>
         <script type="text/javascript" src="http://localhost/dbclpm/media/js/jquery.chained.min.js"></script>
+
+        <link rel="stylesheet" type="text/css" media="all" href="http://localhost/dbclpm/media/css/jsDatePick_ltr.min.css" />
+        <script type="text/javascript" src="http://localhost/dbclpm/media/js/jsDatePick.jquery.min.1.3.js"></script>
         <script>
             $(function () {
                 $("#series").chained("#mark");
                 $("#model").chained("#series");
             });
-
+            window.onload = function(){     
+        
+                g_globalObject = new JsDatePick({
+                    useMode:1,
+                    isStripped:true,
+                    target:"div3_example"
+                });
+                
+                g_globalObject.setOnSelectedDelegate(function(){
+                    var obj = g_globalObject.getSelectedDay();
+                    alert("a date was just selected and the date is : " + obj.day + "/" + obj.month + "/" + obj.year);
+                    document.getElementById("div3_example_result").innerHTML = obj.day + "/" + obj.month + "/" + obj.year;
+                });
+                
+                
+                
+                g_globalObject2 = new JsDatePick({
+                    useMode:1,
+                    isStripped:false,
+                    target:"div4_example",
+                    cellColorScheme:"beige"
+                });
+                
+                g_globalObject2.setOnSelectedDelegate(function(){
+                    var obj = g_globalObject2.getSelectedDay();
+                    alert("a date was just selected and the date is : " + obj.day + "/" + obj.month + "/" + obj.year);
+                    document.getElementById("div3_example_result").innerHTML = obj.day + "/" + obj.month + "/" + obj.year;
+                });     
+        
+    };
         </script>
         <style type="text/css">
             .bs-example{
@@ -224,7 +256,15 @@
                         </div>
                     </article>
                 </form>
-
+                <form>
+                    <article class="lifted_content_box">
+                        <h1><img src="http://localhost/dbclpm/media/img/location-icon1.png" width="20" height="20">Lịch</h1>
+                        <div class="content">
+                            <div id="div3_example" style="margin:10px 0 30px 0; border:dashed 1px red; width:205px; height:230px;">
+    </div>
+                        </div>
+                    </article>
+                </form>
             </div>
         </div>
         <footer>
