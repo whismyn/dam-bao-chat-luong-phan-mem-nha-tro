@@ -19,7 +19,6 @@
     </head>
     <body>
         <div id="wrapper">
-
         <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -241,5 +240,6 @@
         <script src="http://localhost/dbclpm/media/js/plugins/morris/morris.min.js"></script>
         <script src="http://localhost/dbclpm/media/js/plugins/morris/morris-data.js"></script>
         
+
     </body>
 </html>
