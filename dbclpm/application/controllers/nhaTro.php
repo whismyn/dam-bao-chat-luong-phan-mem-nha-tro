@@ -84,6 +84,24 @@ class nhaTro extends CI_Controller {
         $data['diachi'] = $query1->result();
         $this->load->view('updateNhaTro', $data);
     }
+	public function ChuTrocapnhat($maNhaTro) {
+        $data['tinhThanhs'] = $this->modelTinhThanh->findAll();
+        $data['quanHuyens'] = $this->modelQuanHuyen->findAll();
+        $data['phuongXas'] = $this->modelPhuongXa->findAll();
+        $data['nhaTro'] = $this->modelNhaTro->find($maNhaTro);
+        
+        $this->db->select("tinh_thanh.MA_TINH as MA_TINH, 
+            quan_huyen.MA_HUYEN as MA_HUYEN,
+            phuong_xa.MA_XA as MA_XA");
+        $this->db->from('nha_tro');
+        $this->db->join('phuong_xa', 'nha_tro.MA_XA = phuong_xa.MA_XA');
+        $this->db->join('quan_huyen', 'phuong_xa.MA_HUYEN = quan_huyen.MA_HUYEN');
+        $this->db->join('tinh_thanh', 'quan_huyen.MA_TINH = tinh_thanh.MA_TINH');
+        $this->db->where('MA_NT', $maNhaTro);
+        $query1 = $this->db->get();
+        $data['diachi'] = $query1->result();
+        $this->load->view('ChuTroupdateNhaTro', $data);
+    }
 
     public function xulycapnhat() {
         $maTaiKhoan = $this->session->userdata("maTaiKhoan");
