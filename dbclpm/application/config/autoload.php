@@ -111,7 +111,7 @@ $autoload['language'] = array();
 
 $autoload['model'] = array('modelLoaiTk', 'modelTaiKhoan',
     'modelTinhThanh', 'modelQuanHuyen', 'modelPhuongXa', 'modelNhaTro',
-    'modelBinhLuan', 'modelBinhLuanNhaTro');
+    'modelBinhLuan', 'modelBinhLuanNhaTro', 'modelChuDe');
 
 
 /* End of file autoload.php */
