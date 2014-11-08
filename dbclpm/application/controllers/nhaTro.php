@@ -35,6 +35,12 @@ class nhaTro extends CI_Controller {
         $data['phuongXas'] = $this->modelPhuongXa->findAll();
         $this->load->view("addNhaTro", $data);
     }
+	public function ChuTrothem() {
+        $data['tinhThanhs'] = $this->modelTinhThanh->findAll();
+        $data['quanHuyens'] = $this->modelQuanHuyen->findAll();
+        $data['phuongXas'] = $this->modelPhuongXa->findAll();
+        $this->load->view("ChuTroaddNhaTro", $data);
+    }
 
     public function xulythem() {
         $maTaiKhoan = $this->session->userdata("maTaiKhoan");
