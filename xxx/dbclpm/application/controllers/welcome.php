@@ -13,6 +13,7 @@ class Welcome extends CI_Controller {
 		$this->db->select("*");
 		$this->db->from("nha_tro");
 		$this->db->where("DUYET", 1);
+		$this->db->order_by("TG_TAO_NT","desc");
 		$query = $this->db->get();
         $data["nhaTros"] = $query->result();
         $this->load->view('index', $data);
