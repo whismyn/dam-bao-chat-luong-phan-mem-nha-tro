@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `anh_nt` (
 `MA_ANH` int(11) NOT NULL,
   `MA_NT` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -40,10 +40,10 @@ CREATE TABLE IF NOT EXISTS `anh_nt` (
 CREATE TABLE IF NOT EXISTS `binh_luan` (
 `MA_BL` int(11) NOT NULL,
   `MA_TK` int(11) NOT NULL,
-  `NOI_DUNG` text COLLATE utf8_vietnamese_ci,
+  `NOI_DUNG` text COLLATE utf8_unicode_ci,
   `BAO_VP` int(11) DEFAULT '0',
   `TG_BL` datetime DEFAULT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci AUTO_INCREMENT=24 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=24 ;
 
 --
 -- Dumping data for table `binh_luan`
@@ -63,7 +63,7 @@ INSERT INTO `binh_luan` (`MA_BL`, `MA_TK`, `NOI_DUNG`, `BAO_VP`, `TG_BL`) VALUES
 CREATE TABLE IF NOT EXISTS `bl_con` (
   `MA_BL` int(11) NOT NULL,
   `MA_BL_CHA` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -74,7 +74,7 @@ CREATE TABLE IF NOT EXISTS `bl_con` (
 CREATE TABLE IF NOT EXISTS `bl_nt` (
   `MA_BL` int(11) NOT NULL,
   `MA_NT` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `bl_nt`
@@ -96,9 +96,9 @@ CREATE TABLE IF NOT EXISTS `chude` (
   `MA_CHU_DE_CHA` int(11) DEFAULT NULL,
   `MA_TK` int(11) NOT NULL,
   `TG_TAO_CHU_DE` date NOT NULL,
-  `NOI_DUNG` varchar(10000) COLLATE utf8_vietnamese_ci NOT NULL,
-  `TIEU_DE` varchar(100) COLLATE utf8_vietnamese_ci NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci AUTO_INCREMENT=20 ;
+  `NOI_DUNG` varchar(10000) COLLATE utf8_unicode_ci NOT NULL,
+  `TIEU_DE` varchar(100) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=20 ;
 
 --
 -- Dumping data for table `chude`
@@ -123,9 +123,9 @@ CREATE TABLE IF NOT EXISTS `hinh_anh` (
   `MA_ANH` int(11) NOT NULL,
   `DATA` longblob,
   `SIZE` int(11) DEFAULT NULL,
-  `TYPE` text COLLATE utf8_vietnamese_ci,
+  `TYPE` text COLLATE utf8_unicode_ci,
   `TIME` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -135,9 +135,9 @@ CREATE TABLE IF NOT EXISTS `hinh_anh` (
 
 CREATE TABLE IF NOT EXISTS `loai_tk` (
 `MA_LTK` int(11) NOT NULL,
-  `TEN_LTK` text COLLATE utf8_vietnamese_ci,
-  `GHI_CHU_LTK` text COLLATE utf8_vietnamese_ci
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci AUTO_INCREMENT=4 ;
+  `TEN_LTK` text COLLATE utf8_unicode_ci,
+  `GHI_CHU_LTK` text COLLATE utf8_unicode_ci
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `loai_tk`
@@ -158,20 +158,20 @@ CREATE TABLE IF NOT EXISTS `nha_tro` (
 `MA_NT` int(11) NOT NULL,
   `MA_TK` int(11) NOT NULL,
   `MA_XA` int(11) NOT NULL,
-  `SO_NHA` text COLLATE utf8_vietnamese_ci,
+  `SO_NHA` text COLLATE utf8_unicode_ci,
   `DIEN_TICH` int(11) DEFAULT NULL,
   `CON_PHONG` tinyint(1) DEFAULT NULL,
   `GIA` int(11) DEFAULT NULL,
-  `NGUOI_LH` text COLLATE utf8_vietnamese_ci,
-  `SDT_LH` text COLLATE utf8_vietnamese_ci,
-  `EMAIL_LH` text COLLATE utf8_vietnamese_ci,
-  `DIA_CHI_LH` text COLLATE utf8_vietnamese_ci,
-  `TIEU_DE` text COLLATE utf8_vietnamese_ci,
-  `GIOI_THIEU` text COLLATE utf8_vietnamese_ci,
+  `NGUOI_LH` text COLLATE utf8_unicode_ci,
+  `SDT_LH` text COLLATE utf8_unicode_ci,
+  `EMAIL_LH` text COLLATE utf8_unicode_ci,
+  `DIA_CHI_LH` text COLLATE utf8_unicode_ci,
+  `TIEU_DE` text COLLATE utf8_unicode_ci,
+  `GIOI_THIEU` text COLLATE utf8_unicode_ci,
   `CN_CUOI` datetime DEFAULT NULL,
   `TG_TAO_NT` datetime DEFAULT NULL,
   `DUYET` tinyint(1) DEFAULT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci AUTO_INCREMENT=39 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=39 ;
 
 --
 -- Dumping data for table `nha_tro`
@@ -215,8 +215,8 @@ INSERT INTO `nha_tro` (`MA_NT`, `MA_TK`, `MA_XA`, `SO_NHA`, `DIEN_TICH`, `CON_PH
 CREATE TABLE IF NOT EXISTS `phuong_xa` (
 `MA_XA` int(11) NOT NULL,
   `MA_HUYEN` int(11) NOT NULL,
-  `TEN_XA` text COLLATE utf8_vietnamese_ci
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci AUTO_INCREMENT=88 ;
+  `TEN_XA` text COLLATE utf8_unicode_ci
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=88 ;
 
 --
 -- Dumping data for table `phuong_xa`
@@ -320,8 +320,8 @@ INSERT INTO `phuong_xa` (`MA_XA`, `MA_HUYEN`, `TEN_XA`) VALUES
 CREATE TABLE IF NOT EXISTS `quan_huyen` (
 `MA_HUYEN` int(11) NOT NULL,
   `MA_TINH` int(11) NOT NULL,
-  `TEN_HUYEN` text COLLATE utf8_vietnamese_ci
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci AUTO_INCREMENT=35 ;
+  `TEN_HUYEN` text COLLATE utf8_unicode_ci
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=35 ;
 
 --
 -- Dumping data for table `quan_huyen`
@@ -373,17 +373,17 @@ CREATE TABLE IF NOT EXISTS `tai_khoan` (
 `MA_TK` int(11) NOT NULL,
   `MA_ANH` int(11) DEFAULT NULL,
   `MA_LTK` int(11) NOT NULL,
-  `TEN_TK` text COLLATE utf8_vietnamese_ci,
-  `MAT_KHAU` text COLLATE utf8_vietnamese_ci,
+  `TEN_TK` text COLLATE utf8_unicode_ci,
+  `MAT_KHAU` text COLLATE utf8_unicode_ci,
   `GIOI_TINH` tinyint(1) DEFAULT NULL,
-  `EMAIL` text COLLATE utf8_vietnamese_ci,
-  `SDT` text COLLATE utf8_vietnamese_ci,
-  `DIA_CHI` text COLLATE utf8_vietnamese_ci,
+  `EMAIL` text COLLATE utf8_unicode_ci,
+  `SDT` text COLLATE utf8_unicode_ci,
+  `DIA_CHI` text COLLATE utf8_unicode_ci,
   `NAM_SINH` int(11) DEFAULT NULL,
   `KHOA` tinyint(1) DEFAULT NULL,
   `TG_TAO_TK` datetime DEFAULT NULL,
   `Active` tinyint(1) NOT NULL DEFAULT '1'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci AUTO_INCREMENT=42 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=42 ;
 
 --
 -- Dumping data for table `tai_khoan`
@@ -403,8 +403,8 @@ INSERT INTO `tai_khoan` (`MA_TK`, `MA_ANH`, `MA_LTK`, `TEN_TK`, `MAT_KHAU`, `GIO
 
 CREATE TABLE IF NOT EXISTS `tinh_thanh` (
 `MA_TINH` int(11) NOT NULL,
-  `TEN_TINH` text COLLATE utf8_vietnamese_ci
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci AUTO_INCREMENT=64 ;
+  `TEN_TINH` text COLLATE utf8_unicode_ci
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=64 ;
 
 --
 -- Dumping data for table `tinh_thanh`
