@@ -6,7 +6,15 @@ if (!defined('BASEPATH'))
 class Welcome extends CI_Controller {
 
     public function index() {
-        $data["nhaTros"] = $this->modelNhaTro->findAll();
+		$data['tinhThanhs'] = $this->modelTinhThanh->findAll();
+        $data['quanHuyens'] = $this->modelQuanHuyen->findAll();
+        $data['phuongXas'] = $this->modelPhuongXa->findAll();
+		
+		$this->db->select("*");
+		$this->db->from("nha_tro");
+		$this->db->where("DUYET", 1);
+		$query = $this->db->get();
+        $data["nhaTros"] = $query->result();
         $this->load->view('index', $data);
     }
 }

@@ -62,6 +62,9 @@
                     <li>
                         <a href="<?php echo base_url();?>index.php/binhLuan/quanLyBinhLuan"><span class="glyphicon glyphicon-pencil"></span> Quản lý bình luận</a>
                     </li>
+					<li>
+                        <a href="<?php echo base_url();?>index.php/chuDe/dienDan"><span class="glyphicon glyphicon-pencil"></span> Quản lý diễn đàn</a>
+                    </li>
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Quản lý địa chỉ <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
@@ -76,9 +79,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li>
-                        <a href="<?php echo base_url();?>index.php/Email"><span class="glyphicon glyphicon-user"></span> Gửi Email</a>
-                    </li>
+                    
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

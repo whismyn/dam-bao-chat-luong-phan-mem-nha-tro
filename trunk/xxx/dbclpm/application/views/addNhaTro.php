@@ -10,6 +10,7 @@
         <link href="http://localhost/dbclpm/media/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 		<script type="text/javascript" src="http://localhost/dbclpm/media/js/tinymce/tinymce.min.js"></script>
         <script src="http://localhost/dbclpm/media/js/jquery.min.js"></script>
+		<script type="text/javascript" src="http://localhost/dbclpm/media/js/jquery.chained.min.js"></script>
         <script>
             $(function() {
                 $("#series").chained("#mark");
@@ -265,7 +266,7 @@
         <!-- /#page-wrapper -->
 
     </div>
-<script src="http://localhost/dbclpm/media/js/jquery-1.11.1.js"></script>
+		<script src="http://localhost/dbclpm/media/js/jquery-1.11.1.js"></script>
         <script src="http://localhost/dbclpm/media/js/bootstrap.min.js"></script>
         <script src="http://localhost/dbclpm/media/js/plugins/morris/raphael.min.js"></script>
         <script src="http://localhost/dbclpm/media/js/plugins/morris/morris.min.js"></script>

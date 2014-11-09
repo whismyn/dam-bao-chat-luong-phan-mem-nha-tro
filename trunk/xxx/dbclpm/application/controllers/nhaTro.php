@@ -208,7 +208,7 @@ class nhaTro extends CI_Controller {
     public function timNhaTro() {
         $tuKhoa = $this->input->post('tuKhoa');
         $data['nhaTros'] = $this->modelNhaTro->search($tuKhoa);
-        $this->load->view('ketquatimkiem', $data);
+        $this->load->view('index.php', $data);
     }
 
     public function timKiemNangCao() {

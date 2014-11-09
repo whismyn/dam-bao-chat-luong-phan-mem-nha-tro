@@ -50,7 +50,7 @@ class tinhThanh extends CI_Controller {
         $this->db->where("tinh_thanh.MA_TINH", $maTinhThanh);
         $query = $this->db->get();
         $data["nhaTros"] = $query->result();
-        $this->load->view("ketquatimkiem", $data);
+        $this->load->view("index.php", $data);
     }
 }
 
