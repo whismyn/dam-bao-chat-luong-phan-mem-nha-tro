@@ -185,18 +185,23 @@
 
                                         <?php
                                         $url = base_url();
-                                        foreach ($nhaTros as $nhaTro) {
+                                        for ($i=0; $i<count($nhaTros); $i++){
                                             echo "<tr class='odd gradeX'>";
                                             echo "<td>";
-                                            echo "<h4><a href='" . $url . "index.php/nhaTro/xemNhaTro/" . $nhaTro->MA_NT . "'";
-                                            echo " style='text-decoration: none'>" . $nhaTro->TIEU_DE . "</a></h4>";
-                                            echo "<p><label>Địa chỉ LH:</label> " . $nhaTro->DIA_CHI_LH . "<br>";
-                                            echo "<label>Giá:</label> " . $nhaTro->GIA . "&#09;&#09;";
-                                            echo "<label>Diện tích:</label> " . $nhaTro->DIEN_TICH . "</p>";
-                                            echo "</td>";
+											if($i < 5 ){
+												echo " <img src='http://localhost/dbclpm/media/img/new.gif'>";
+											} else{
+												echo " <img src='http://localhost/dbclpm/media/img/old.svg' width='70'>";
+											}
+											echo "</td>";
                                             echo "<td>";
-                                            echo "<img src='http://localhost/dbclpm/media/img/new.gif'>";
+                                            echo "<h4><a href='" . $url . "index.php/nhaTro/xemNhaTro/" . $nhaTros[$i]->MA_NT . "'";
+                                            echo " style='text-decoration: none'>" . $nhaTros[$i]->TIEU_DE . "</a></h4>";
+                                            echo "<p><label>Địa chỉ LH:</label> " . $nhaTros[$i]->DIA_CHI_LH . "<br>";
+                                            echo "<label>Giá:</label> " . $nhaTros[$i]->GIA . "&#09;&#09;";
+                                            echo "<label>Diện tích:</label> " . $nhaTros[$i]->DIEN_TICH . "</p>";
                                             echo "</td>";
+                                            
                                             echo "</tr>";
                                         }
                                         ?>
