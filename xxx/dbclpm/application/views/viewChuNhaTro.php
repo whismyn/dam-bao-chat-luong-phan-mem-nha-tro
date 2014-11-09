@@ -62,6 +62,9 @@
                     <li>
                         <a href="<?php echo base_url();?>index.php/binhLuan/quanLyBinhLuan"><span class="glyphicon glyphicon-pencil"></span> Quản lý bình luận</a>
                     </li>
+					<li>
+                        <a href="<?php echo base_url();?>index.php/chuDe/dienDan"><span class="glyphicon glyphicon-pencil"></span> Quản lý diễn đàn</a>
+                    </li>
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Quản lý địa chỉ <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
@@ -76,9 +79,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li>
-                        <a href="<?php echo base_url();?>index.php/Email"><span class="glyphicon glyphicon-user"></span> Gửi Email</a>
-                    </li>
+                    
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -94,9 +95,7 @@
                         <h1 class="page-header">
                             <img src="http://localhost/dbclpm/media/img/chunhatro-icon.png" width="100" height="100">
                             Danh sách nhà trọ của
-                            <?php foreach ($nhaTros as $nhaTro) {
-                                                echo $nhaTro->TEN_TK;
-                                            }?>
+							<?php echo $nhaTros[1]->TEN_TK;?>
                         </h1>
                     
                         <div class="row">
@@ -113,19 +112,11 @@
                                         <table class="table table-bordered table-hover table-striped">
                                         <thead>
                                             <tr>
-                                                <th>Mã nhà trọ</th>
-                                                <th>Mã TK</th>
-                                                <th>Mã xã</th>
-                                                <th>Số nhà</th>
-                                                <th>Diện tích</th>
-                                                <th>Còn phòng</th>
-                                                <th>Giá</th>
-                                                <th>Người liên hệ</th>
-                                                <th>SĐT liên hệ</th>
-                                                <th>Email liên hệ</th>
-                                                <th>Địa chỉ liên hệ</th>
+                                                <th>Mã NT</th>
+                                                <th>Tên tài khoản</th>                                     
+                                                <th>Số nhà</th>                                            
                                                 <th>Tiêu đề</th>
-                                                <th>Giới thiệu</th>
+                                                <th width="100">Giới thiệu</th>
                                                 <th>Thời gian tạo</th>
                                                 <th>Duyệt</th>
                                                 <th>Tùy chọn</th>
@@ -137,21 +128,13 @@
                                             foreach ($nhaTros as $nhaTro) {
                                                 echo "<tr>";
                                                 echo "<th>".$nhaTro->MA_NT."</th>";
-                                                echo "<th>".$nhaTro->MA_TK."</th>";
-                                                echo "<th>".$nhaTro->MA_XA."</th>";
-                                                echo "<th>".$nhaTro->SO_NHA."</th>";
-                                                echo "<th>".$nhaTro->DIEN_TICH."</th>";
-                                                echo "<th>".$nhaTro->CON_PHONG."</th>";
-                                                echo "<th>".$nhaTro->GIA."</th>";
-                                                echo "<th>".$nhaTro->NGUOI_LH."</th>";
-                                                echo "<th>".$nhaTro->SDT_LH."</th>";
-                                                echo "<th>".$nhaTro->EMAIL_LH."</th>";
-                                                echo "<th>".$nhaTro->DIA_CHI_LH."</th>";
+                                                echo "<th>".$nhaTro->TEN_TK."</th>";                                              
+                                                echo "<th>".$nhaTro->SO_NHA."</th>";                                                
                                                 echo "<th>".$nhaTro->TIEU_DE."</th>";
-                                                echo "<th>".$nhaTro->GIOI_THIEU."</th>";
+                                                echo "<th  width='100'>".$nhaTro->GIOI_THIEU."</th>";
                                                 echo "<th>".$nhaTro->TG_TAO_NT."</th>";
                                                 echo "<th>".$nhaTro->DUYET."</th>";
-                                                echo "<th>&nbsp;&nbsp;&nbsp;";
+                                                echo "<th>";
                                                 echo "<a class='glyphicon glyphicon-remove' href='";
                                                 echo $url."index.php/nhaTro/xoa/".$nhaTro->MA_NT;
                                                 echo "' role='button' title='Xóa'></a>";

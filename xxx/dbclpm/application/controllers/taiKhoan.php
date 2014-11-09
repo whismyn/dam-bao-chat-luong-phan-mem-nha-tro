@@ -146,7 +146,7 @@ class taiKhoan extends CI_Controller {
         $this->db->where('nha_tro.MA_TK', $maTaiKhoan);
         $query = $this->db->get();
         $data['nhaTros'] = $query->result();
-        $this->load->view('viewChuNhaTro', $data);
+        $this->load->view('viewChuNhaTro1', $data);
     }
     
     public function thayDoi($maTaiKhoan){

@@ -9,6 +9,7 @@
         <link href="http://localhost/dbclpm/media/css/plugins/morris.css" rel="stylesheet">
         <link href="http://localhost/dbclpm/media/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <script src="http://localhost/dbclpm/media/js/jquery.min.js"></script>
+		<script type="text/javascript" src="http://localhost/dbclpm/media/js/tinymce/tinymce.min.js"></script>
         <script type="text/javascript" src="http://localhost/dbclpm/media/js/jquery.chained.min.js"></script>
         <script>
             $(function() {
@@ -16,7 +17,35 @@
                 $("#model").chained("#series");
             });
         </script>
-
+		<script type="text/javascript">
+            tinymce.init({
+                selector: "textarea#elm1",
+                theme: "modern",
+                width: 800,
+                height: 300,
+				relative_urls : false,
+				remove_script_host : false,
+                plugins: [
+                    "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
+                    "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+                    "save table contextmenu directionality emoticons template paste textcolor"
+                ],
+                content_css: "css/content.css",
+                toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | l      ink image | responsivefilemanager | print preview media fullpage | forecolor backcolor emoticons",
+                style_formats: [
+                    {title: 'Bold text', inline: 'b'},
+                    {title: 'Red text', inline: 'span', styles: {color: '#ff0000'}},
+                    {title: 'Red header', block: 'h1', styles: {color: '#ff0000'}},
+                    {title: 'Example 1', inline: 'span', classes: 'example1'},
+                    {title: 'Example 2', inline: 'span', classes: 'example2'},
+                    {title: 'Table styles'},
+                    {title: 'Table row 1', selector: 'tr', classes: 'tablerow1'}
+                ],
+				external_filemanager_path:"<?php echo base_url(); ?>filemanager/",
+			   filemanager_title:"Responsive Filemanager" ,
+			   external_plugins: { "filemanager" : "<?php echo base_url(); ?>/filemanager/plugin.min.js"}
+            });
+        </script>
     </head>
     <body>
 <<<<<<< .mine
@@ -84,9 +113,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li>
-                        <a href="<?php echo base_url();?>index.php/Email"><span class="glyphicon glyphicon-user"></span> Gửi Email</a>
-                    </li>
+                   
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -216,13 +243,13 @@
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label">Tiêu đề: </label>
                                         <div class="col-sm-4">
-                                          <input type="text" class="form-control bfh-phone" name="gia" value="<?php echo $nhaTro->GIA; ?>" size="35">
+                                          <input type="text" class="form-control bfh-phone" name="tieuDe" value="<?php echo $nhaTro->TIEU_DE; ?>" size="35">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label">Giới thiệu: </label>
                                         <div class="col-sm-4">
-                                          <input type="text" class="form-control bfh-phone" name="gioiThieu" value="<?php echo $nhaTro->GIOI_THIEU; ?>" size="35">
+										  <textarea id="elm1" name="gioiThieu"><?php echo $nhaTro->GIOI_THIEU; ?></textarea><br>
                                           <br>
                                           <input type="submit" class="btn btn-default" value="Save"></input>
                                           <button type="button" class="btn btn-default"><a href="<?php echo base_url();?>index.php/taiKhoan" class="font-a">Hủy</a></button>

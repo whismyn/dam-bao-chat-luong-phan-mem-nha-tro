@@ -53,16 +53,7 @@
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
-      <div class="container">
-        <h1>Tìm kiếm nhà trọ online!</h1>
-        <?php echo form_open("nhaTro/timNhaTro") ?>
-        <div class="col-xs-4">
-        <input type="text" name="tuKhoa" class="form-control" placeholder="Từ khóa cần tìm..."></div>
-        <button type="submit" class="btn btn-info">Tìm kiếm</button>
-        <button type="button" class="btn btn-info"><a href="<?php echo base_url();?>index.php/nhaTro/timKiemNangCao" class="font-a">Tìm kiếm nâng cao</a></button>
-        <?php echo form_close() ?>
-
-      </div>
+     
     </div>
 
     <div class="container">

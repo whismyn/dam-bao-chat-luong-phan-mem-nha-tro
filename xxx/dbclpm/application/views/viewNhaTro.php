@@ -62,6 +62,9 @@
                     <li>
                         <a href="<?php echo base_url();?>index.php/binhLuan/quanLyBinhLuan"><span class="glyphicon glyphicon-pencil"></span> Quản lý bình luận</a>
                     </li>
+					<li>
+                        <a href="<?php echo base_url();?>index.php/chuDe/dienDan"><span class="glyphicon glyphicon-pencil"></span> Quản lý diễn đàn</a>
+                    </li>
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Quản lý địa chỉ <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
@@ -76,9 +79,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li>
-                        <a href="<?php echo base_url();?>index.php/Email"><span class="glyphicon glyphicon-user"></span> Gửi Email</a>
-                    </li>
+                    
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -107,16 +108,10 @@
                                         <thead>
                                             <tr>
                                                 <th>Mã NT</th>
-                                                <th>Tên tài khoản</th>
-                                                <th>Tên tỉnh</th>
-                                                <th>Tên huyện</th>
-                                                <th>Tên xã</th>
-                                                <th>Số nhà</th>
-                                                <th>Diện tích</th>
-                                                <th>Còn phòng</th>
-                                                <th>Giá</th>
+                                                <th>Tên tài khoản</th>                                     
+                                                <th>Số nhà</th>                                            
                                                 <th>Tiêu đề</th>
-                                                <th>Giới thiệu</th>
+                                                <th width="100">Giới thiệu</th>
                                                 <th>Thời gian tạo</th>
                                                 <th>Duyệt</th>
                                                 <th>Tùy chọn</th>
@@ -128,20 +123,10 @@
                                             foreach ($nhaTros as $nhaTro) {
                                                 echo "<tr>";
                                                 echo "<th>".$nhaTro->MA_NT."</th>";
-                                                echo "<th>".$nhaTro->TEN_TK."</th>";
-                                                echo "<th>".$nhaTro->TEN_TINH."</th>";
-                                                echo "<th>".$nhaTro->TEN_HUYEN."</th>";
-                                                echo "<th>".$nhaTro->TEN_XA."</th>";
-                                                echo "<th>".$nhaTro->SO_NHA."</th>";
-                                                echo "<th>".$nhaTro->DIEN_TICH."</th>";
-                                                echo "<th>".$nhaTro->CON_PHONG."</th>";
-                                                echo "<th>".$nhaTro->GIA."</th>";
-                                                //echo "<th>".$nhaTro->NGUOI_LH."</th>";
-                                                //echo "<th>".$nhaTro->SDT_LH."</th>";
-                                                //echo "<th>".$nhaTro->EMAIL_LH."</th>";
-                                                //echo "<th>".$nhaTro->DIA_CHI_LH."</th>";
+                                                echo "<th>".$nhaTro->TEN_TK."</th>";                                              
+                                                echo "<th>".$nhaTro->SO_NHA."</th>";                                                
                                                 echo "<th>".$nhaTro->TIEU_DE."</th>";
-                                                echo "<th>".$nhaTro->GIOI_THIEU."</th>";
+                                                echo "<th  width='100'>".$nhaTro->GIOI_THIEU."</th>";
                                                 echo "<th>".$nhaTro->TG_TAO_NT."</th>";
                                                 echo "<th>".$nhaTro->DUYET."</th>";
                                                 echo "<th>";

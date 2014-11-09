@@ -23,8 +23,8 @@
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="<?php echo base_url();?>"><img src="http://localhost/dbclpm/media/img/Home-icon.png" width="20" height="20">Trang chủ</a>
-          <a class="navbar-brand" href="<?php echo base_url();?>index.php/chuDe"><img src="http://localhost/dbclpm/media/img/Home-icon.png" width="20" height="20">Dien Dan</a>
-          <a class="navbar-brand" href="<?php echo base_url();?>index.php/chuDe/themChuDe"><img src="http://localhost/dbclpm/media/img/Home-icon.png" width="20" height="20">Them chu de</a>
+          <a class="navbar-brand" href="<?php echo base_url();?>index.php/chuDe"><img src="http://localhost/dbclpm/media/img/Home-icon.png" width="20" height="20">Diễn đàn</a>
+          <a class="navbar-brand" href="<?php echo base_url();?>index.php/chuDe/themChuDe"><img src="http://localhost/dbclpm/media/img/Home-icon.png" width="20" height="20">Thêm chủ đề</a>
         </div>
         <div class="navbar-collapse collapse">
           <div class="navbar-form navbar-right" role="form">
@@ -54,13 +54,8 @@
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <div class="container">
-        <h1>Tìm kiếm nhà trọ online!</h1>
-        <?php echo form_open("nhaTro/timNhaTro") ?>
-        <div class="col-xs-4">
-        <input type="text" name="tuKhoa" class="form-control" placeholder="Từ khóa cần tìm..."></div>
-        <button type="submit" class="btn btn-info">Tìm kiếm</button>
-        <button type="button" class="btn btn-info"><a href="<?php echo base_url();?>index.php/nhaTro/timKiemNangCao" class="font-a">Tìm kiếm nâng cao</a></button>
-        <?php echo form_close() ?>
+       
+        
 
       </div>
     </div>

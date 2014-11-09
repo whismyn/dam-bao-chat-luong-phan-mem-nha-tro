@@ -76,9 +76,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li>
-                        <a href="<?php echo base_url();?>index.php/Email"><span class="glyphicon glyphicon-user"></span> Gửi Email</a>
-                    </li>
+                   
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

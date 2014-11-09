@@ -118,7 +118,7 @@
             <br>
             <br>
             
-            <div style="background-color:#0CF; color:black; margin:0px; padding:30px; width:960px">
+            <div style="color:black; margin:0px; padding:30px; width:960px">
             <p>
             	<h1> Giới thiệu nhà trọ </h1>
                 <br>
@@ -134,15 +134,15 @@
           
           
         </div>
-        <h3>Đã duyệt <?php echo "<i>".$nhaTro->DUYET."</i>"; ?></h3>
+        <h3><?php if($nhaTro->DUYET == 0) { echo "<i> Chưa xác thực thông tin </i>";} else {echo "<i>Đã xác thực thông tin </i>";} ?></h3>
         
         <?php  //print_r($binhLuans) ;?>
         
         <?php
-        $this->table->set_heading('Mã tài khoản', 'Nội dung', 'Báo vi phạm');
+        $this->table->set_heading('Nội dung', 'Báo vi phạm');
         foreach ($binhLuans as $binhLuan) {
             $this->table->add_row(
-                    $binhLuan->MA_TK, $binhLuan->NOI_DUNG,
+                    $binhLuan->NOI_DUNG,
                     anchor('binhLuan/baoViPham/' . $binhLuan->MA_BL,
                             'Báo vi phạm'));
         }
