@@ -65,10 +65,9 @@ body{
 }
 .lifted_content_box {
  display: block;
- width: 320px;
+ width: 200px;
  margin: 0 auto;
  position: relative;
- margin-left: 5px;
 }
 .lifted_content_box h1 {
  font-size: 14px;

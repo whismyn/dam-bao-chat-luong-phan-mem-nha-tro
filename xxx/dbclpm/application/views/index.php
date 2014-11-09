@@ -74,7 +74,7 @@
         }
         ?>
         <div class="row">
-            <div class="col-lg-3">
+            <div class="col-lg-2">
                 <?php
                 $maTaiKhoan = $this->session->userdata('maTaiKhoan');
                 $tenTaiKhoan = $this->session->userdata('tenTaiKhoan');
@@ -106,8 +106,8 @@
                         <h1><img src="http://localhost/dbclpm/media/img/search-icon.png" width="20" height="20">Tìm kiếm nâng cao</h1>
                         <div class="content">
                             <?php echo form_open("nhaTro/xulytimkiem") ?>
-                            Tỉnh/Thành phố<br>
-                            <select id="mark" name="maTinh"> 
+                            <label>Tỉnh/Thành phố:</label>
+                            <select id="mark" name="maTinh" class="form-control"> 
                                 <option value="">----</option>
                                 <?php
                                 foreach ($tinhThanhs as $tinhThanh) {
@@ -117,8 +117,8 @@
                                 }
                                 ?>
                             </select><br>
-                            Quận/Huyện<br>
-                            <select id="series" name="maHuyen">
+                            <label>Quận/Huyện</label>
+                            <select id="series" name="maHuyen" class="form-control">
                                 <option value="">--</option>
                                 <?php
                                 foreach ($quanHuyens as $quanHuyen) {
@@ -128,8 +128,8 @@
                                 }
                                 ?>
                             </select><br>
-                            Xã<br>
-                            <select name="maXa"  id="model">
+                            <label>Xã:</label>
+                            <select name="maXa"  id="model" class="form-control">
                                 <option value="">--</option>
                                 <?php
                                 foreach ($phuongXas as $phuongXa) {
@@ -139,8 +139,8 @@
                                 }
                                 ?>
                             </select><br>
-                            Mức giá <br>
-                            <select name="mucGia">
+                            <label>Mức giá:</label>
+                            <select name="mucGia" class="form-control">
                                 <option value="500000">500 000 VNĐ</option>
                                 <option value="700000">700 000 VND</option>    
                                 <option value="900000">900 000 VND</option>    
@@ -149,8 +149,8 @@
                                 <option value="1400000">1 400 000 VND</option>
                                 <option value="10 000 000">trên 1 500 000 VND</option>
                             </select><Br>
-                            Diện tích<br>
-                            <select name="dienTich">
+                            <label>Diện tích:</label>
+                            <select name="dienTich" class="form-control">
                                 <option value="15">15 m²</option>
                                 <option value="20">20 m²</option>
                                 <option value="25">25 m²</option>
@@ -158,13 +158,13 @@
                                 <option value="100">trên 30 m²</option>
                             </select>
                             <br>
-                            <input type="submit" value="Tìm">
+                            <input type="submit" value="Tìm" class="btn btn-info">
                             <?php echo form_close() ?>
                         </div>
                     </article>
                 </form>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-8">
                 <div class="border-center">
                     <h1 class="fontcenter">Thông tin nhà trọ online</h1><hr>
                     <!-- Advanced Tables -->
@@ -177,6 +177,7 @@
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                         <tr>
+                                            <th></th>
                                             <th></th>
                                         </tr>
                                     </thead>
@@ -192,7 +193,9 @@
                                             echo "<p><label>Địa chỉ LH:</label> " . $nhaTro->DIA_CHI_LH . "<br>";
                                             echo "<label>Giá:</label> " . $nhaTro->GIA . "&#09;&#09;";
                                             echo "<label>Diện tích:</label> " . $nhaTro->DIEN_TICH . "</p>";
-                                            echo "<hr>";
+                                            echo "</td>";
+                                            echo "<td>";
+                                            echo "<img src='http://localhost/dbclpm/media/img/new.gif'>";
                                             echo "</td>";
                                             echo "</tr>";
                                         }
@@ -210,17 +213,16 @@
 
                 </div>
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-2">
                 <form>
                     <article class="lifted_content_box">
-                        <h1><img src="http://localhost/dbclpm/media/img/location-icon1.png" width="20" height="20">Tìm kiếm theo khu vực</h1>
+                        <h1><img src="http://localhost/dbclpm/media/img/location-icon1.png" width="20" height="20">Tìm kiếm theo KV</h1>
                         <div class="content">
-                            <p>Tìm kiếm nhà trọ theo khu vực tỉnh thành:</p>
-                            <a href="http://localhost/dbclpm/index.php/tinhThanh/xemNhaTroTheoTinhThanh/2">Cần Thơ</a><br>
-                            <a href="http://localhost/dbclpm/index.php/tinhThanh/xemNhaTroTheoTinhThanh/32">TP. Hồ Chí Minh</a><br>
-                            <a href="http://localhost/dbclpm/index.php/tinhThanh/xemNhaTroTheoTinhThanh/16">Đà Nẵng</a><br>
-                            <a href="http://localhost/dbclpm/index.php/tinhThanh/xemNhaTroTheoTinhThanh/28">Hải Phòng</a><br>
-                            <a href="http://localhost/dbclpm/index.php/tinhThanh/xemNhaTroTheoTinhThanh/25">Hà Nội</a><br>
+                            <label><a href="http://localhost/dbclpm/index.php/tinhThanh/xemNhaTroTheoTinhThanh/2">Cần Thơ</a></label><br>
+                            <label><a href="http://localhost/dbclpm/index.php/tinhThanh/xemNhaTroTheoTinhThanh/32">TP. Hồ Chí Minh</a></label><br>
+                            <label><a href="http://localhost/dbclpm/index.php/tinhThanh/xemNhaTroTheoTinhThanh/16">Đà Nẵng</a></label><br>
+                            <label><a href="http://localhost/dbclpm/index.php/tinhThanh/xemNhaTroTheoTinhThanh/28">Hải Phòng</a></label><br>
+                            <label><a href="http://localhost/dbclpm/index.php/tinhThanh/xemNhaTroTheoTinhThanh/25">Hà Nội</a></label><br>
                         </div>
                     </article>
                 </form>
