@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Trang quản trị</title>
+        <title>Cập nhật loại tài khoản</title>
         <link href="http://localhost/dbclpm/media/css/bootstrap.min.css" rel="stylesheet">
         <link href="http://localhost/dbclpm/media/css/bootstrap-theme.min.css" rel="stylesheet">
         <link href="http://localhost/dbclpm/media/css/sb-admin.css" rel="stylesheet">
@@ -98,20 +98,42 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="panel panel-default">
-                                   <?php echo form_open("loaiTk/xulycapnhat") ?>
-									Mã loại tài khoản <?php echo $loaiTk->MA_LTK; ?><br>
-									Tên loại tài khoản <input type="text" name="tenLoaiTk" value="<?php echo $loaiTk->TEN_LTK; ?>"><br>
-									Ghi chú loại tài khoản <input type="text" name="ghiChuLoaiTk" value="<?php echo $loaiTk->GHI_CHU_LTK; ?>"><br>
-									<input type="submit" value="Save">
-									<input type="hidden" name="maLoaiTk" value="<?php echo $loaiTk->MA_LTK; ?>">
-									<?php echo form_close() ?>
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> Cập nhật loại tài khoản trong hệ thống</h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="form-horizontal" role="form">
+                                            <?php echo form_open("loaiTk/xulycapnhat") ?>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">Mã loại tài khoản: </label>
+                                                <div class="col-sm-4">
+                                                  <p><?php echo $loaiTk->MA_LTK; ?></p>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">Tên loại tài khoản: </label>
+                                                <div class="col-sm-4">
+                                                  <input type="text" class="form-control bfh-phone" name="tenLoaiTk" value="<?php echo $loaiTk->TEN_LTK; ?>" size="35">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">Ghi chú loại tài khoản: </label>
+                                                <div class="col-sm-4">
+                                                  <input type="text" class="form-control bfh-phone" name="ghiChuLoaiTk" value="<?php echo $loaiTk->GHI_CHU_LTK; ?>" size="35">
+                                                  <br>
+                                                  <input type="submit" value="Lưu" class="btn btn-info">
+                                                  <button type="button" class="btn btn-info"><a href="<?php echo base_url();?>index.php/taiKhoan/trangQuanTri">Hủy</a></button>
+                                                    <input type="hidden" name="maLoaiTk" value="<?php echo $loaiTk->MA_LTK; ?>">
+                                                </div>
+                                            </div>
+                                            <?php echo form_close() ?>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-
             </div>
             <!-- /.container-fluid -->
 

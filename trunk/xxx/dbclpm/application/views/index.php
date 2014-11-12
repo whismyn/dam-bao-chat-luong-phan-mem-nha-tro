@@ -38,6 +38,10 @@
                 color: #0099CC;
                 margin-left: 15px;
             }
+            .menu{
+                font-size: 20px;
+                font-weight: bold;
+            }
         </style>
     </head>
     <body>
@@ -49,8 +53,8 @@
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
-                            <li><a href="<?php echo base_url(); ?>"><img src="http://localhost/dbclpm/media/img/Home-icon.png" width="20" height="20">Trang chủ</a></li>
-                            <li><a href="<?php echo base_url(); ?>index.php/chuDe/"><img src="http://localhost/dbclpm/media/img/Home-icon.png" width="20" height="20">Diễn đàn</a></li>
+                            <li class="menu"><a href="<?php echo base_url(); ?>"><img src="http://localhost/dbclpm/media/img/Home-icon.png" width="25" height="25">Trang chủ</a></li>
+                            <li class="menu"><a href="<?php echo base_url(); ?>index.php/chuDe/"><img src="http://localhost/dbclpm/media/img/forum_icon.png" width="25" height="25">Diễn đàn</a></li>
 
 
                         </ul>
