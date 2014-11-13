@@ -49,7 +49,7 @@
                 border-style: solid;
                 border-width: 1px; 
                 height: auto;
-                width: 260px;
+                width: 230px;
                 padding: 5px;
                 border-radius: 5px;
                 margin: 10px;
@@ -189,9 +189,9 @@
                     </article>
                 </form>
             </div>
-            <div class="col-lg-9">
+            <div class="col-lg-8">
                 <div class="border-center">
-                    <h1 class="fontcenter">Chi tiết nhà trọ</h1>
+                    <h1 class="fontcenter">Thông tin chi tiết nhà trọ</h1>
                     <?php  
                         foreach ($nhaTro as $nhaTro) {    
                         }
@@ -200,13 +200,13 @@
                     <h3><?php echo $nhaTro->TIEU_DE;?></h3>
                     <div class="row">
                         <div class="col-lg-6">
-                            <img src="http://localhost/dbclpm/media/img/account-icon.png" width="20" height="20">Người đăng: <span class="php"><?php echo $nhaTro->TEN_TK; ?></span><br>
-                            <img src="http://localhost/dbclpm/media/img/email2-icon.png" width="20" height="20">Email: <span class="php"><?php echo $nhaTro->EMAIL_LH; ?></span><br>
-                            <img src="http://localhost/dbclpm/media/img/home_address-icon.png" width="20" height="20">Địa chỉ liên hệ: <span class="php"><?php echo $nhaTro->DIA_CHI_LH; ?></span>
+                            <img src="http://localhost/dbclpm/media/img/account-icon.png" width="20" height="20"> Người đăng: <span class="php"><?php echo $nhaTro->TEN_TK; ?></span><br>
+                            <img src="http://localhost/dbclpm/media/img/email2-icon.png" width="20" height="20"> Email: <span class="php"><?php echo $nhaTro->EMAIL_LH; ?></span><br>
+                            <img src="http://localhost/dbclpm/media/img/home_address-icon.png" width="20" height="20"> Địa chỉ liên hệ: <span class="php"><?php echo $nhaTro->DIA_CHI_LH; ?></span>
                         </div>
                         <div class="col-lg-6">
-                            <img src="http://localhost/dbclpm/media/img/clock-icon.png" width="20" height="20">Ngày đăng: <span class="php"><?php echo $nhaTro->TG_TAO_NT; ?></span><br>
-                            <img src="http://localhost/dbclpm/media/img/update-icon.png" width="20" height="20">Cập nhật lần cuối: <span class="php"><?php echo $nhaTro->CN_CUOI; ?></span>
+                            <img src="http://localhost/dbclpm/media/img/clock-icon.png" width="20" height="20"> Ngày đăng: <span class="php"><?php echo $nhaTro->TG_TAO_NT; ?></span><br>
+                            <img src="http://localhost/dbclpm/media/img/update-icon.png" width="20" height="20"> Cập nhật lần cuối: <span class="php"><?php echo $nhaTro->CN_CUOI; ?></span>
                         </div>
                     </div>
                     <hr width="100%">
@@ -269,6 +269,21 @@
                             ?>
                     </div></div>
                 </div>
+            </div>
+            <div class="col-lg-2">
+                <form>
+                    <article class="lifted_content_box">
+                        <h1><img src="http://localhost/dbclpm/media/img/location-icon1.png" width="20" height="20">Tìm kiếm theo KV</h1>
+                        <div class="content">
+                            <label><a href="http://localhost/dbclpm/index.php/tinhThanh/xemNhaTroTheoTinhThanh/2">Cần Thơ</a></label><br>
+                            <label><a href="http://localhost/dbclpm/index.php/tinhThanh/xemNhaTroTheoTinhThanh/32">TP. Hồ Chí Minh</a></label><br>
+                            <label><a href="http://localhost/dbclpm/index.php/tinhThanh/xemNhaTroTheoTinhThanh/16">Đà Nẵng</a></label><br>
+                            <label><a href="http://localhost/dbclpm/index.php/tinhThanh/xemNhaTroTheoTinhThanh/28">Hải Phòng</a></label><br>
+                            <label><a href="http://localhost/dbclpm/index.php/tinhThanh/xemNhaTroTheoTinhThanh/25">Hà Nội</a></label><br>
+                        </div>
+                    </article>
+                </form>
+
             </div>
         </div>
         <footer>

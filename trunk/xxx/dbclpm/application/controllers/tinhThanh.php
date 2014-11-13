@@ -50,6 +50,9 @@ class tinhThanh extends CI_Controller {
         $this->db->where("tinh_thanh.MA_TINH", $maTinhThanh);
         $query = $this->db->get();
         $data["nhaTros"] = $query->result();
+        $data['tinhThanhs'] = $this->modelTinhThanh->findAll();
+        $data['quanHuyens'] = $this->modelQuanHuyen->findAll();
+        $data['phuongXas'] = $this->modelPhuongXa->findAll();
         $this->load->view("index.php", $data);
     }
 }

@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Thêm chủ đề</title>
+        <title>Thêm chủ đề chính</title>
         <script type="text/javascript" src="http://localhost/dbclpm/media/js/tinymce/tinymce.min.js"></script>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Trang chủ</title>
@@ -18,7 +18,7 @@
             tinymce.init({
                 selector: "textarea#elm1",
                 theme: "modern",
-                width: 1000,
+                width: 900,
                 height: 300,
 				relative_urls : false,
 				remove_script_host : false,
@@ -55,7 +55,7 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="<?php echo base_url(); ?>"><img src="http://localhost/dbclpm/media/img/Home-icon.png" width="20" height="20">Trang chủ</a>
-                    <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/chuDe"><img src="http://localhost/dbclpm/media/img/Home-icon.png" width="20" height="20">Diễn đàn</a>
+                    <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/chuDe"><img src="http://localhost/dbclpm/media/img/forum_icon.png" width="20" height="20">Diễn đàn</a>
                     <?php
                     $maLoaiTaiKhoan = $this->session->userdata("maLoaiTaiKhoan");
                     
@@ -99,12 +99,35 @@
                 <div class="container">
                     <!-- Example row of columns -->
 
-                    <div class="row">
-                        <?php echo form_open("chuDe/xulythem") ?>
-							Tiêu đề <input type="text" name="tieuDe"><br>
-							Nội dung <textarea id="elm1" name="noiDung"></textarea><br>
-							<input type="submit" value="Save">
-							<?php echo form_close() ?>
+                <div class="row">
+                <div class="diendan">
+                        <div class="header-diendan">
+                            <p style="margin-left:15px">
+                              Thêm chủ đề chính vào diễn đàn
+                            </p>
+                        </div>
+                        <div class="header-diendan2">
+                        </div>
+                        <div class="themdiendan">
+                            <div class="form-horizontal" role="form">
+                                <?php echo form_open("chuDe/xulythemChuDeChinh") ?>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Tiêu đề:</label>
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control" name="tieuDe">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Nội dung:</label>
+                                    <div class="col-sm-10">
+                                        <textarea id="elm1" name="noiDung"></textarea><br>
+                                        <input type="submit" value="Save" class="btn btn-info">
+                                    </div>
+                                </div>
+                                <?php echo form_close() ?>
+                            </div>
+                        </div>
+                    </div>  
                 </div>
                 <hr>
 

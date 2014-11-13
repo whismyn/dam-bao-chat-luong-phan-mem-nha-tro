@@ -64,14 +64,20 @@ class chuDe extends CI_Controller{
         $this->db->from('chude');
         $this->db->where('chude.MA_CHU_DE_CHA', $maChuDe);
         $query = $this->db->get();
+
+        $chuDe = $this->modelChuDe -> find($maChuDe);
+        $data['tenchude'] = $chuDe->TIEU_DE;
         $data['chuDeCons'] = $query->result();
+
+
         $this->load->view("viewChuDeCon",$data);
     }
     
     public function xemChiTiet($maChuDe){
         $this->session->set_userdata('maChuDe', $maChuDe);
-        $this->db->select("*");
-        $this->db->from('chude');
+        $this->db->select("chude.*,tai_khoan.TEN_TK as TEN_TK");
+        $this->db->from('chude', 'tai_khoan');
+        $this->db->join('tai_khoan','tai_khoan.MA_TK = chuDe.MA_TK');
         $this->db->where('chude.MA_CHU_DE', $maChuDe);
         $this->db->limit("1");
         $query = $this->db->get();
