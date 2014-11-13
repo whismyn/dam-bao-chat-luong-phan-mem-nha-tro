@@ -98,7 +98,7 @@
                                                 echo "' role='button' title='Xóa'></a>";
                                                 echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
                                                 echo "<a class='glyphicon glyphicon-pencil' href='";
-                                                echo $url."index.php/nhaTro/capnhat/".$nhaTro->MA_NT;
+                                                echo $url."index.php/nhaTro/capnhat1/".$nhaTro->MA_NT;
                                                 echo "' role='button' title='Cập nhập'></a>";
                                                 echo "</th>";
                                                 echo "</tr>";
@@ -106,11 +106,13 @@
                                             ?>
                                         </tbody>
                                         </table>
-                                        
+                                        <button class="btn btn-info"><a href="http://localhost/dbclpm/index.php/nhaTro/them1" class="a">Thêm nhà trọ</a></button>
                                     </div>
+                                    
                                 </div>
+
                             </div>
-                            <button class="btn btn-info"><a href="http://localhost/dbclpm/index.php/nhaTro/them1" class="a">Thêm nhà trọ</a></button>
+                            
         
                         </div>
                         <br>

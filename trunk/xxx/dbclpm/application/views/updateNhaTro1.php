@@ -2,27 +2,26 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Thêm nhà trọ</title>
+        <title>Cập nhật nhà trọ</title>
         <link href="http://localhost/dbclpm/media/css/bootstrap.min.css" rel="stylesheet">
         <link href="http://localhost/dbclpm/media/css/bootstrap-theme.min.css" rel="stylesheet">
         <link href="http://localhost/dbclpm/media/css/sb-admin.css" rel="stylesheet">
         <link href="http://localhost/dbclpm/media/css/plugins/morris.css" rel="stylesheet">
         <link href="http://localhost/dbclpm/media/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-		<script type="text/javascript" src="http://localhost/dbclpm/media/js/tinymce/tinymce.min.js"></script>
         <script src="http://localhost/dbclpm/media/js/jquery.min.js"></script>
-		<script type="text/javascript" src="http://localhost/dbclpm/media/js/jquery.chained.min.js"></script>
+		<script type="text/javascript" src="http://localhost/dbclpm/media/js/tinymce/tinymce.min.js"></script>
+        <script type="text/javascript" src="http://localhost/dbclpm/media/js/jquery.chained.min.js"></script>
         <script>
             $(function() {
                 $("#series").chained("#mark");
                 $("#model").chained("#series");
             });
-
         </script>
 		<script type="text/javascript">
             tinymce.init({
                 selector: "textarea#elm1",
                 theme: "modern",
-                width: 600,
+                width: 800,
                 height: 300,
 				relative_urls : false,
 				remove_script_host : false,
@@ -50,6 +49,7 @@
     </head>
     <body>
         <div id="wrapper">
+
         <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -60,11 +60,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="<?php echo base_url();?>index.php">Quay lại trang chủ</a>
+                <a class="navbar-brand" href="<?php echo base_url();?>index.php">Quay về trang chủ</a>
             </div>
             <!-- Top Menu Items -->
         
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            
             <!-- /.navbar-collapse -->
         </nav>
 
@@ -76,33 +77,41 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Thêm nhà trọ
+                            Cập nhật thông tin nhà trọ
                         </h1>
                     
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> Thêm nhà trọ vào hệ thống</h3>
+                                        <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> Chỉnh sửa thông tin nhà trọ</h3>
                                     </div>
-                                    <?php
-                                    $maTaiKhoan = $this->session->userdata("maTaiKhoan");?>
                                     <div class="panel-body">
                                     <div class="form-horizontal" role="form">
-                                    <?php echo form_open("nhaTro/xulythem1") ?>
+                                    <?php echo form_open("nhaTro/xulycapnhat1") ?>
+									<?php
+							            //print_r($diachi);
+							            foreach ($diachi as $diachi) {
+							                $maTinh = $diachi->MA_TINH;
+							                $maHuyen = $diachi->MA_HUYEN;
+							                $maXa = $diachi->MA_XA;
+							            }
+							        ?>
                                     <div class="form-group">
-                                        <label class="col-sm-2 control-label">Tỉnh/Thành Phố:</label>
+                                        <label class="col-sm-2 control-label">Tỉnh/Thành phố:</label>
                                         <div class="col-sm-4">
                                           <select id="mark" class="form-control"> 
                                             <option value="">----</option>
                                             <?php
-                                            foreach ($tinhThanhs as $tinhThanh) {
-                                                echo "<option value=" . $tinhThanh->MA_TINH . " class=".$tinhThanh->MA_TINH.">";
-                                                echo $tinhThanh->TEN_TINH;
-                                                echo "</option>";
-                                            }
-                                            ?>
-                                        </select>
+										            foreach ($tinhThanhs as $tinhThanh) {
+										                echo "<option value=" . $tinhThanh->MA_TINH . " class=".$tinhThanh->MA_TINH." ";
+										                if($tinhThanh->MA_TINH == $maTinh) echo "selected";
+										                echo ">";
+										                echo $tinhThanh->TEN_TINH;
+										                echo "</option>";
+										            }
+										            ?>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -111,92 +120,92 @@
                                           <select id="series" class="form-control">
                                             <option value="">--</option>
                                             <?php
-                                            foreach ($quanHuyens as $quanHuyen) {
-                                                echo "<option value=" . $quanHuyen->MA_HUYEN . " class=".$quanHuyen->MA_TINH.">";
-                                                echo $quanHuyen->TEN_HUYEN;
-                                                echo "</option>";
-                                            }
-                                            ?>
+									            foreach ($quanHuyens as $quanHuyen) {
+									                echo "<option value=" . $quanHuyen->MA_HUYEN . " class=".$quanHuyen->MA_TINH." ";
+									                if($quanHuyen->MA_HUYEN == $maHuyen) echo "selected";
+									                echo ">";
+									                echo $quanHuyen->TEN_HUYEN;
+									                echo "</option>";
+									            }
+									            ?>	
                                         </select>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-sm-2 control-label">Xã:</label>
+                                        <label class="col-sm-2 control-label">Phường/Xã:</label>
                                         <div class="col-sm-4">
                                           <select name="maXa"  id="model" class="form-control">
                                             <option value="">--</option>
-                                            <?php
-                                            foreach ($phuongXas as $phuongXa) {
-                                                echo "<option value=" . $phuongXa->MA_XA . " class=".$phuongXa->MA_HUYEN.">";
-                                                echo $phuongXa->TEN_XA;
-                                                echo "</option>";
-                                            }
-                                            ?>
+                                           <?php
+									            foreach ($phuongXas as $phuongXa) {
+									                echo "<option value=" . $phuongXa->MA_XA . " class=".$phuongXa->MA_HUYEN." ";
+									                if($phuongXa->MA_XA == $maXa) echo "selected";
+									                echo ">";
+									                echo $phuongXa->TEN_XA;
+									                echo "</option>";
+									            }
+									            ?>
                                         </select>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label">Số nhà: </label>
                                         <div class="col-sm-4">
-                                          <input type="text" class="form-control bfh-phone" name="soNha" size="35">
+                                          <input type="text" class="form-control bfh-phone" name="soNha" value="<?php echo $nhaTro->SO_NHA; ?>" size="35">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label">Diện tích: </label>
                                         <div class="col-sm-4">
-                                          <input type="text" class="form-control bfh-phone" name="dienTich" size="35">
+                                          <input type="text" class="form-control bfh-phone" name="dienTich" value="<?php echo $nhaTro->DIEN_TICH; ?>" size="35">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label">Còn phòng: </label>
                                         <div class="col-sm-4">
-                                          <input type="text" class="form-control bfh-phone" name="conPhong" size="35">
+                                          <input type="text" class="form-control bfh-phone" name="conPhong" value="<?php echo $nhaTro->CON_PHONG; ?>" size="35">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label">Giá: </label>
                                         <div class="col-sm-4">
-                                          <input type="number" class="form-control bfh-phone" name="gia" size="35">
+                                          <input type="text" class="form-control bfh-phone" name="gia" value="<?php echo $nhaTro->GIA; ?>" size="35">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label">Người liên hệ: </label>
                                         <div class="col-sm-4">
-                                          <input type="text" class="form-control bfh-phone" name="nguoiLienHe" size="35">
+                                          <input type="text" class="form-control bfh-phone" name="nguoiLienHe" value="<?php echo $nhaTro->NGUOI_LH; ?>" size="35">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label">Số điện thoại liên hệ: </label>
                                         <div class="col-sm-4">
-                                          <input type="text" class="form-control bfh-phone" name="sdtLienHe" size="35">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-2 control-label">Email liên hệ: </label>
-                                        <div class="col-sm-4">
-                                          <input type="text" class="form-control bfh-phone" name="emailLienHe" size="35">
+                                          <input type="text" class="form-control bfh-phone" name="sdtLienHe" value="<?php echo $nhaTro->SDT_LH; ?>" size="35">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label">Địa chỉ liên hệ: </label>
                                         <div class="col-sm-4">
-                                          <input type="text" class="form-control bfh-phone" name="diaChiLienHe" size="35">
+                                          <input type="text" class="form-control bfh-phone" name="diaChiLienHe" value="<?php echo $nhaTro->DIA_CHI_LH; ?>" size="35">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label">Tiêu đề: </label>
                                         <div class="col-sm-4">
-                                          <input type="text" class="form-control bfh-phone" name="tieuDe" size="35">
+                                          <input type="text" class="form-control bfh-phone" name="tieuDe" value="<?php echo $nhaTro->TIEU_DE; ?>" size="35">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label">Giới thiệu: </label>
                                         <div class="col-sm-4">
-                                         
-										  <textarea id="elm1"  name="gioiThieu"></textarea><br>
+										  <textarea id="elm1" name="gioiThieu"><?php echo $nhaTro->GIOI_THIEU; ?></textarea><br>
                                           <br>
-                                          <button type="submit" class="btn btn-default">Lưu</button>
+                                          <input type="submit" class="btn btn-default" value="Save"></input>
+                                           <?php
+                                            $maTaiKhoan = $this->session->userdata("maTaiKhoan");?>
                                           <button type="button" class="btn btn-default"><a href="<?php echo base_url();?>index.php/taiKhoan/trangquanlynhatro/<?php echo $maTaiKhoan;?>" class="font-a">Hủy</a></button>
+                                          <input type="hidden" name="maNhaTro" value="<?php echo $nhaTro->MA_NT; ?>">
                                         </div>
                                     </div>
                                     <?php echo form_close() ?>
@@ -216,12 +225,13 @@
         <!-- /#page-wrapper -->
 
     </div>
-		<script src="http://localhost/dbclpm/media/js/jquery-1.11.1.js"></script>
+<script src="http://localhost/dbclpm/media/js/jquery-1.11.1.js"></script>
         <script src="http://localhost/dbclpm/media/js/bootstrap.min.js"></script>
         <script src="http://localhost/dbclpm/media/js/plugins/morris/raphael.min.js"></script>
         <script src="http://localhost/dbclpm/media/js/plugins/morris/morris.min.js"></script>
         <script src="http://localhost/dbclpm/media/js/plugins/morris/morris-data.js"></script>
         
-
+=======
+        
     </body>
 </html>
