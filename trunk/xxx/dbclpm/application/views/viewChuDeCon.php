@@ -64,7 +64,11 @@
       <!-- Example row of columns -->
       
       <div class="row">
-        <h1>Các diễn đàn con</h1>
+        <h1><?php
+        foreach ($chuDe as $chuDe){
+         echo $chuDe->TIEU_DE; 
+        }?>
+      </h1>
         <?php
         $url = base_url();
         foreach ($chuDeCons as $chuDe) {
