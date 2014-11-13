@@ -283,10 +283,11 @@ class nhaTro extends CI_Controller {
     public function timNhaTro() {
         $tuKhoa = $this->input->post('tuKhoa');
         $data['nhaTros'] = $this->modelNhaTro->search($tuKhoa);
-        $this->load->view('index.php', $data);
+        
         $data['tinhThanhs'] = $this->modelTinhThanh->findAll();
         $data['quanHuyens'] = $this->modelQuanHuyen->findAll();
         $data['phuongXas'] = $this->modelPhuongXa->findAll();
+        $this->load->view('index.php', $data);
     }
 
     public function timKiemNangCao() {
@@ -311,10 +312,11 @@ class nhaTro extends CI_Controller {
             $this->db->where('MA_XA', $maXa);
             $this->db->where('GIA <=', $gia);
             $this->db->where('DIEN_TICH <=', $dienTich);
+            $this->db->where('nha_tro.DUYET', 1);
             $query = $this->db->get();
             $data['nhaTros'] = $query->result();
             
-            $this->load->view('ketquatimkiem', $data);
+            $this->load->view('index.php', $data);
         } else if ($maXa == NULL && $maHuyen != NULL) {
             $this->db->select("*");
             $this->db->from('nha_tro');
@@ -323,10 +325,11 @@ class nhaTro extends CI_Controller {
             $this->db->where('quan_huyen.MA_HUYEN', $maHuyen);
             $this->db->where('GIA <=', $gia);
             $this->db->where('DIEN_TICH <=', $dienTich);
+            $this->db->where('nha_tro.DUYET', 1);
             $query = $this->db->get();    
             $data['nhaTros'] = $query->result();
             
-            $this->load->view('ketquatimkiem', $data);
+            $this->load->view('index.php', $data);
         } else if ($maXa == NULL && $maHuyen == NULL && $maTinh != NULL) {
             $this->db->select("*");
             $this->db->from('nha_tro');
@@ -336,10 +339,11 @@ class nhaTro extends CI_Controller {
             $this->db->where('tinh_thanh.MA_TINH', $maTinh);
             $this->db->where('GIA <=', $gia);
             $this->db->where('DIEN_TICH <=', $dienTich);
+            $this->db->where('nha_tro.DUYET', 1);
             $query = $this->db->get();    
             $data['nhaTros'] = $query->result();
             
-            $this->load->view('ketquatimkiem', $data);
+            $this->load->view('index.php', $data);
         }
     }
 
