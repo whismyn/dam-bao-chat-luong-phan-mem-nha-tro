@@ -117,6 +117,24 @@ class nhaTro extends CI_Controller {
         $data['diachi'] = $query1->result();
         $this->load->view('updateNhaTro', $data);
     }
+    public function capnhat1($maNhaTro) {
+        $data['tinhThanhs'] = $this->modelTinhThanh->findAll();
+        $data['quanHuyens'] = $this->modelQuanHuyen->findAll();
+        $data['phuongXas'] = $this->modelPhuongXa->findAll();
+        $data['nhaTro'] = $this->modelNhaTro->find($maNhaTro);
+        
+        $this->db->select("tinh_thanh.MA_TINH as MA_TINH, 
+            quan_huyen.MA_HUYEN as MA_HUYEN,
+            phuong_xa.MA_XA as MA_XA");
+        $this->db->from('nha_tro');
+        $this->db->join('phuong_xa', 'nha_tro.MA_XA = phuong_xa.MA_XA');
+        $this->db->join('quan_huyen', 'phuong_xa.MA_HUYEN = quan_huyen.MA_HUYEN');
+        $this->db->join('tinh_thanh', 'quan_huyen.MA_TINH = tinh_thanh.MA_TINH');
+        $this->db->where('MA_NT', $maNhaTro);
+        $query1 = $this->db->get();
+        $data['diachi'] = $query1->result();
+        $this->load->view('updateNhaTro1', $data);
+    }
 	public function ChuTrocapnhat($maNhaTro) {
         $data['tinhThanhs'] = $this->modelTinhThanh->findAll();
         $data['quanHuyens'] = $this->modelQuanHuyen->findAll();
@@ -159,7 +177,29 @@ class nhaTro extends CI_Controller {
         $this->modelNhaTro->update($maNhaTro, $nhaTro);
         redirect('nhaTro/index');
     }
-
+    public function xulycapnhat1() {
+        $maTaiKhoan = $this->session->userdata("maTaiKhoan");
+        $maNhaTro = $this->input->post('maNhaTro');
+        $date = date('Y/m/d h:i:s', time());
+        $nhaTro = array(
+            "MA_TK" => $maTaiKhoan,
+            "MA_XA" => $this->input->post('maXa'),
+            "SO_NHA" => $this->input->post("soNha"),
+            "DIEN_TICH" => $this->input->post("dienTich"),
+            "CON_PHONG" => $this->input->post("conPhong"),
+            "GIA" => $this->input->post("gia"),
+            "NGUOI_LH" => $this->input->post("nguoiLienHe"),
+            "SDT_LH" => $this->input->post("sdtLienHe"),
+            "EMAIL_LH" => $this->input->post("emailLienHe"),
+            "DIA_CHI_LH" => $this->input->post("diaChiLienHe"),
+            "TIEU_DE" => $this->input->post("tieuDe"),
+            "GIOI_THIEU" => $this->input->post("gioiThieu"),
+            "CN_CUOI" => $date,
+            "DUYET" => false
+        );
+        $this->modelNhaTro->update($maNhaTro, $nhaTro);
+        redirect('taiKhoan/trangquanlynhatro/'.$maTaiKhoan);
+    }
     public function xemNhaTro($maNhaTro) {
         $this->session->set_userdata('maNhaTro', $maNhaTro);
         $this->db->select("*");
