@@ -21,7 +21,11 @@ class nhaTro extends CI_Controller {
         
         $data['nhaTros'] = $query1->result();
         //$data['nhaTros'] = $this->modelNhaTro->findAll();
+        $data['tinhThanhs'] = $this->modelTinhThanh->findAll();
+        $data['quanHuyens'] = $this->modelQuanHuyen->findAll();
+        $data['phuongXas'] = $this->modelPhuongXa->findAll();
         $this->load->view('viewNhaTro', $data);
+
     }
 
     public function xoa($maNhaTro) {
@@ -34,6 +38,12 @@ class nhaTro extends CI_Controller {
         $data['quanHuyens'] = $this->modelQuanHuyen->findAll();
         $data['phuongXas'] = $this->modelPhuongXa->findAll();
         $this->load->view("addNhaTro", $data);
+    }
+    public function them1() {
+        $data['tinhThanhs'] = $this->modelTinhThanh->findAll();
+        $data['quanHuyens'] = $this->modelQuanHuyen->findAll();
+        $data['phuongXas'] = $this->modelPhuongXa->findAll();
+        $this->load->view("addNhaTro1", $data);
     }
 	public function ChuTrothem() {
         $data['tinhThanhs'] = $this->modelTinhThanh->findAll();
@@ -64,6 +74,29 @@ class nhaTro extends CI_Controller {
         );
         $this->modelNhaTro->insert($nhaTro);
         redirect('nhaTro/them');
+    }
+    public function xulythem1() {
+        $maTaiKhoan = $this->session->userdata("maTaiKhoan");
+        $date = date('Y/m/d h:i:s', time());
+        $nhaTro = array(
+            "MA_TK" => $maTaiKhoan,
+            "MA_XA" => $this->input->post('maXa'),
+            "SO_NHA" => $this->input->post("soNha"),
+            "DIEN_TICH" => $this->input->post("dienTich"),
+            "CON_PHONG" => $this->input->post("conPhong"),
+            "GIA" => $this->input->post("gia"),
+            "NGUOI_LH" => $this->input->post("nguoiLienHe"),
+            "SDT_LH" => $this->input->post("sdtLienHe"),
+            "EMAIL_LH" => $this->input->post("emailLienHe"),
+            "DIA_CHI_LH" => $this->input->post("diaChiLienHe"),
+            "TIEU_DE" => $this->input->post("tieuDe"),
+            "GIOI_THIEU" => $this->input->post("gioiThieu"),
+            "TG_TAO_NT" => $date,
+            "CN_CUOI" => $date,
+            "DUYET" => false
+        );
+        $this->modelNhaTro->insert($nhaTro);
+        redirect('nhaTro/them1');
     }
 
     public function capnhat($maNhaTro) {
@@ -146,7 +179,9 @@ class nhaTro extends CI_Controller {
         $this->db->join('tai_khoan', 'nha_tro.MA_TK = tai_khoan.MA_TK');
         $this->db->where('nha_tro.MA_NT', $maNhaTro);
         $query1 = $this->db->get();
-        
+        $data['tinhThanhs'] = $this->modelTinhThanh->findAll();
+        $data['quanHuyens'] = $this->modelQuanHuyen->findAll();
+        $data['phuongXas'] = $this->modelPhuongXa->findAll();
         $data['nhaTro'] = $query1->result();
         
         //$data['maBinhLuan'] = $this->db->counha_tro_all('binh_luan');
@@ -209,6 +244,9 @@ class nhaTro extends CI_Controller {
         $tuKhoa = $this->input->post('tuKhoa');
         $data['nhaTros'] = $this->modelNhaTro->search($tuKhoa);
         $this->load->view('index.php', $data);
+        $data['tinhThanhs'] = $this->modelTinhThanh->findAll();
+        $data['quanHuyens'] = $this->modelQuanHuyen->findAll();
+        $data['phuongXas'] = $this->modelPhuongXa->findAll();
     }
 
     public function timKiemNangCao() {
@@ -219,6 +257,9 @@ class nhaTro extends CI_Controller {
     }
 
     public function xulytimkiem() {
+        $data['tinhThanhs'] = $this->modelTinhThanh->findAll();
+        $data['quanHuyens'] = $this->modelQuanHuyen->findAll();
+        $data['phuongXas'] = $this->modelPhuongXa->findAll();
         $maTinh = $this->input->post('maTinh');
         $maHuyen = $this->input->post('maHuyen');
         $maXa = $this->input->post('maXa');

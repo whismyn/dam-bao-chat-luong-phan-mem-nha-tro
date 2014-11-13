@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Diễn đàng</title>
+        <title>Diễn đàn</title>
         <link rel="stylesheet" href="http://localhost/dbclpm/media/css/bootstrap.css" type="text/css"/>
         <link rel="stylesheet" href="http://localhost/dbclpm/media/css/bootstrap.min.css" type="text/css"/>
         <link rel="stylesheet" href="http://localhost/dbclpm/media/css/bootstrap-theme.css" type="text/css"/>
@@ -15,6 +15,9 @@
             .h2{
                 text-align: center;
             }
+            .h4{
+                font-style: italic;
+            }
             .head-table{
                 color: #3333FF;
                 text-align: center;
@@ -23,6 +26,11 @@
             .tenchude{
                 font-size: 20px;
                 color: black;
+            }
+            .font-tieude{
+                font-size: 14px;
+                color: black;
+                font-style: italic;
             }
         </style>
     </head>
@@ -83,26 +91,41 @@
                 <div class="container">
                     <!-- Example row of columns -->
 
-                    <div class="row">
-                        <table class="table">
-                            <thead>
-                                <tr class="head-table">
-                                    <th><h3>TÊN DIỄN ĐÀN</h3></th>
-                                    <th><h3>NGÀY TẠO</h3></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                    $url = base_url();
-                                    foreach ($chuDes as $chuDe) {
-                                        echo "<tr>";
-                                        echo "<th><a class='tenchude' href='".$url."index.php/chuDe/xemChuDe/".$chuDe->MA_CHU_DE."'>". $chuDe->TIEU_DE."</a></th>";
-                                        echo "<th>".$chuDe->TG_TAO_CHU_DE."</th>";
-                                        echo "</tr>";
-                                    }
-                                ?>
-                            </tbody>
-                        </table>
+                <div class="row">
+                    <div class="diendan">
+                        <div class="header-diendan">
+                            <p style="margin-left:15px">NHỮNG TIÊU ĐỀ CHÍNH CỦA DIỄN ĐÀN</p>
+                        </div>
+                        <div class="header-diendan2">
+                            <div class="row">
+                                <div class="col-lg-1">
+                                </div>
+                                <div class="col-lg-7">
+                                    <span>Tiêu đề</span>
+                                </div>
+                                <div class="col-lg-4">
+                                    <span>Ngày đăng</span>
+                                </div>
+                            </div>
+                        </div>
+                        <?php
+                            $url = base_url();
+                            foreach ($chuDes as $chuDe) {
+                                echo "<div class='noidung-diendan'>";
+                                echo "<div class='row'>";
+                                echo "<div class='col-lg-1'>";
+                                echo "<img src='http://localhost/dbclpm/media/img/forum-icon.png' style='margin-left:15px'></div>";
+                                echo "<div class='col-lg-7'>";
+                                echo "<a class='tenchude' href='".$url."index.php/chuDe/xemChuDe/".$chuDe->MA_CHU_DE."'>". $chuDe->TIEU_DE."</a><br>";
+                                echo "<span class='font-tieude'>".$chuDe->NOI_DUNG."</span>";
+                                echo "</div>";
+                                echo "<div class='col-lg-4'>";
+                                echo "<h4 class='h4'>".$chuDe->TG_TAO_CHU_DE."</h4>";
+                                echo "</div>";
+                                echo "</div></div>";
+                            }
+                        ?>
+                    </div>
                 </div>
                 <hr>
 

@@ -9,7 +9,11 @@
         <link href="http://localhost/dbclpm/media/css/plugins/morris.css" rel="stylesheet">
         <link href="http://localhost/dbclpm/media/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <script src="http://localhost/dbclpm/media/js/jquery.min.js"></script>
-
+        <style type="text/css">
+        .a{
+            color: black;
+        }
+        </style>
     </head>
     <body>
         <div id="wrapper">
@@ -45,9 +49,11 @@
                 <div class="row">
                     <div>
                         <h1 class="page-header">
-                            <img src="http://localhost/dbclpm/media/img/chunhatro-icon.png" width="100" height="100">
+                            <img src="http://localhost/dbclpm/media/img/nhatro-icon.png" width="100" height="100">
                             Danh sách nhà trọ của
-							<?php echo $nhaTros[1]->TEN_TK;?>
+							<?php foreach ($nhaTros as $nhaTro) {
+                                                echo $nhaTro->TEN_TK;
+                                            }?>
                         </h1>
                     
                         <div class="row">
@@ -104,7 +110,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <?php echo anchor("nhaTro/them", "Thêm nhà trọ") ?><br>
+                            <button class="btn btn-info"><a href="http://localhost/dbclpm/index.php/nhaTro/them1" class="a">Thêm nhà trọ</a></button>
         
                         </div>
                         <br>

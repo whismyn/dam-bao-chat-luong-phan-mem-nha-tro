@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Trang chủ</title>
+        <title>Nội dung chủ đề</title>
         <link rel="stylesheet" href="http://localhost/dbclpm/media/css/bootstrap.css" type="text/css"/>
         <link rel="stylesheet" href="http://localhost/dbclpm/media/css/bootstrap.min.css" type="text/css"/>
         <link rel="stylesheet" href="http://localhost/dbclpm/media/css/bootstrap-theme.css" type="text/css"/>
@@ -11,6 +11,15 @@
         <script src="http://localhost/dbclpm/media/js/bootstrap.js"></script>
         <script src="http://localhost/dbclpm/media/js/bootstrap.min.js"></script>
         <script src="http://localhost/dbclpm/media/js/jquery-1.11.1.min.js"></script>
+        <style type="text/css">
+            .time{
+                color: #00FFCC;
+            }
+            .noidung{
+                font-size: 20px;
+                font-style: italic;
+            }
+        </style>
     </head>
     <body>
         <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -22,8 +31,8 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="<?php echo base_url();?>"><img src="http://localhost/dbclpm/media/img/Home-icon.png" width="20" height="20">Trang chủ</a>
-          <a class="navbar-brand" href="<?php echo base_url();?>index.php/chuDe"><img src="http://localhost/dbclpm/media/img/Home-icon.png" width="20" height="20">Diễn đàn</a>
+          <a class="navbar-brand" href="<?php echo base_url();?>"><img src="http://localhost/dbclpm/media/img/Home-icon.png" width="20" height="20"> Trang chủ</a>
+          <a class="navbar-brand" href="<?php echo base_url();?>index.php/chuDe"><img src="http://localhost/dbclpm/media/img/forum_icon.png" width="20" height="20"> Diễn đàn</a>
           
         </div>
         <div class="navbar-collapse collapse">
@@ -60,18 +69,45 @@
       <!-- Example row of columns -->
       
       <div class="row">
-        <h1>Các diễn đàn con</h1>
-        <?php
-        $url = base_url();
-        foreach ($chuDe as $chuDe) {
-        echo "<div class='col-6 col-sm-6 col-lg-4'>";
-        echo "<h3>".$chuDe->TIEU_DE."</h3>";
-        echo "<p>Ngay tao: ".$chuDe->TG_TAO_CHU_DE."</p>";
-        echo "<p>Nguoi tao: ".$chuDe->MA_TK."</p>";
-        echo "<p>Noi dung: ".$chuDe->NOI_DUNG."</p>";
-        echo "</div>";   
-        }
-        ?>
+        <div class="diendan">
+                        <div class="header-diendan">
+                            <p style="margin-left:15px">
+                              <?php
+                              foreach ($chuDe as $chuDe){
+                                echo $chuDe->TIEU_DE;
+                                }
+                              ?>
+                            </p>
+                        </div>
+                        <div class="header-diendan2">
+                            <div class="row">
+                                <div class="col-lg-2">
+                                </div>
+                                <div class="col-lg-4">
+                                    <img src="http://localhost/dbclpm/media/img/clock-icon.png" height="20" width="20">
+                                    Thời gian tạo: <span class="time">
+                                    <?php 
+                                        echo $chuDe->TG_TAO_CHU_DE;
+                                    ?></span>
+                                </div>
+                                <div class="col-lg-4">
+                                    <img src="http://localhost/dbclpm/media/img/users-icon.png" height="20" width="20">
+                                    Người tạo:<span class="time">
+                                    <?php 
+                                        echo $chuDe->TEN_TK;
+                                    ?></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="noidung-diendan">
+                            <div class="noidung">
+                            <?php
+                            echo $chuDe->NOI_DUNG;
+                            ?>
+                            </div>
+                        </div>
+                        
+                    </div>
       </div>
       <hr>
 
