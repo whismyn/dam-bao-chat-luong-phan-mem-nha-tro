@@ -49,7 +49,7 @@
                     <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/chuDe"><img src="http://localhost/dbclpm/media/img/forum_icon.png" width="20" height="20"> Diễn đàn</a>
                     <?php
                     $maLoaiTaiKhoan = $this->session->userdata("maLoaiTaiKhoan");
-                    if ($maLoaiTaiKhoan == 1) {
+                    if ($maLoaiTaiKhoan == 1 || $maLoaiTaiKhoan == 2 || $maLoaiTaiKhoan == 3) {
                         echo "<a class='navbar-brand' href='".base_url()."index.php/chuDe/themChuDe'><img src = 'http://localhost/dbclpm/media/img/add-forum.png' width = '20' height = '20'> Thêm diễn đàn</a>";
                     }
             ?>
