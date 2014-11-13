@@ -74,7 +74,6 @@
                                                 <th>Tên tài khoản</th>                                     
                                                 <th>Số nhà</th>                                            
                                                 <th>Tiêu đề</th>
-                                                <th width="100">Giới thiệu</th>
                                                 <th>Thời gian tạo</th>
                                                 <th>Duyệt</th>
                                                 <th>Tùy chọn</th>
@@ -89,7 +88,6 @@
                                                 echo "<th>".$nhaTro->TEN_TK."</th>";                                              
                                                 echo "<th>".$nhaTro->SO_NHA."</th>";                                                
                                                 echo "<th>".$nhaTro->TIEU_DE."</th>";
-                                                echo "<th  width='100'>".$nhaTro->GIOI_THIEU."</th>";
                                                 echo "<th>".$nhaTro->TG_TAO_NT."</th>";
                                                 echo "<th>".$nhaTro->DUYET."</th>";
                                                 echo "<th>";
