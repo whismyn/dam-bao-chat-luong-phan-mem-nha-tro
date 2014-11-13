@@ -42,6 +42,9 @@
                 font-size: 20px;
                 font-weight: bold;
             }
+            .img{
+               display: none; 
+            }
         </style>
     </head>
     <body>
@@ -193,9 +196,9 @@
                                             echo "<tr class='odd gradeX'>";
                                             echo "<td>";
 											if($i < 5 ){
-												echo " <img src='http://localhost/dbclpm/media/img/new.gif'>";
+												echo " <img src='http://localhost/dbclpm/media/img/new05.gif' width='70' height='70'>";
 											} else{
-												echo " <img src='http://localhost/dbclpm/media/img/old.svg' width='70'>";
+												echo " <img src='http://localhost/dbclpm/media/img/old.svg' width='70' class='img'>";
 											}
 											echo "</td>";
                                             echo "<td>";
